@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         sendbt.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                databaseReference.child("message").push().setValue("1");
+                databaseReference.child("message").push().setValue("2");
             }
         });
     }

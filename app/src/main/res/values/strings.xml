@@ -1,3 +1,535 @@
+<?xml version="1.0"?>
+
 <resources>
-    <string name="app_name">Pearth</string>
+<string name="app_name">Pearth</string>
+<string name="sido"> 시구 선택 </string>
+<string name="dong"> 동 선택 </string>
+
+<string-array name="spinner_do">
+    <item>가평군</item>
+    <item>고양시</item>
+    <item>과천시</item>
+    <item>광명시</item>
+    <item>광주시</item>
+    <item>구리시</item>
+    <item>군포시</item>
+    <item>남양주시</item>
+    <item>동두천시</item>
+    <item>부천시</item>
+    <item>성남시 분당구</item>
+    <item>성남시 수정구</item>
+    <item>성남시 중원구</item>
+    <item>수원시 권선구</item>
+    <item>수원시 영통구</item>
+    <item>수원시 장안구</item>
+    <item>수원시 팔달구</item>
+    <item>안산시 단원구</item>
+    <item>안산시 상록구</item>
+    <item>안성시</item>
+    <item>안양시 동안구</item>
+    <item>안양시 만안구</item>
+    <item>양주시</item>
+    <item>양평군</item>
+    <item>연천군</item>
+    <item>오산시</item>
+    <item>용인시 기흥구</item>
+    <item>용인시 수지구</item>
+    <item>용인시 처인구</item>
+    <item>의왕시</item>
+    <item>의정부시</item>
+    <item>이천시</item>
+    <item>파주시</item>
+    <item>평택시</item>
+    <item>포천시</item>
+    <item>하남시</item>
+    <item>화성시</item>
+</string-array>
+
+<string-array name="spinner_do_Gapyoung">
+    <item>가평읍</item>
+    <item>북면</item>
+    <item>상면</item>
+    <item>설악면</item>
+    <item>조종면</item>
+    <item>청평면</item>
+</string-array>
+
+<string-array name="spinner_do_Goyang">
+    <item>덕양구</item>
+    <item>일산동구</item>
+    <item>일산서구</item>
+</string-array>
+
+<string-array name="spinner_do_Gwacheon">
+    <item>과천동</item>
+    <item>길현동</item>
+    <item>문원동</item>
+    <item>부림동</item>
+    <item>별양동</item>
+    <item>중앙동</item>
+</string-array>
+
+<string-array name="spinner_do_Gwangju">
+    <item>광남동</item>
+    <item>경안동</item>
+    <item>곤지암읍</item>
+    <item>남한산성면</item>
+    <item>남종면</item>
+    <item>도척면</item>
+    <item>송정동</item>
+    <item>오포읍</item>
+    <item>초월읍</item>
+    <item>퇴촌면</item>
+
+</string-array>
+
+<string-array name="spinner_do_Gwangmyeong">
+    <item>광명동</item>
+    <item>소하동</item>
+    <item>철산동</item>
+    <item>하안동</item>
+    <item>학온동</item>
+</string-array>
+
+<string-array name="spinner_do_Guri">
+    <item>갈매동</item>
+    <item>교문동</item>
+    <item>동구동</item>
+    <item>수택동</item>
+    <item>인창동</item>
+</string-array>
+
+<string-array name="spinner_do_Gunpo">
+    <item>금정동</item>
+    <item>군포동</item>
+    <item>궁내동</item>
+    <item>광정동</item>
+    <item>대야동</item>
+    <item>산본동</item>
+    <item>수리동</item>
+    <item>오금동</item>
+    <item>재궁동</item>
+</string-array>
+
+<string-array name="spinner_do_Namyangju">
+    <item>금곡동</item>
+    <item>다산동</item>
+    <item>별내동</item>
+    <item>별내면</item>
+    <item>수동면</item>
+    <item>와부읍</item>
+    <item>오남읍</item>
+    <item>양정동</item>
+    <item>진건읍</item>
+    <item>진접읍</item>
+    <item>조안면</item>
+    <item>평내동</item>
+    <item>퇴계원읍</item>
+    <item>화도읍</item>
+    <item>호평동</item>
+</string-array>
+
+<string-array name="spinner_do_Dongducheon">
+    <item>불현동</item>
+    <item>보산동</item>
+    <item>상패동</item>
+    <item>소요동</item>
+    <item>생연동</item>
+    <item>송내동</item>
+    <item>중앙동</item>
+
+</string-array>
+
+<string-array name="spinner_do_Bucheon">
+    <item>대산동</item>
+    <item>범안동</item>
+    <item>부천동</item>
+    <item>상동</item>
+    <item>신중동</item>
+    <item>심곡동</item>
+    <item>성곡동</item>
+    <item>소사본동</item>
+    <item>오정동</item>
+    <item>중동</item>
+</string-array>
+
+<string-array name="spinner_do_SeongNamBundang">
+    <item>구미동</item>
+    <item>금곡동</item>
+    <item>분당동</item>
+    <item>백현동</item>
+    <item>삼평동</item>
+    <item>서현동</item>
+    <item>수내동</item>
+    <item>이매동</item>
+    <item>야탑동</item>
+    <item>운중동</item>
+    <item>율동</item>
+    <item>정자동</item>
+    <item>판교동</item>
+
+</string-array>
+
+<string-array name="spinner_do_SeongNamSujeong">
+    <item>고등동</item>
+    <item>금광동</item>
+    <item>금토동</item>
+    <item>단대동</item>
+    <item>둔전동</item>
+    <item>복정동</item>
+    <item>사송동</item>
+    <item>산성동</item>
+    <item>상적동</item>
+    <item>시흥동</item>
+    <item>신흥동</item>
+    <item>신촌동</item>
+    <item>심곡동</item>
+    <item>수진동</item>
+    <item>양지동</item>
+    <item>오야동</item>
+    <item>창곡동</item>
+    <item>태평동</item>
+
+</string-array>
+
+<string-array name="spinner_do_SeongNamJungwon">
+    <item>도촌동</item>
+    <item>성남동</item>
+    <item>중앙동</item>
+    <item>금광동</item>
+    <item>은행동</item>
+    <item>여수동</item>
+    <item>상대원동</item>
+    <item>하대원동</item>
+</string-array>
+
+<string-array name="spinner_do_SuwonGwonseongu">
+    <item>곡선동</item>
+    <item>구운동</item>
+    <item>권선동</item>
+    <item>금곡동</item>
+    <item>서둔동</item>
+    <item>세류동</item>
+    <item>입북동</item>
+    <item>평동</item>
+    <item>호매실동</item>
+
+</string-array>
+
+<string-array name="spinner_do_SuwonYeongtong">
+    <item>광교동</item>
+    <item>망포동</item>
+    <item>매탄동</item>
+    <item>영통동</item>
+    <item>원천동</item>
+</string-array>
+
+<string-array name="spinner_do_SuwonJangan">
+    <item>송죽동</item>
+    <item>연무동</item>
+    <item>영화동</item>
+    <item>율천동</item>
+    <item>정자동</item>
+    <item>조원동</item>
+    <item>파장동</item>
+</string-array>
+
+
+<string-array name="spinner_do_SuwonPaldal">
+    <item>고등동</item>
+    <item>매교동</item>
+    <item>매산동</item>
+    <item>우만동</item>
+    <item>인계동</item>
+    <item>지동</item>
+    <item>행궁동</item>
+    <item>화서동</item>
+</string-array>
+
+
+<string-array name="spinner_do_AnsanDanwon">
+    <item>고잔동</item>
+    <item>대부동</item>
+    <item>백운동</item>
+    <item>선부동</item>
+    <item>신길동</item>
+    <item>와동</item>
+    <item>원곡동</item>
+    <item>중앙동</item>
+    <item>초지동</item>
+    <item>호수동</item>
+
+</string-array>
+
+<string-array name="spinner_do_AnsanSanglok">
+    <item>일동</item>
+    <item>이동</item>
+    <item>사동</item>
+    <item>사이동</item>
+    <item>해양동</item>
+    <item>본오동</item>
+    <item>부곡동</item>
+    <item>월피동</item>
+    <item>성포동</item>
+    <item>반월동</item>
+    <item>안산동</item>
+</string-array>
+
+<string-array name="spinner_do_AnyangDongan">
+    <item>갈산동</item>
+    <item>관양동</item>
+    <item>귀인동</item>
+    <item>달안동</item>
+    <item>범계동</item>
+    <item>부림동</item>
+    <item>부흥동</item>
+    <item>비산동</item>
+    <item>신촌동</item>
+    <item>평안동</item>
+    <item>평촌동</item>
+    <item>호계동</item>
+</string-array>
+
+<string-array name="spinner_do_AnyangManan">
+    <item>박달동</item>
+    <item>석수동</item>
+    <item>안양동</item>
+</string-array>
+
+<string-array name="spinner_do_Anseong">
+    <item>고삼면</item>
+    <item>공도읍</item>
+    <item>금광면</item>
+    <item>대덕면</item>
+    <item>미양면</item>
+    <item>보개면</item>
+    <item>삼죽면</item>
+    <item>서운면</item>
+    <item>양성면</item>
+    <item>원곡면</item>
+    <item>일죽면</item>
+    <item>죽산면</item>
+    <item>안성동</item>
+
+</string-array>
+<string-array name="spinner_do_Yangju">
+    <item>광적면</item>
+    <item>남면</item>
+    <item>백석읍</item>
+    <item>은현면</item>
+    <item>장흥면</item>
+    <item>양주동</item>
+    <item>회천동</item>
+</string-array>
+
+<string-array name="spinner_do_Yangpeong">
+    <item>강상면</item>
+    <item>강하면</item>
+    <item>개군면</item>
+    <item>단월면</item>
+    <item>서종면</item>
+    <item>양동면</item>
+    <item>양서면</item>
+    <item>양평읍</item>
+    <item>옥천면</item>
+    <item>용문면</item>
+    <item>지평면</item>
+    <item>청운면</item>
+</string-array>
+
+<string-array name="spinner_do_Yeonchon">
+    <item>군남면</item>
+    <item>미산면</item>
+    <item>백화면</item>
+    <item>신서면</item>
+    <item>연천읍</item>
+    <item>왕장면</item>
+    <item>장남면</item>
+    <item>중면</item>
+    <item>전곡읍</item>
+    <item>청산면</item>
+    <item></item>
+</string-array>
+<string-array name="spinner_do_Osan">
+    <item>남촌동</item>
+    <item>대원동</item>
+    <item>세마동</item>
+    <item>신장동</item>
+    <item>중앙동</item>
+    <item>초평동</item>
+</string-array>
+
+<string-array name="spinner_do_YonginGiheung">
+    <item>구갈동</item>
+    <item>구성동</item>
+    <item>기흥동</item>
+    <item>동백동</item>
+    <item>마북동</item>
+    <item>보라동</item>
+    <item>보정동</item>
+    <item>상갈동</item>
+    <item>상하동</item>
+    <item>서농동</item>
+    <item>신갈동</item>
+    <item>영덕동</item>
+</string-array>
+
+<string-array name="spinner_do_YonginSuji">
+    <item>동천동</item>
+    <item>상현동</item>
+    <item>성복동</item>
+    <item>신봉동</item>
+    <item>죽전동</item>
+    <item>풍덕천동</item>
+</string-array>
+
+<string-array name="spinner_do_YonginCheoin">
+    <item>남사면</item>
+    <item>모현읍</item>
+    <item>백암면</item>
+    <item>양지면</item>
+    <item>원삼면</item>
+    <item>이동읍</item>
+    <item>포곡읍</item>
+
+    <item>동부동</item>
+    <item>역삼동</item>
+    <item>유림동</item>
+    <item>중앙동</item>
+</string-array>
+
+<string-array name="spinner_do_Uiwang">
+    <item>고천동</item>
+    <item>부곡동</item>
+    <item>오전동</item>
+    <item>내손동</item>
+    <item>청계동</item>
+</string-array>
+
+<string-array name="spinner_do_Uijeongbu">do
+    <item>가능동</item>
+    <item>녹양동</item>
+    <item>송산동</item>
+    <item>신곡동</item>
+    <item>의정부동</item>
+    <item>자금동</item>
+    <item>장암동</item>
+    <item>호원동</item>
+    <item>홍선동</item>
+</string-array>
+
+<string-array name="spinner_do_Icheon">
+    <item>관고동</item>
+    <item>대월면</item>
+    <item>마장면</item>
+    <item>모가면</item>
+    <item>부발읍</item>
+    <item>백사면</item>
+    <item>설성면</item>
+    <item>신둔면</item>
+    <item>율면</item>
+    <item>장호원읍</item>
+    <item>중포동</item>
+    <item>중리동</item>
+    <item>호법면</item>
+    <item>창전동</item>
+</string-array>
+
+<string-array name="spinner_do_Paju">
+    <item>군내면</item>
+    <item>광탄면</item>
+    <item>교하동</item>
+    <item>금촌동</item>
+    <item>문산읍</item>
+    <item>법원읍</item>
+    <item>월롱면</item>
+    <item>장단면</item>
+    <item>적성면</item>
+    <item>진동면</item>
+    <item>조리읍</item>
+    <item>파평면</item>
+    <item>파주읍</item>
+    <item>탄현면</item>
+</string-array>
+
+<string-array name="spinner_do_Pyeongtaek">
+    <item>고덕면</item>
+    <item>비전동</item>
+    <item>서정동</item>
+    <item>서탄면</item>
+    <item>송북동</item>
+    <item>송탄동</item>
+    <item>신장동</item>
+    <item>신평동</item>
+    <item>세교동</item>
+    <item>안중읍</item>
+    <item>용이동</item>
+    <item>오성면</item>
+    <item>원평동</item>
+    <item>지산동</item>
+    <item>진위면</item>
+    <item>중앙동</item>
+    <item>청북면</item>
+    <item>통복동</item>
+    <item>팽성읍</item>
+    <item>포승읍</item>
+    <item>현덕면</item>
+</string-array>
+
+<string-array name="spinner_do_Pocheon">
+    <item>가산면</item>
+    <item>관인면</item>
+    <item>군내면</item>
+    <item>내촌면</item>
+    <item>선단동</item>
+    <item>소홀읍</item>
+    <item>신북면</item>
+    <item>영북면</item>
+    <item>영중면</item>
+    <item>일동면</item>
+    <item>이동면</item>
+    <item>창수면</item>
+    <item>포천동</item>
+    <item>화현면</item>
+</string-array>
+
+<string-array name="spinner_do_Hanam">
+    <item>감북동</item>
+    <item>감일동</item>
+    <item>덕풍동</item>
+    <item>미사동</item>
+    <item>신장동</item>
+    <item>위례동</item>
+    <item>춘궁동</item>
+    <item>천현동</item>
+    <item>초이동</item>
+    <item>풍산동</item>
+</string-array>
+
+<string-array name="spinner_do_Hwaseong">
+    <item>기배동</item>
+    <item>남양읍</item>
+    <item>동탄동</item>
+    <item>동탄면</item>
+    <item>매송면</item>
+    <item>마도면</item>
+    <item>반월동</item>
+    <item>병점동</item>
+    <item>비봉면</item>
+    <item>봉담읍</item>
+    <item>송산면</item>
+    <item>서신면</item>
+    <item>우정읍</item>
+    <item>양감면</item>
+    <item>장안면</item>
+    <item>진암동</item>
+    <item>정남면</item>
+    <item>팔탄면</item>
+    <item>향남읍</item>
+    <item>화산동</item>
+</string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+<string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
