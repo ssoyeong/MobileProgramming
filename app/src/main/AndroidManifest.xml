@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
-        <activity android:name=".activity_set_location"></activity>
+        <activity android:name=".PopUpActivity"></activity>
+        <activity android:name=".SetLocationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

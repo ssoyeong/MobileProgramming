@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/teal_200"
+        android:background="@color/teal_700"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:background="@color/teal_700"
+            android:backgroundTint="@color/teal_200"
             android:textColor="#000000"
             android:textSize="20dp" />
 
