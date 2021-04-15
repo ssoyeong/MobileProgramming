@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BF7EC560"
+    android:orientation="vertical"
+    tools:ignore="Deprecated">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <!--        android:background="#F4F3DA"-->
+
+
+
+        <TextView
+            android:id="@+id/signup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:text="Sign Up"
+            android:textSize="40sp"
+            android:textColor="#2F571E"/>
+
+
+
+        <EditText
+            android:id="@+id/signup_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:hint="Enter E-mail"
+            android:inputType="textEmailAddress"
+            tools:ignore="Suspicious0dp" />
+
+
+
+        <EditText
+            android:id="@+id/signup_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:hint="Enter Password"
+            android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/confirmPW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:hint="Check Password"
+            android:inputType="textPassword"/>
+
+        <Button
+            android:id="@+id/signup_bt"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Sign up"
+            android:textSize="20sp"
+            app:backgroundTint="#654040" />
+        <TextView
+            android:text="회원이시면 여기에서 로그인 해주세요."
+            android:id="@+id/textViewSignin"
+            android:textAlignment="center"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal" />
+
+
+    </LinearLayout>
+</LinearLayout>
