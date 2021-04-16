@@ -3,6 +3,7 @@
     package="gachon.mpclass.pearth">
     <!-- 인터넷 사용 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
-        <activity android:name=".PopUpActivity"></activity>
+        <activity android:name=".spinneritem"></activity>
+        <activity android:name=".PopUpActivity" />
         <activity android:name=".SetLocationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -20,10 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".FindpwActivity"/>
-        <activity android:name=".GrowingPlantActivity"/>
-        <activity android:name=".SignupActivity"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".FindpwActivity" />
+        <activity android:name=".GrowingPlantActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".MapActivity" />
+
     </application>
 
 </manifest>

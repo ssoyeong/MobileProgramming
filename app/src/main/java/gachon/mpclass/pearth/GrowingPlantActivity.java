@@ -29,7 +29,7 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
     private TextView textViewUserEmail;
     private Button buttonLogout;
     private TextView textivewDelete;
-
+    private Button buttonRest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         textivewDelete = (TextView) findViewById(R.id.textviewDelete);
+        buttonRest = (Button) findViewById(R.id.btnRest);
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -58,6 +59,7 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         //logout button event
         buttonLogout.setOnClickListener(this);
         textivewDelete.setOnClickListener(this);
+        buttonRest.setOnClickListener(this);
 
 
     }
@@ -95,6 +97,13 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
                 }
             });
             alert_confirm.show();
+        }
+
+        // 식당추천 카테고리로 연결해주는 임시 버튼
+        if(view == buttonRest){
+
+            Intent restIntent = new Intent(getApplicationContext(), MapActivity.class);
+            startActivity(restIntent);
         }
     }
 }
