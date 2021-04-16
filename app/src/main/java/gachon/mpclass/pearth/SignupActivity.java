@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText editTextEmail;
     EditText editTextPassword;
@@ -58,8 +58,8 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         //button click event
-        buttonSignup.setOnClickListener((View.OnClickListener) this);
-        textviewSingin.setOnClickListener((View.OnClickListener) this);
+        buttonSignup.setOnClickListener(this);
+        textviewSingin.setOnClickListener(this);
     }
     //
 //    //Firebse creating a new user 회원가입

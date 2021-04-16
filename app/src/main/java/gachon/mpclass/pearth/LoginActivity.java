@@ -21,13 +21,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     //define view objects
     EditText editTextEmail; //이메일
     EditText editTextPassword; //비밀번호
     Button buttonSignin; //로그인 버튼
-    TextView textviewSingin;
+    TextView textviewSingup;
     TextView textviewMessage;
     TextView textviewFindPassword; //비밀번호 찾기
     ProgressDialog progressDialog;
@@ -51,16 +51,16 @@ public class LoginActivity extends AppCompatActivity {
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);
-        //textviewSingin= (TextView) findViewById(R.id.register);
+        textviewSingup= (TextView) findViewById(R.id.signup);
         //textviewMessage = (TextView) findViewById(R.id.textviewMessage);
         textviewFindPassword = (TextView) findViewById(R.id.find_pw);
         buttonSignin = (Button) findViewById(R.id.login_btn);
         progressDialog = new ProgressDialog(this);
 
         //button click event
-        buttonSignin.setOnClickListener((View.OnClickListener) this);
-        textviewSingin.setOnClickListener((View.OnClickListener) this);
-        textviewFindPassword.setOnClickListener((View.OnClickListener) this);
+        buttonSignin.setOnClickListener(this);
+        textviewSingup.setOnClickListener(this);
+        textviewFindPassword.setOnClickListener(this);
     }
 
     //firebase userLogin method
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                             else
                             {
                                 finish();
-                                //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
                             }
 
                         } else {
@@ -114,9 +114,9 @@ public class LoginActivity extends AppCompatActivity {
         if(view == buttonSignin) {
             userLogin();
         }
-        if(view == textviewSingin) {
+        if(view == textviewSingup) {
             finish();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, SignupActivity.class));
         }
         if(view == textviewFindPassword) {
             finish();

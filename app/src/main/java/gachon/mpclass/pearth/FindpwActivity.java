@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class FindpwActivity extends AppCompatActivity {
+public class FindpwActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "FindActivity";
 
@@ -40,7 +40,7 @@ public class FindpwActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        buttonFind.setOnClickListener((View.OnClickListener) this);
+        buttonFind.setOnClickListener(this);
 
     }
 

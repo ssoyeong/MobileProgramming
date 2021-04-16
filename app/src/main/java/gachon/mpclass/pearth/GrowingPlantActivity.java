@@ -16,8 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-// 식물키우기 - 현재는 로그인 성공 후 화면 - 기능: 로그아웃, 탈퇴
-public class GrowingPlantActivity extends AppCompatActivity {
+
+// 식물키우기 - 현재는 로그인 성공 후 화면 - 현재 해당 activity 기능: 로그아웃, 탈퇴
+public class GrowingPlantActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "ProfileActivity";
 
@@ -55,8 +56,8 @@ public class GrowingPlantActivity extends AppCompatActivity {
         textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
 
         //logout button event
-        buttonLogout.setOnClickListener((View.OnClickListener) this);
-        textivewDelete.setOnClickListener((View.OnClickListener) this);
+        buttonLogout.setOnClickListener(this);
+        textivewDelete.setOnClickListener(this);
 
 
     }
