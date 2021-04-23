@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/mainGreen"
             android:textColor="#000000"
             android:textSize="20dp" />
 
@@ -71,7 +71,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@color/purple_200"
             android:drawableTop="@drawable/ic_format_list_bulleted_black_24dp"
             android:paddingTop="15dp"
             android:text="리스트 보기"
@@ -91,7 +90,6 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@color/teal_700"
             android:drawableTop="@drawable/ic_map_black_24dp"
             android:paddingTop="20dp"
             android:text="지도로 보기"
@@ -104,33 +102,32 @@
             android:layout_marginLeft="2.5dp"
             android:layout_marginRight="2.5dp"/>
 
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:background="@color/teal_700"
-            android:drawableTop="@drawable/ic_search_black_24dp"
-            android:paddingTop="20dp"
-            android:text="검색하기"
-            app:backgroundTint="@color/mainGreen" />
+<!--        <Button-->
+<!--            android:id="@+id/search_btn"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/teal_700"-->
+<!--            android:drawableTop="@drawable/ic_search_black_24dp"-->
+<!--            android:paddingTop="20dp"-->
+<!--            android:text="검색하기"-->
+<!--            app:backgroundTint="@color/mainGreen" />-->
 
-        <View
-            android:layout_width="0.3dp"
-            android:layout_height="80dp"
-            android:background="#555"
-            android:layout_marginLeft="2.5dp"
-            android:layout_marginRight="2.5dp"/>
+<!--        <View-->
+<!--            android:layout_width="0.3dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:background="#555"-->
+<!--            android:layout_marginLeft="2.5dp"-->
+<!--            android:layout_marginRight="2.5dp"/>-->
 
         <Button
             android:id="@+id/favorite_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@color/teal_700"
             android:drawableTop="@drawable/ic_star_black_24dp"
             android:paddingTop="20dp"
-            android:text="즐겨 찾기"
+            android:text="즐겨찾기"
             app:backgroundTint="@color/mainGreen" />
     </LinearLayout>
 
