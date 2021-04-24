@@ -44,11 +44,11 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         context = this;
 
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-        //toolbar.setTitleTextColor(Color.parseColor("#ffff33"));
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-
+//        Toolbar toolbar = findViewById(R.id.my_toolbar);
+//        //toolbar.setTitleTextColor(Color.parseColor("#ffff33"));
+//        toolbar.setTitle("");
+//        setSupportActionBar(toolbar);
+//
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
         // search_btn = (Button) findViewById(R.id.search_btn);
@@ -61,51 +61,51 @@ public class MapActivity extends AppCompatActivity {
         mapFragment = new MapFragment();
        // searchFragment = new SearchFragment();
         favoriteFragment = new FavoriteFragment();
-
-        Intent data = getIntent();
-        if(data != null) {
-            Bundle bundle = data.getExtras();
-            SIGUN = bundle.getString("SIGUN");
-            DONG = bundle.getString(("DONG"));
-            String location = SIGUN + " " + DONG;
-            findAdr_btn.setText(location);
-
-//            stores = bundle.getParcelableArrayList("all_stores");
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-
-                    GetApi parser = new GetApi();
-                    stores = parser.getAllXmlData(SIGUN, DONG);
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadingMessage.setText("");
-                            list_btn.performClick();
-                        }
-                    });
-                }
-            }).start();
-        }
-
-        map_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadingMessage.setText("");
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("stores_key", stores);
-                bundle.putString("SIGUN", SIGUN);
-                bundle.putString("DONG", DONG);
-                // mapFragment.setArguments(bundle);    // 이거 추가하기!!!!
-                // getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();  // 이거 추가하기!!!!
-                map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-
-            }
-        });
+//
+//        Intent data = getIntent();
+//        if(data != null) {
+//            Bundle bundle = data.getExtras();
+//            SIGUN = bundle.getString("SIGUN");
+//            DONG = bundle.getString(("DONG"));
+//            String location = SIGUN + " " + DONG;
+//            findAdr_btn.setText(location);
+//
+////            stores = bundle.getParcelableArrayList("all_stores");
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    GetApi parser = new GetApi();
+//                    stores = parser.getAllXmlData(SIGUN, DONG);
+//
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            loadingMessage.setText("");
+//                            list_btn.performClick();
+//                        }
+//                    });
+//                }
+//            }).start();
+//        }
+//
+//        map_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loadingMessage.setText("");
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelableArrayList("stores_key", stores);
+//                bundle.putString("SIGUN", SIGUN);
+//                bundle.putString("DONG", DONG);
+//                // mapFragment.setArguments(bundle);    // 이거 추가하기!!!!
+//                // getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();  // 이거 추가하기!!!!
+//                map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+//                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+//                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+//                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+//
+//            }
+//        });
 
 
         list_btn.setOnClickListener(new View.OnClickListener() {
@@ -138,25 +138,25 @@ public class MapActivity extends AppCompatActivity {
                 favorite_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
             }
         });
-
-//        findAdr_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getApplicationContext(), AddrSearchActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("SIGUN", SIGUN);
-//                bundle.putString("DONG", DONG);
-//                intent.putExtras(bundle);
-//                startActivityForResult(intent, 1122);
-//                finish();
-//            }
-//        });
-
-
-
-
-//        Intent setLocationIntent = new Intent(this, SetLocationActivity.class);
-//        startActivity(setLocationIntent);
+//
+////        findAdr_btn.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                Intent intent = new Intent(getApplicationContext(), AddrSearchActivity.class);
+////                Bundle bundle = new Bundle();
+////                bundle.putString("SIGUN", SIGUN);
+////                bundle.putString("DONG", DONG);
+////                intent.putExtras(bundle);
+////                startActivityForResult(intent, 1122);
+////                finish();
+////            }
+////        });
+////
+////
+////
+////
+////        Intent setLocationIntent = new Intent(this, SetLocationActivity.class);
+////        startActivity(setLocationIntent);
     }
 
 

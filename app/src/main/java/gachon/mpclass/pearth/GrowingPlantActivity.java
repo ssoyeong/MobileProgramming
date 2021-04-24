@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Set;
 
 // 식물키우기 - 현재는 로그인 성공 후 화면 - 현재 해당 activity 기능: 로그아웃, 탈퇴
 public class GrowingPlantActivity extends AppCompatActivity implements View.OnClickListener {
@@ -62,6 +66,23 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         buttonRest.setOnClickListener(this);
 
 
+
+        // 식당 추천 임시 버튼
+        buttonRest = (Button) findViewById(R.id.btnRest);
+
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.transparent);
+        buttonRest.startAnimation(anim);
+
+        buttonRest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SetLocationActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
     }
 
 
@@ -99,11 +120,11 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
             alert_confirm.show();
         }
 
-        // 식당추천 카테고리로 연결해주는 임시 버튼
-        if(view == buttonRest){
-
-            Intent restIntent = new Intent(getApplicationContext(), MapActivity.class);
-            startActivity(restIntent);
-        }
+//        // 식당추천 카테고리로 연결해주는 임시 버튼
+//        if(view == buttonRest){
+//
+//            Intent restIntent = new Intent(getApplicationContext(), SetLocationActivity.class);
+//            startActivity(restIntent);
+//        }
     }
 }

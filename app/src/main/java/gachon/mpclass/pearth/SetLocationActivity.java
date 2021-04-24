@@ -340,7 +340,7 @@ public class SetLocationActivity extends AppCompatActivity {
         complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
                 Bundle mybundle = new Bundle();
 
                 String[] areas = area.split(" ");
@@ -364,6 +364,7 @@ public class SetLocationActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
+
             }
         });
 
@@ -372,7 +373,7 @@ public class SetLocationActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 gpsTracker = new GpsTracker(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
                 Bundle mybundle = new Bundle();
 
                 double latitude = gpsTracker.getLatitude();
@@ -408,6 +409,7 @@ public class SetLocationActivity extends AppCompatActivity {
                 intent.putExtras(mybundle);
                 startActivity(intent);
                 finish();
+
 
             }
         });
