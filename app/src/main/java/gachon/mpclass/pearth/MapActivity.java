@@ -89,23 +89,23 @@ public class MapActivity extends AppCompatActivity {
 //            }).start();
 //        }
 //
-//        map_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                loadingMessage.setText("");
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelableArrayList("stores_key", stores);
-//                bundle.putString("SIGUN", SIGUN);
-//                bundle.putString("DONG", DONG);
-//                // mapFragment.setArguments(bundle);    // 이거 추가하기!!!!
-//                // getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();  // 이거 추가하기!!!!
-//                map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-//                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-//                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-//                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-//
-//            }
-//        });
+        map_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadingMessage.setText("");
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("stores_key", stores);
+                bundle.putString("SIGUN", SIGUN);
+                bundle.putString("DONG", DONG);
+                 mapFragment.setArguments(bundle);
+                 getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
+                map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+
+            }
+        });
 
 
         list_btn.setOnClickListener(new View.OnClickListener() {

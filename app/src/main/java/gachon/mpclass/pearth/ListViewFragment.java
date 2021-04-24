@@ -57,18 +57,18 @@ public class ListViewFragment extends Fragment {
 
         listView = (ListView)rootView.findViewById(R.id.listview);
         scrollView = (ScrollView)rootView.findViewById(R.id.scrollView);
-//        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_listview, listView, false);
-//
-//        scrollView.setScrollbarFadingEnabled(true);
-//
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_listview, listView, false);
+
+        scrollView.setScrollbarFadingEnabled(true);
+
 //        StoreAdapter storeAdapter = new StoreAdapter(getActivity(), listStores, listView);
 //        listView.addHeaderView(header);
 //        listView.setAdapter(storeAdapter);
 //        if(listStores.size() == 0){
 //            TextView loadingMessage = getActivity().findViewById(R.id.loadingMessage);
-//            loadingMessage.setText("지역화폐 가맹점이 존재해지 않습니다.");
+//            loadingMessage.setText("해당 음식점이 존재해지 않습니다.");
 //        }
-
+//
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

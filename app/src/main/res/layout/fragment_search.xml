@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:iconifiedByDefault="false"
             android:imeOptions="actionDone"
-            android:queryHint="매장 이름을 입력해주세요."
+            android:queryHint="음식점 이름을 입력해주세요."
             android:layout_marginRight="10sp"
             android:layout_marginTop="10sp"
             >
