@@ -83,13 +83,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         MapsInitializer.initialize(this.getActivity());
 
         // Updates the location and zoom of the MapView
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.462489, 127.140925), 14);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.45816, 127.126547), 14);
 
         googleMap.animateCamera(cameraUpdate);
 
         googleMap.addMarker(new MarkerOptions()
-                .position(new LatLng(37.462489, 127.140925))
-                .title("뜰안채"));
+                .position(new LatLng(37.45816, 127.126547))
+                .title("에티컬테이블"));
 
     }
 }

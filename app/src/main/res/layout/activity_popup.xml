@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/teal_700">
+        android:background="@color/mainGreen">
 
         <TextView
             android:id="@+id/store_name"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:gravity="center"
-            android:text="상호명"
+            android:text="에티컬테이블"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -80,7 +80,7 @@
                     android:maxLines="1"
                     android:gravity="center|left"
                     android:paddingLeft="15dp"
-                    android:text="경기도 성남시 수정구 성남대로 1342"
+                    android:text="경기도 성남시 수정구 복정로 57"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <LinearLayout
@@ -100,7 +100,7 @@
                         android:gravity="left"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="경기도 성남시 수정구 복정동 620-2"
+                        android:text="경기도 성남시 복정동 685-11 KR 2층"
                         android:textColor="#777"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -135,7 +135,7 @@
                 android:layout_marginBottom="3dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="444-4444"
+                android:text="050-7132-7625"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -170,7 +170,7 @@
                 android:layout_marginBottom="3dp"
                 android:gravity="center|left"
                 android:paddingLeft="15dp"
-                android:text="학교(예시)"
+                android:text="채식 전문 음식점"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -187,7 +187,7 @@
                 android:id="@+id/map_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/teal_700"
+                android:backgroundTint="@color/mainGreen"
                 android:drawableTop="@drawable/ic_map_black_24dp"
                 android:padding='10dp'
                 android:layout_gravity="center"
@@ -197,7 +197,7 @@
                 android:id="@+id/call_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/teal_700"
+                android:backgroundTint="@color/mainGreen"
                 android:drawableTop="@drawable/ic_call_black_24dp"
                 android:padding='10dp'
                 android:layout_gravity="center"
@@ -208,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:drawableTop="@drawable/ic_star_border_black_24dp"
-                android:backgroundTint="@color/teal_700"
+                android:backgroundTint="@color/mainGreen"
                 android:padding='10dp'
                 android:layout_gravity="center"
                 android:text = "즐겨찾기"/>
@@ -236,7 +236,7 @@
             android:gravity="center"
             android:padding="16dp"
             android:text="확인"
-            android:textColor="@color/teal_700"
+            android:textColor="@color/mainGreen"
             android:textSize="15dp" />
 
     </LinearLayout>
