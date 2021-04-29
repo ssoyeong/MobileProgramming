@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -39,6 +40,12 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.fasterxml:aalto-xml:1.0.0'
+    implementation files('libs\\poi-5.0.0.jar')
+    implementation files('libs\\poi-ooxml-5.0.0.jar')
+
+
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

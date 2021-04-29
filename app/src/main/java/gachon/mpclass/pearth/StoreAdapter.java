@@ -108,7 +108,7 @@ public class StoreAdapter  extends ArrayAdapter<Store> {
         //현재 선택된 Vocal 객체를 화면에 보여주기 위해서 앞에서 미리 찾아 놓은 뷰에 데이터를 집어넣습니다.
         viewHolder.name.setText(store.getName());
         viewHolder.type.setText(store.getType());
-        viewHolder.address.setText(store.getRoadAddr());
+        viewHolder.address.setText(store.getAddr());
 
 
 

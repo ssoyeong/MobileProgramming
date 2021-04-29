@@ -1,2 +1,3 @@
+include ':poi-5.0.0'
 include ':app'
 rootProject.name = "Pearth"

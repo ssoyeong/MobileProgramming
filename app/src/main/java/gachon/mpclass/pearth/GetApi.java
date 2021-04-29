@@ -115,7 +115,7 @@ public class GetApi {
 
                         if(tag.equals("row")){
                             if(lat != null && longt != null) {
-                                stores.add(new Store(name, lat, longt, sigun, type, addr, roadAddr, tel, zip));
+                                stores.add(new Store(name, lat, longt, type, addr, tel));
                             }
                         }
                         break;

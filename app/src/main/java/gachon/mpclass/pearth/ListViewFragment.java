@@ -48,45 +48,51 @@ public class ListViewFragment extends Fragment {
         if(args == null){
             Toast.makeText(getContext(), "리스트를 불러오는 중입니다", Toast.LENGTH_SHORT).show();
         }else {
-            listStores = args.getParcelableArrayList(STORESKEY);
-            SIGUN = args.getString("SIGUN");
-            DONG = args.getString("DONG");
+            Toast.makeText(getContext(), "else문 안으로 들어옴", Toast.LENGTH_SHORT).show();
+//            listStores = args.getParcelableArrayList(STORESKEY);
+//            String text = listStores.get(0).toString();
+//            Toast.makeText(getContext(), "listStores 접근", Toast.LENGTH_SHORT).show();
+//            for(int i=0; i < listStores.size(); i++){
+//                Toast.makeText(getContext(), listStores.get(i).toString(), Toast.LENGTH_SHORT).show();
+//            }
+//            SIGUN = args.getString("SIGUN");
+//            DONG = args.getString("DONG");
         }
-
+//
         View rootView = (ViewGroup) inflater.inflate(R.layout.fragment_listview, container, false);
 
         listView = (ListView)rootView.findViewById(R.id.listview);
         scrollView = (ScrollView)rootView.findViewById(R.id.scrollView);
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_listview, listView, false);
 
+
         scrollView.setScrollbarFadingEnabled(true);
+        Toast.makeText(getContext(), "inflate까지 설정", Toast.LENGTH_SHORT).show();
 
 //        StoreAdapter storeAdapter = new StoreAdapter(getActivity(), listStores, listView);
 //        listView.addHeaderView(header);
 //        listView.setAdapter(storeAdapter);
-//        if(listStores.size() == 0){
-//            TextView loadingMessage = getActivity().findViewById(R.id.loadingMessage);
-//            loadingMessage.setText("해당 음식점이 존재해지 않습니다.");
-//        }
+//
 //
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                if(position != 0) {
-//                    Intent intent = new Intent(getActivity(), PopUpActivity.class);
-//
-//                    Store obj = (Store) listView.getAdapter().getItem(position);
-//
-//                    Bundle mybundle = new Bundle();
-//                    mybundle.putParcelable("store", obj);
-//                    mybundle.putString("SIGUN", SIGUN);
-//                    mybundle.putString("DONG", DONG);
-//                    intent.putExtras(mybundle);
-//                    startActivity(intent);
+////                    Intent intent = new Intent(getActivity(), PopUpActivity.class);
+////
+////                    Store obj = (Store) listView.getAdapter().getItem(position);
+////
+////                    Bundle mybundle = new Bundle();
+////                    mybundle.putParcelable("store", obj);
+////                    mybundle.putString("SIGUN", SIGUN);
+////                    mybundle.putString("DONG", DONG);
+////                    intent.putExtras(mybundle);
+////                    startActivity(intent);
 //                }
 //
 //            }
 //        });
+//
         return rootView;
     }
 }
