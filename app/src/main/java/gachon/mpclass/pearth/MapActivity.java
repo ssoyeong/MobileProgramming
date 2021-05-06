@@ -49,6 +49,8 @@ public class MapActivity extends AppCompatActivity {
 //        toolbar.setTitle("");
 //        setSupportActionBar(toolbar);
 //
+
+
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
         // search_btn = (Button) findViewById(R.id.search_btn);
