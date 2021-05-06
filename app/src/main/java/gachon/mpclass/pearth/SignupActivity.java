@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +20,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
+
+import java.util.HashMap;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -100,6 +105,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     user.sendEmailVerification().addOnCompleteListener(SignupActivity.this, new OnCompleteListener<Void>() {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+
+                                String email = user.getEmail();
+                                String uid = user.getUid();
+
+                                HashMap<Object,String> hashMap = new HashMap<>();
+                                hashMap.put("nickname",uid);
+                                hashMap.put("email",email);
+
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference reference = database.getReference("Users");
+                                reference.child(uid).setValue(hashMap);
+
                                 Toast.makeText(SignupActivity.this,"이메일 인증 후 로그인 하세요",Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             }
