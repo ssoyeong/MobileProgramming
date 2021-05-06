@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="checklist">
+        <item>"111"</item>
+        <item>"222"</item>
+        <item>"333"</item>
+        <item>"444"</item>
+        <item>"555"</item>
+        <item>"666"</item>
+        <item>"777"</item>
+        <item>"888"</item>
+        <item>"999"</item>
+        <item>"101010"</item>
+        <item>"111111"</item>
+        <item>"121212"</item>
+        <item>"131313"</item>
+        <item>"141414"</item>
+        <item>"151515"</item>
+        <item>"161616"</item>
+        <item>"171717"</item>
+    </array>
+</resources>

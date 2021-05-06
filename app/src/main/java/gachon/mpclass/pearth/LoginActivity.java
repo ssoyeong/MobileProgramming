@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -96,7 +98,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             else
                             {
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
+
+//                                Intent intent=new Intent(LoginActivity.this,GrowingPlantActivity.class);
+
+//                                //todo: 체크리스트 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
+//                                Intent intent=new Intent(LoginActivity.this,CheckListActivity.class);
+
+                                //todo: 사용자 설정 화면 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
+                                Intent intent=new Intent(LoginActivity.this,UserProfileActivity.class);
+
+
+                                DatabaseReference mReference;
+                                FirebaseDatabase mDatabase;
+                                mDatabase = FirebaseDatabase.getInstance();
+                                mReference = mDatabase.getReference("Users");
+
+                                String uid = user.getUid();
+                                intent.putExtra("uid",uid);
+                                startActivity(intent);
+
+//                                //식물키우기 - 메인화면
+//                                startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
+
                             }
 
                         } else {

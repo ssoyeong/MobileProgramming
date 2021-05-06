@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="gachon.mpclass.pearth">
     <!-- 인터넷 사용 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
-
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
-
+        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".CheckListActivity" />
+        <activity
+            android:name=".ChangeNicknameActivity"
+            android:theme="@android:style/Theme.Dialog" android:parentActivityName=".UserProfileActivity"/>
+        <activity android:name=".AboutAppActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,25 +29,26 @@
             </intent-filter>
         </activity>
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBYTAy1WGsQ2__CZNUmiTTcz4GBCf6r7Rc" />
-
 
         <activity android:name=".LoginActivity" />
         <activity android:name=".FindpwActivity" />
         <activity android:name=".GrowingPlantActivity" />
         <activity android:name=".SignupActivity" />
-
         <activity android:name=".MapActivity" />
         <activity android:name=".spinneritem" />
         <activity android:name=".PopUpActivity" />
         <activity android:name=".SetLocationActivity" />
-        <activity android:name=".MapFragment"></activity>
-        <activity android:name=".ListViewFragment"></activity>
-        <activity android:name=".FavoriteFragment"></activity>
-        <activity android:name=".SearchFragment"></activity>
+        <activity android:name=".MapFragment"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".ListViewFragment"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".FavoriteFragment"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".SearchFragment"
+            tools:ignore="Instantiatable" />
     </application>
 
 </manifest>
