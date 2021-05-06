@@ -140,25 +140,7 @@ public class MapActivity extends AppCompatActivity {
                 favorite_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
             }
         });
-//
-////        findAdr_btn.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                Intent intent = new Intent(getApplicationContext(), AddrSearchActivity.class);
-////                Bundle bundle = new Bundle();
-////                bundle.putString("SIGUN", SIGUN);
-////                bundle.putString("DONG", DONG);
-////                intent.putExtras(bundle);
-////                startActivityForResult(intent, 1122);
-////                finish();
-////            }
-////        });
-////
-////
-////
-////
-////        Intent setLocationIntent = new Intent(this, SetLocationActivity.class);
-////        startActivity(setLocationIntent);
+
     }
 
 

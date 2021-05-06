@@ -119,12 +119,5 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
             });
             alert_confirm.show();
         }
-
-//        // 식당추천 카테고리로 연결해주는 임시 버튼
-//        if(view == buttonRest){
-//
-//            Intent restIntent = new Intent(getApplicationContext(), SetLocationActivity.class);
-//            startActivity(restIntent);
-//        }
     }
 }

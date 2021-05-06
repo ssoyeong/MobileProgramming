@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Store implements Parcelable {
+public class Store implements Parcelable{
 
     private String name = null;
     private String lat = null;
@@ -29,14 +29,6 @@ public class Store implements Parcelable {
     public Store(){
     }
 
-    protected Store(Parcel in) {
-        name = in.readString();
-        lat = in.readString();
-        longt = in.readString();
-        type = in.readString();
-        addr = in.readString();
-        tel = in.readString();
-    }
 
     public Store(String name, String lat, String longt, String type, String addr, String tel){
         this.name = name;
@@ -47,7 +39,16 @@ public class Store implements Parcelable {
         this.tel = tel;
     }
 
-    public static final Creator<Store> CREATOR = new Creator<Store>() {
+    protected Store(Parcel in) {
+        name = in.readString();
+        lat = in.readString();
+        longt = in.readString();
+        type = in.readString();
+        addr = in.readString();
+        tel = in.readString();
+    }
+
+    public static final Parcelable.Creator<Store> CREATOR = new Parcelable.Creator<Store>() {
         @Override
         public Store createFromParcel(Parcel in) {
             return new Store(in);
@@ -113,7 +114,6 @@ public class Store implements Parcelable {
         this.tel = tel;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -128,9 +128,6 @@ public class Store implements Parcelable {
         parcel.writeString(addr);
         parcel.writeString(tel);
     }
-
-
-
 
 
     public ArrayList<Store> readStore() {

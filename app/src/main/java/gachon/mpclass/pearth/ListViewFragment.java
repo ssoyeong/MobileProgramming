@@ -32,38 +32,26 @@ public class ListViewFragment extends Fragment {
     String SIGUN = "";
     String DONG = "";
     TextView list_title;
-//    public static ListViewFragment newInstance(List<Store> stores) {
-//        ListViewFragment fragment = new ListViewFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelableArrayList(STORESKEY, (ArrayList<? extends Parcelable>) stores);
-//        fragment.setArguments(bundle);
-//
-//        return fragment;
-//    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-//        Bundle args = getArguments();
-//        if(args == null){
-//            Toast.makeText(getContext(), "리스트를 불러오는 중입니다", Toast.LENGTH_SHORT).show();
-//        }else {
-//            Toast.makeText(getContext(), "else문 안으로 들어옴", Toast.LENGTH_SHORT).show();
-////            listStores = args.getParcelableArrayList(STORESKEY);
-////            String text = listStores.get(0).toString();
-////            Toast.makeText(getContext(), "listStores 접근", Toast.LENGTH_SHORT).show();
-////            for(int i=0; i < listStores.size(); i++){
-////                Toast.makeText(getContext(), listStores.get(i).toString(), Toast.LENGTH_SHORT).show();
-////            }
-////            SIGUN = args.getString("SIGUN");
-////            DONG = args.getString("DONG");
-//        }
-////
         View rootView = (ViewGroup) inflater.inflate(R.layout.fragment_listview, container, false);
-        String[] items = {"Store1", "Store2", "Store3", "Store4", "Store5"};
-        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, items);
-        ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+
+        listView = (ListView)rootView.findViewById(R.id.listview);
+        scrollView = (ScrollView)rootView.findViewById(R.id.scrollView);
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_listview, listView, false);
+
+        scrollView.setScrollbarFadingEnabled(true);
+
+
+
+        StoreAdapter storeAdapter = new StoreAdapter();
+        listView.addHeaderView(header);
+        listView.setAdapter(storeAdapter);
+
+        setData();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -73,43 +61,12 @@ public class ListViewFragment extends Fragment {
                 Toast.makeText(getActivity(), item, Toast.LENGTH_SHORT).show();
             }
         });
-//
-//        listView = (ListView)rootView.findViewById(R.id.listview);
-//        scrollView = (ScrollView)rootView.findViewById(R.id.scrollView);
-//        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_listview, listView, false);
 
-//
-//        scrollView.setScrollbarFadingEnabled(true);
-//        Toast.makeText(getContext(), "inflate까지 설정", Toast.LENGTH_SHORT).show();
-
-
-
-
-//        StoreAdapter storeAdapter = new StoreAdapter(getActivity(), listStores, listView);
-//        listView.addHeaderView(header);
-//        listView.setAdapter(storeAdapter);
-//
-//
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position != 0) {
-                    Intent intent = new Intent(getActivity(), PopUpActivity.class);
-
-//                    Store obj = (Store) listView.getAdapter().getItem(position);
-//
-//                    Bundle mybundle = new Bundle();
-//                    mybundle.putParcelable("store", obj);
-//                    mybundle.putString("SIGUN", SIGUN);
-//                    mybundle.putString("DONG", DONG);
-//                    intent.putExtras(mybundle);
-                    startActivity(intent);
-                }
-
-            }
-        });
-//
         return rootView;
+    }
+
+    private void setData(){
+
     }
 }
 
