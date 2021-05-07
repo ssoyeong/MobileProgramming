@@ -11,16 +11,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 
 public class StoreAdapter extends BaseAdapter {
 
     private ArrayList<Store> listStore = new ArrayList<>();
+
+    LayoutInflater inflater;
+
+    public StoreAdapter(LayoutInflater inflater, ArrayList<Store> listStore){
+        this.listStore = listStore;
+        this.inflater = inflater;
+    }
+
 
     @Override
     public int getCount() {
@@ -50,6 +56,7 @@ public class StoreAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view, parent, false);
         }
 
+
         UserViewHolder viewHolder;
         viewHolder = new UserViewHolder();
         viewHolder.name = (TextView) convertView.findViewById(R.id.store_list_name);
@@ -57,11 +64,8 @@ public class StoreAdapter extends BaseAdapter {
         viewHolder.address = (TextView) convertView.findViewById(R.id.store_list_address);
 
 
-        //Voca 객체 리스트의 position 위치에 있는 Voca 객체를 가져옵니다.
         Store store = (Store) listStore.get(position);
 
-
-        //현재 선택된 Vocal 객체를 화면에 보여주기 위해서 앞에서 미리 찾아 놓은 뷰에 데이터를 집어넣습니다.
         viewHolder.name.setText(store.getName());
         viewHolder.type.setText(store.getType());
         viewHolder.address.setText(store.getAddr());
