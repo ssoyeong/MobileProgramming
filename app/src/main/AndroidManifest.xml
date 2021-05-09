@@ -7,7 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
+
         <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".Shareboard_write"/>
+        <activity android:name=".Shareboard" />
+        <activity android:name=".Analysis" />
+        <activity android:name=".RecordActivity"/>
+        <activity android:name=".SubActivity" />
         <activity android:name=".CheckListActivity" />
         <activity
             android:name=".ChangeNicknameActivity"

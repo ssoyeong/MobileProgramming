@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:fillViewport="true"
+        android:layout_marginTop="0dp"
+        android:id="@+id/scrollView">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="start"
+                android:layout_margin="5dp"
+                android:layout_alignParentTop="true"
+                android:hint="제목을 입력하세요"/>
+            <ImageView
+                android:id="@+id/iv_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"/>
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="330dp"
+                android:layout_margin="5dp"
+                android:id="@+id/content"
+                android:gravity="top|start"
+                android:background="@null"
+                android:layout_below="@id/iv_preview"
+                android:hint="내용을 입력하세요"/>
+        </LinearLayout>
+
+    </ScrollView>
+    <!--    <LinearLayout-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+    <ImageButton
+        android:id="@+id/imageUploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        />
+
+    <ImageButton
+        android:id="@+id/gpsUploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        app:srcCompat="@android:drawable/ic_dialog_map"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/imageUploadButton"
+        />
+    <Button
+        android:id="@+id/upload"
+        android:layout_height="53dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:text="등록"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/gpsUploadButton"/>
+    <!--    </LinearLayout>-->
+
+</RelativeLayout>

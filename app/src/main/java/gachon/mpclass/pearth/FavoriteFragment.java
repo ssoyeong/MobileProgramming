@@ -29,7 +29,7 @@ public class FavoriteFragment extends Fragment {
 
     private static final String SETTINGS_PLAYER_JSON = "settings_item_json";
     ListView listView;
-//    ScrollView scrollView;
+    ScrollView scrollView;
     ArrayList<Store> stores;
     String SIGUN = "";
     String DONG = "";
@@ -41,10 +41,10 @@ public class FavoriteFragment extends Fragment {
         View rootView = (ViewGroup) inflater.inflate(R.layout.fragment_listview, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.listview);
-//        scrollView = (ScrollView) rootView.findViewById(R.id.scrollView);
+        scrollView = (ScrollView) rootView.findViewById(R.id.scrollView);
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_favorite, listView, false);
 
-//        scrollView.setScrollbarFadingEnabled(true);
+        scrollView.setScrollbarFadingEnabled(true);
 
 //        stores = new ArrayList<Store>();
 //        if (getStoreArrayPref(getActivity(), SETTINGS_PLAYER_JSON) != null) {

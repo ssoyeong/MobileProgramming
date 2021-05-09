@@ -73,16 +73,37 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/store_addr"
+                    android:id="@+id/store_roadAddr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:gravity="center|left"
                     android:paddingLeft="15dp"
-                    android:text="경기도 성남시 복정동 685-11 KR 2층"
+                    android:text="경기도 성남시 수정구 복정로 57"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:textColor="#777"
+                        android:text="지번: "/>
+                    <TextView
+                        android:id="@+id/store_addr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="경기도 성남시 복정동 685-11 KR 2층"
+                        android:textColor="#777"
+                        android:textSize="15sp" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

@@ -34,11 +34,6 @@ public class PopUpActivity extends Activity {
     String SIGUN = "";
     String DONG = "";
 
-    String name;
-    String address;
-    String telephone;
-    String type;
-
     Store store;
     ArrayList<Store> stores;
 
@@ -55,49 +50,12 @@ public class PopUpActivity extends Activity {
         store_addr = (TextView) findViewById(R.id.store_addr);
         store_tel = (TextView) findViewById(R.id.store_tel);
 
-
-
         map_btn = (Button) findViewById(R.id.map_btn);
         call_btn = (Button) findViewById(R.id.call_btn);
         favorite_btn = (Button) findViewById(R.id.favorite_btn);
         ok_btn = (Button) findViewById(R.id.ok_btn);
 
         stores = new ArrayList<Store>();
-
-
-
-
-
-        Intent data = getIntent();
-        if (data != null) {
-
-            Bundle bundle = data.getExtras();
-            store = bundle.getParcelable("store");
-            name = bundle.getString("name");
-            address = bundle.getString("address");
-            telephone = bundle.getString("telephone");
-            type = bundle.getString("type");
-
-            store_name.setText(store.getName());
-            store_addr.setText(store.getAddr());
-            store_tel.setText(store.getTel());
-            store_type.setText(store.getType());
-
-
-//            if (DONG.equals("")) {
-//                store_addr.setText(store.getAddr());
-//            } else {
-//                store_addr.setText(store.getAddr().split(DONG)[1]);
-//            }
-//
-//            store_tel.setText(store.getTel());
-        }
-
-
-
-
-
-
 
 
 

@@ -22,11 +22,13 @@ public class MapActivity extends AppCompatActivity {
     // Fragments
     ListViewFragment listViewFragment;
     MapFragment mapFragment;
+   // SearchFragment searchFragment;
     FavoriteFragment favoriteFragment;
 
     // Buttons
     Button list_btn;
     Button map_btn;
+   // Button search_btn;
     Button favorite_btn;
     Button findAdr_btn;
 
@@ -46,11 +48,12 @@ public class MapActivity extends AppCompatActivity {
 //        //toolbar.setTitleTextColor(Color.parseColor("#ffff33"));
 //        toolbar.setTitle("");
 //        setSupportActionBar(toolbar);
-
+//
 
 
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
+        // search_btn = (Button) findViewById(R.id.search_btn);
         findAdr_btn = (Button) findViewById(R.id.findAdr_btn);
         favorite_btn=(Button) findViewById(R.id.favorite_btn);
 
@@ -58,9 +61,36 @@ public class MapActivity extends AppCompatActivity {
 
         listViewFragment = new ListViewFragment();
         mapFragment = new MapFragment();
+       // searchFragment = new SearchFragment();
         favoriteFragment = new FavoriteFragment();
-
-
+//
+//        Intent data = getIntent();
+//        if(data != null) {
+//            Bundle bundle = data.getExtras();
+//            SIGUN = bundle.getString("SIGUN");
+//            DONG = bundle.getString(("DONG"));
+//            String location = SIGUN + " " + DONG;
+//            findAdr_btn.setText(location);
+//
+////            stores = bundle.getParcelableArrayList("all_stores");
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    GetApi parser = new GetApi();
+//                    stores = parser.getAllXmlData(SIGUN, DONG);
+//
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            loadingMessage.setText("");
+//                            list_btn.performClick();
+//                        }
+//                    });
+//                }
+//            }).start();
+//        }
+//
         map_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +103,7 @@ public class MapActivity extends AppCompatActivity {
                  getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
                 map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
                 list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
 
             }
@@ -91,6 +122,7 @@ public class MapActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, listViewFragment).commit();
                 map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 list_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
 
             }
@@ -104,6 +136,7 @@ public class MapActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, favoriteFragment).commit();
                 map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                //search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 favorite_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
             }
         });

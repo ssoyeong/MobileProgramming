@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@drawable/search_w"
+        app:showAsAction="always" />
+
+
+    <item android:id="@+id/action_record"
+        android:title="기록게시판"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/action_share"
+        android:title="공유게시판"
+        app:showAsAction="withText"/>
+    <item android:id="@+id/action_analysis"
+        android:title="분석"
+        app:showAsAction="withText"/>
+
+
+</menu>

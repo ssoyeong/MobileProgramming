@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "gachon.mpclass.pearth"
-        minSdkVersion 16
+        minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -46,6 +46,8 @@ dependencies {
     implementation 'com.fasterxml:aalto-xml:1.0.0'
     implementation files('libs\\poi-5.0.0.jar')
     implementation files('libs\\poi-ooxml-5.0.0.jar')
+    implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
+    
 
 
 
@@ -55,6 +57,5 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:26.7.0')
     implementation 'com.google.firebase:firebase-database'
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }
 apply plugin: 'com.google.gms.google-services'

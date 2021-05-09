@@ -141,7 +141,7 @@ public class UserProfileActivity extends AppCompatActivity{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 nick= (String) snapshot.getValue();
-                Log.d("닉네임"," " + nick);
+                Log.d("닉네임",nick);
                 nickname.setText(nick);
             }
 
