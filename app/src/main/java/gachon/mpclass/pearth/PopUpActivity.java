@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,6 +117,91 @@ public class PopUpActivity extends Activity {
             }
         });
 
+
+
+
+
+        stores = new ArrayList<Store>();
+        stores.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
+        stores.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
+        stores.add(new Store("블렌드랩", "37.50129", "127.10353", "카페", "서울특별시 송파구 석촌동 257 1층", "070-4922-2700"));
+        stores.add(new Store("씨젬므주르", "37.50817", "127.1069", "비건 프렌치 레스토랑", "서울특별시 송파구 송파동 백제고분로41길 25", "050713474142"));
+        stores.add(new Store("제로비건", "37.51308", "127.09642", "채식 전문식당", "서울특별시 송파구 잠실3동 올림픽로 240", "02-2143-1609"));
+        stores.add(new Store("해피비건", "37.49582", "127.12215", "화장품 산업", "서울특별시 송파구 가락동 송파대로28길 43", "070-8800-7766"));
+        stores.add(new Store("닥터비건", "37.52199", "127.04464", "비건 채식 레스토랑", "서울특별시 강남구 청담동 17-7", "02-543-2030"));
+        stores.add(new Store("비건이삼", "37.51508", "127.04876", "비건 베이커리", "서울특별시 강남구 삼성동 26-33", "050713634460"));
+
+        int flag = 0;
+
+        for (Store str : stores) {
+            if (str.getName().equals(store.getName())) {
+                if (store.getType() == null || str.getType() == null) {
+                    if (str.getAddr() == null || store.getAddr() == null) {
+                        flag = 1;
+                        break;
+                    } else if (str.getAddr() != null && store.getAddr() != null) {
+                        if (str.getAddr().equals(store.getAddr())) {
+                            flag = 1;
+                            break;
+                        } else
+                            flag = 0;
+                    }
+                } else if (str.getType() != null && store.getType() != null) {
+                    if (str.getType().equals(store.getType())) {
+                        if (str.getAddr() == null || store.getAddr() == null) {
+                            flag = 1;
+                            break;
+                        } else if (str.getAddr() != null && store.getAddr() != null) {
+                            if (str.getAddr().equals(store.getAddr())) {
+                                flag = 1;
+                                break;
+                            } else
+                                flag = 0;
+                        }
+                    } else
+                        flag = 0;
+                }
+            } else {
+                flag = 0;
+            }
+        }
+
+
+        if(flag == 0){
+            stores.add(store);
+        }
+
+
+
+
+
+
+        favorite_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+
+
+
+
+            }
+
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override
@@ -131,5 +218,9 @@ public class PopUpActivity extends Activity {
         //안드로이드 백버튼 막기
         return;
     }
+
+
+
+
 
 }

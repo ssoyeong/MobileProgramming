@@ -128,49 +128,5 @@ public class Store implements Parcelable{
         parcel.writeString(addr);
         parcel.writeString(tel);
     }
-
-
-    public ArrayList<Store> readStore() {
-
-        String path = Store.class.getResource("").getPath();
-        ArrayList<Store> storeList = new ArrayList<Store>();
-
-        try {
-            File file = new File(path + "Vegan Restaurants Dataset.xlsx");
-
-            FileInputStream fis = new FileInputStream(file);
-            XSSFWorkbook workbook = new XSSFWorkbook(fis);
-
-            int rowIndex=0;
-            int colIndex=0;
-
-            XSSFSheet sheet = workbook.getSheetAt(0);
-
-            int rows = sheet.getPhysicalNumberOfRows();
-            for(rowIndex=2; rowIndex < rows; rowIndex++){
-
-                Store ed = new Store();
-
-                XSSFRow row = sheet.getRow(rowIndex);
-                XSSFCell cell = row.getCell(2);
-
-                ed.setName(String.valueOf(row.getCell(0)));
-                ed.setAddr(String.valueOf(row.getCell(1)));
-                ed.setTel(String.valueOf(row.getCell(2)));
-                ed.setType(String.valueOf(row.getCell(3)));
-                ed.setLat(String.valueOf(row.getCell(4)));
-                ed.setLongt(String.valueOf(row.getCell(5)));
-
-                storeList.add(ed);
-
-
-            }
-        } catch(FileNotFoundException e){
-            e.printStackTrace();
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        return storeList;
-    }
 }
 
