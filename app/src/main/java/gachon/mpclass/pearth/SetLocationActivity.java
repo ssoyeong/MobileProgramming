@@ -62,7 +62,7 @@ public class SetLocationActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         toolbar.setTitle("지역 설정");
         toolbar.setTitleTextColor(Color.BLACK);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
         gps_btn = (Button) findViewById(R.id.gps_btn);
         complete_btn = (Button) findViewById(R.id.complete_btn);

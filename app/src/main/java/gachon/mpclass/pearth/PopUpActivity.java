@@ -64,10 +64,6 @@ public class PopUpActivity extends Activity {
 
         stores = new ArrayList<Store>();
 
-
-
-
-
         Intent data = getIntent();
         if (data != null) {
 
@@ -83,23 +79,7 @@ public class PopUpActivity extends Activity {
             store_tel.setText(store.getTel());
             store_type.setText(store.getType());
 
-
-//            if (DONG.equals("")) {
-//                store_addr.setText(store.getAddr());
-//            } else {
-//                store_addr.setText(store.getAddr().split(DONG)[1]);
-//            }
-//
-//            store_tel.setText(store.getTel());
         }
-
-
-
-
-
-
-
-
 
 
         ok_btn.setOnClickListener(new View.OnClickListener() {
@@ -112,8 +92,30 @@ public class PopUpActivity extends Activity {
         });
 
 
-    }
+        call_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String phone = store_tel.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(("tel:" + phone)));
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "전화 걸기", Toast.LENGTH_LONG).show();
+            }
+        });
 
+
+        map_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), StoreViewActivity.class);
+                Bundle mybundle = new Bundle();
+                mybundle.putParcelable("store", store);
+                intent.putExtras(mybundle);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "지도 보기", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,17 +19,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
-
-        <activity android:name=".UserProfileActivity"></activity>
-        <activity android:name=".Shareboard_write"/>
+        <activity android:name=".StoreViewActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".Shareboard_write" />
         <activity android:name=".Shareboard" />
         <activity android:name=".Analysis" />
-        <activity android:name=".RecordActivity"/>
+        <activity android:name=".RecordActivity" />
         <activity android:name=".SubActivity" />
         <activity android:name=".CheckListActivity" />
         <activity
             android:name=".ChangeNicknameActivity"
-            android:theme="@android:style/Theme.Dialog" android:parentActivityName=".UserProfileActivity"/>
+            android:parentActivityName=".UserProfileActivity"
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".AboutAppActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -50,13 +52,17 @@
         <activity android:name=".spinneritem" />
         <activity android:name=".PopUpActivity" />
         <activity android:name=".SetLocationActivity" />
-        <activity android:name=".MapFragment"
+        <activity
+            android:name=".MapFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".ListViewFragment"
+        <activity
+            android:name=".ListViewFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".FavoriteFragment"
+        <activity
+            android:name=".FavoriteFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".SearchFragment"
+        <activity
+            android:name=".SearchFragment"
             tools:ignore="Instantiatable" />
     </application>
 
