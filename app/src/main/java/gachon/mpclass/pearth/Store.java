@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class Store implements Parcelable{
 
+    Store stores;
+
     private String name = null;
     private String lat = null;
     private String longt = null;
@@ -65,6 +67,7 @@ public class Store implements Parcelable{
     public String toString() {
         return this.getName() + "\n" + this.getTel() + "\n" + this.getAddr();
     }
+
 
     public String getName() {
         return name;
@@ -127,6 +130,14 @@ public class Store implements Parcelable{
         parcel.writeString(type);
         parcel.writeString(addr);
         parcel.writeString(tel);
+    }
+
+//    public ArrayList<Store> getStores(){
+//        return stores;
+//    }
+
+    public void setStores(Store stores){
+        this.stores = stores;
     }
 }
 

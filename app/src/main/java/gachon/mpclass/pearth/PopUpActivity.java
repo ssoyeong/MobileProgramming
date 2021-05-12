@@ -44,6 +44,7 @@ public class PopUpActivity extends Activity {
 
     Store store;
     ArrayList<Store> stores;
+    Store bundleStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,10 +139,11 @@ public class PopUpActivity extends Activity {
 
 
         favorite_btn.setOnClickListener(new View.OnClickListener(){
+            int flag = 0;
             @Override
             public void onClick(View view){
 
-                int flag = 0;
+
 
 
 
@@ -182,20 +184,32 @@ public class PopUpActivity extends Activity {
 
 
 
-                if(flag == 0){
 
+
+                if(flag == 0){
+                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                     stores.add(store);
-                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
                     Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
 
                 }
                 else if(flag == 1){
                     stores.remove(store);
-                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
+                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
                     Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
+
 
                 }
 
+
+
+//                bundleStore = new Store();
+//                bundleStore.setStores(store);
+                Intent intent = new Intent(PopUpActivity.this, FavoriteFragment.class);
+
+                intent.putExtra("store", store);
+                intent.putExtra("flag", flag);
+//                startActivity(intent);
+// todo: favoritefragment로 연결 어려움. 파베 써야할 듯,,,,,
 
             }
 

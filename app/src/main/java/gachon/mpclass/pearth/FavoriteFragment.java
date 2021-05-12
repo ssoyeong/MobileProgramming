@@ -34,6 +34,8 @@ public class FavoriteFragment extends Fragment {
     String SIGUN = "";
     String DONG = "";
     TextView list_title;
+    Store bundleStore;
+    int flag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,18 +48,17 @@ public class FavoriteFragment extends Fragment {
 
         //        scrollView.setScrollbarFadingEnabled(true);
 
-//        stores = new ArrayList<Store>();
-//        if (getStoreArrayPref(getActivity(), SETTINGS_PLAYER_JSON) != null) {
-//            stores = getStoreArrayPref(getActivity(), SETTINGS_PLAYER_JSON);
-//        } else {
-//            TextView loadingMessage = getActivity().findViewById(R.id.loadingMessage);
-//            loadingMessage.setText("즐겨찾기 매장이 존재해지 않습니다.");
-//        }
-//
+
+
+
+
+
+
+
 //        ArrayAdapter<Store> adapter = new StoreAdapter(getActivity(), stores, listView);
 //        listView.addHeaderView(header);
 //        listView.setAdapter(adapter);
-//
+
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,7 +71,7 @@ public class FavoriteFragment extends Fragment {
 //
 //                Bundle mybundle = new Bundle();
 //                mybundle.putParcelable("store", obj);
-//                mybundle.putString("SIGUN", SIGUN);
+//                mybundle.putString("flag", SIGUN);
 //                mybundle.putString("DONG", DONG);
 //                intent.putExtras(mybundle);
 //                startActivity(intent);
@@ -79,39 +80,10 @@ public class FavoriteFragment extends Fragment {
 //            }
 //        });
 
-        /*ArrayAdapter<String> adapter = new ArrayAdapter(getActivity(), R.layout.listviewitem, names);
-        listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent intent = new Intent(getActivity(), PopUpActivity.class);
-
-                Object obj = listView.getAdapter().getItem(position);
-                String value = obj.toString();
-
-                Bundle mybundle = new Bundle();
-                mybundle.putString("name", value);
-                intent.putExtras(mybundle);
-                startActivity(intent);
-
-
-            }
-        });*/
         return rootView;
     }
 
-//    private ArrayList<Store> getStoreArrayPref(Context context, String key) {
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-//        String json = prefs.getString(key, null);
-//        Gson gson = new Gson();
-//        TypeToken<List<Store>> typeToken = new TypeToken<List<Store>>() {
-//        };
-//        ArrayList<Store> data = gson.fromJson(json, typeToken.getType());
-//
-//        return data;
-//    }
 }
 
 
