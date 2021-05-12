@@ -298,6 +298,10 @@ public class UserProfileActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
+
     //액션버튼 메뉴 액션바에 집어 넣기
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
@@ -331,10 +335,23 @@ public class UserProfileActivity extends AppCompatActivity{
             Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
             startActivity(plantIntent);
         }
-
+        if(id==R.id.action_checklist)
+        {
+            Intent intent=new Intent(this,CheckListActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_UserProfile)
+        {
+            Intent intent=new Intent(this,UserProfileActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
 
 
         return super.onOptionsItemSelected(item);
     }
-
+    
 }

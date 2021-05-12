@@ -103,17 +103,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             {
                                 finish();
 
+//                                Intent intent=new Intent(LoginActivity.this,GrowingPlantActivity.class);
 
-                                //todo: GrowingPlantActivity 와 MapActivity 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
-                                Intent intent=new Intent(LoginActivity.this,GrowingPlantActivity.class);
-                                startActivity(intent);
+//                                //todo: 체크리스트 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
+//                                Intent intent=new Intent(LoginActivity.this,CheckListActivity.class);
 
-//                               //todo: 체크리스트 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
-//                               Intent intent=new Intent(LoginActivity.this,CheckListActivity.class);
-//                                startActivity(intent);
-//                                //todo: 사용자 설정 화면 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
-//                                Intent intent=new Intent(LoginActivity.this,UserProfileActivity.class);
-//                                startActivity(intent);
+                                //todo: 사용자 설정 화면 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
+                                Intent intent=new Intent(LoginActivity.this,UserProfileActivity.class);
+
 
                                 DatabaseReference mReference;
                                 FirebaseDatabase mDatabase;
@@ -122,8 +119,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                 String uid = user.getUid();
                                 intent.putExtra("uid",uid);
-                                //startActivity(intent);
+                                startActivity(intent);
 
+//                                //식물키우기 - 메인화면
+//                                startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
 
                             }
 

@@ -156,7 +156,20 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
             Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
             startActivity(plantIntent);
         }
-
+        if(id==R.id.action_checklist)
+        {
+            Intent intent=new Intent(GrowingPlantActivity.this,CheckListActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_UserProfile)
+        {
+            Intent intent=new Intent(GrowingPlantActivity.this,UserProfileActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
 
 
         return super.onOptionsItemSelected(item);

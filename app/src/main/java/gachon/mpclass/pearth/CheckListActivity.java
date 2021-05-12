@@ -1,6 +1,7 @@
 package gachon.mpclass.pearth;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Guideline;
 import androidx.fragment.app.FragmentManager;
@@ -11,6 +12,8 @@ import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -70,7 +73,8 @@ public class CheckListActivity extends AppCompatActivity {
         String uid = intent.getStringExtra("uid");
         items = new ArrayList<>();
 
-
+//        String nickname=reference.child("Users").child(uid).child("nickname").toString();
+//        Log.v("NICKNAME: ",nickname);
         calendar = (CalendarView) findViewById(R.id.calendar);
 
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -217,5 +221,56 @@ public class CheckListActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+    //액션버튼 메뉴 액션바에 집어 넣기
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //액션바 숨기기
+    private void hideActionBar () {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.hide();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.action_record) {
+            Intent homeIntent = new Intent(this, RecordActivity.class);
+            startActivity(homeIntent);
+        }
+        if (id == R.id.action_analysis) {
+            Intent settingIntent = new Intent(this, Analysis.class);
+            startActivity(settingIntent);
+        }
+        if (id == R.id.action_share) {
+            Intent shareIntent = new Intent(this, Shareboard.class);
+            startActivity(shareIntent);
+        }
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
+        }
+        if(id==R.id.action_checklist)
+        {
+            Intent intent=new Intent(this,CheckListActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_UserProfile)
+        {
+            Intent intent=new Intent(this,UserProfileActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }
