@@ -19,6 +19,9 @@
     <item android:id="@+id/action_analysis"
         android:title="분석"
         app:showAsAction="withText"/>
+    <item android:id="@+id/action_plant"
+        android:title="식물키우기"
+        app:showAsAction="withText"/>
 
 
 </menu>

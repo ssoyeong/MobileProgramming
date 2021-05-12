@@ -7,7 +7,14 @@
     android:background="#BF7EC560"
     android:orientation="vertical"
     tools:ignore="Deprecated">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity ="center"
+        android:fillViewport="true"
+        android:layout_marginTop="0dp"
+        android:id="@+id/scrollView">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -96,6 +103,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
+    </ScrollView>
 
 </LinearLayout>

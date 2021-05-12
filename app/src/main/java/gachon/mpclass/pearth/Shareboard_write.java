@@ -31,6 +31,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,13 +55,13 @@ public class Shareboard_write extends AppCompatActivity {
     private Button sendbt;
     private EditText title;
     private EditText content;
-    private TextView user;
     private ImageButton imagebt;
     private ImageButton uploadbt;
     public String tit;
     public String con;
     public String img;
     public String tag;
+    public String uid;
     String good="0";
     public String userid;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -67,11 +69,15 @@ public class Shareboard_write extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ChildEventListener mChild;
+    private DatabaseReference mRef;
+    DatabaseReference mDB2=FirebaseDatabase.getInstance().getReference().child("Users");
     private ListView listView;
     List<Object> Array = new ArrayList<Object>();
     private ImageView ivPreview;
     private Uri filePath;
     private boolean isImg = true;
+    int share=0;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @SuppressLint("WrongViewCast")
@@ -87,8 +93,38 @@ public class Shareboard_write extends AppCompatActivity {
         imagebt = (ImageButton) findViewById(R.id.imageUploadButton);
         uploadbt = (ImageButton) findViewById(R.id.gpsUploadButton);
         ivPreview = (ImageView) findViewById(R.id.iv_preview);
-        initDatabase();
+        uid = user.getUid();
 
+        initDatabase();
+        mRef=mDatabase.getReference("Users").child(user.getUid());
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count=0;
+                if(snapshot.exists())
+                {
+                    for(DataSnapshot messageData : snapshot.getChildren()) {
+                        String msg2=messageData.getValue().toString();
+                        if(count!=3){
+                            count=count+1;
+                        }
+                        else if(count==3){
+                            share=Integer.parseInt(msg2);
+                        }
+
+
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         imagebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +151,10 @@ public class Shareboard_write extends AppCompatActivity {
                 img = G.imgUrl;
                 if(img==null){
                     img="imgUrl";
+                }
+                uid = user.getUid();
+                if(uid==null){
+                    uid="";
                 }
                 //사진주소, 제목, 내용 한번에 업로드
                 uploadFile();
@@ -194,8 +234,7 @@ public class Shareboard_write extends AppCompatActivity {
                                     //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
                                     //profileRef.child("board").setValue(G.imgUrl);
                                     //여기서 업로드
-                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName);
-
+                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName,uid);
                                     databaseReference.child("share").push().setValue(list);
 
                                 }

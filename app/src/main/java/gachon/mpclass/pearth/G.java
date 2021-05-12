@@ -7,4 +7,5 @@ public class G {
     public static String imgUrl;
     public static String fileName;
     public static List<String> keyList = new ArrayList<String>();
+
 }

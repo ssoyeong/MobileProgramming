@@ -27,14 +27,15 @@
                 android:id="@+id/taglist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <EditText
+            <TextView
                 android:id="@+id/title"
                 android:layout_width="fill_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="start"
                 android:layout_margin="5dp"
                 android:layout_alignParentTop="true"
-                android:hint="제목을 입력하세요"/>
+
+                />
             <ImageView
                 android:id="@+id/iv_preview"
                 android:layout_width="match_parent"
@@ -52,27 +53,27 @@
         </LinearLayout>
 
     </ScrollView>
-<!--    <LinearLayout-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_width="fill_parent"-->
-<!--        android:layout_height="wrap_content">-->
-        <ImageButton
-            android:id="@+id/imageUploadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="53dp"
-            app:srcCompat="@android:drawable/ic_menu_camera"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            />
+    <!--    <LinearLayout-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+    <ImageButton
+        android:id="@+id/imageUploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        />
 
-        <ImageButton
-            android:id="@+id/gpsUploadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="53dp"
-            app:srcCompat="@android:drawable/ic_dialog_map"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@id/imageUploadButton"
-            />
+    <ImageButton
+        android:id="@+id/gpsUploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        app:srcCompat="@android:drawable/ic_dialog_map"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/imageUploadButton"
+        />
     <Button
         android:id="@+id/upload"
         android:layout_height="53dp"
@@ -81,6 +82,6 @@
         android:text="등록"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/gpsUploadButton"/>
-<!--    </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
 </RelativeLayout>

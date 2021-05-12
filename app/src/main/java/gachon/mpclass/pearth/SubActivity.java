@@ -31,6 +31,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,26 +48,28 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class SubActivity extends AppCompatActivity {
     private static final String TAG = "SubActivity";
     private Button sendbt;
-    private EditText title;
+    private TextView title;
     private EditText content;
-    private TextView user;
     private ImageButton imagebt;
     private ImageButton uploadbt;
-    public String tit;
+    public String tit="";
     public String con;
     public String img;
     public String tag;
-    String good="0";
-    public String userid;
+    public String child_nickname;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private FirebaseDatabase mDatabase;
+    DatabaseReference mDB2=FirebaseDatabase.getInstance().getReference().child("Users");
+    private DatabaseReference mDB;
     private DatabaseReference mReference;
+    private DatabaseReference mRef;
     private ChildEventListener mChild;
     private ListView listView;
     List<Object> Array = new ArrayList<Object>();
@@ -75,6 +79,10 @@ public class SubActivity extends AppCompatActivity {
     TextView tag_list;
     String items="";
     private boolean isImg = true;
+    int record=0;
+    String uid;
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @SuppressLint("WrongViewCast")
@@ -96,8 +104,8 @@ public class SubActivity extends AppCompatActivity {
                     cnt[0]++;
                 }
                 else {
-                   items = items + adapter.getItem(position);
-                   tag_list.setText(items);
+                    items = items + adapter.getItem(position);
+                    tag_list.setText(items);
                 }
             }
             @Override
@@ -105,13 +113,54 @@ public class SubActivity extends AppCompatActivity {
                 tag_list.setText("");
             }
         });
-        title = (EditText) findViewById(R.id.title);
+        title = (TextView) findViewById(R.id.title);
         content = (EditText)findViewById(R.id.content);
         sendbt = (Button) findViewById(R.id.upload);
         imagebt = (ImageButton) findViewById(R.id.imageUploadButton);
         uploadbt = (ImageButton) findViewById(R.id.gpsUploadButton);
         ivPreview = (ImageView) findViewById(R.id.iv_preview);
+
+        mDB=FirebaseDatabase.getInstance().getReference();
+
         initDatabase();
+        mRef=mDatabase.getReference("Users").child(user.getUid());
+        uid = user.getUid();
+//        mRef.addValueEventListener(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                int count=0;
+//                if(snapshot.exists())
+//                {
+//                    for(DataSnapshot messageData : snapshot.getChildren()) {
+//                        String msg2=messageData.getValue().toString();
+//                        if(count==0){
+//                            count=count+1;
+//                        }
+//                        else if(count==1){
+//                            tit=msg2;
+//                            title.setText(tit);
+//                            count=count+1;
+//                        }
+//                        else if(count==2){
+//                            record=Integer.parseInt(msg2);
+//                        }
+//
+//
+//                    }
+//                }
+//                else
+//                {
+//                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+
 
         imagebt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,31 +175,35 @@ public class SubActivity extends AppCompatActivity {
 
         sendbt.setOnClickListener(new View.OnClickListener() {
 
-        @Override
-        public void onClick(View view) {
-            tit = title.getText().toString();
-            if(tit==null) {
-                tit = "title";
-            }
-            con = content.getText().toString();
-            if(con==null){
-                con="content";
-            }
-            img = G.imgUrl;
-            if(img==null){
-                img="imgUrl";
-            }
-            tag=tag_list.getText().toString();
-            if(tag==null){
-                tag="";
-            }
-            //사진주소, 제목, 내용 한번에 업로드
-            uploadFile();
-            if(isImg==true) {
-                finish();//글을 등록하면 메인화면으로 돌아감
-            }
+            @Override
+            public void onClick(View view) {
+                con = content.getText().toString();
+                if(con==null){
+                    con="content";
+                }
+                img = G.imgUrl;
+                if(img==null){
+                    img="imgUrl";
+                }
+                tit = uid; //닉넴으로 바꿔야됨
+                if(tit==null){
+                    img="title";
+                }
+                tag=tag_list.getText().toString();
+                if(tag==null){
+                    tag="";
+                }
+                uid = user.getUid();
+                if(uid==null){
+                    uid="";
+                }
+                //사진주소, 제목, 내용 한번에 업로드
+                uploadFile();
+                if(isImg==true) {
+                    finish();//글을 등록하면 메인화면으로 돌아감
+                }
 
-        }
+            }
         });
 
         mReference = mDatabase.getReference("board"); // 변경값을 확인할 child 이름
@@ -222,9 +275,9 @@ public class SubActivity extends AppCompatActivity {
                                     //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
                                     //profileRef.child("board").setValue(G.imgUrl);
                                     //여기서 업로드
-                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName);
-
+                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName,uid);
                                     databaseReference.child("board").push().setValue(list);
+
 
                                 }
                             });
@@ -245,7 +298,6 @@ public class SubActivity extends AppCompatActivity {
             else if(tag==""){Toast.makeText(getApplicationContext(), "태그를 선택하세요.", Toast.LENGTH_SHORT).show();}}
         //saveData() ..
     }
-
     private void initDatabase() {
 
         mDatabase = FirebaseDatabase.getInstance();

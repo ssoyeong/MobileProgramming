@@ -1,6 +1,7 @@
 package gachon.mpclass.pearth;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
@@ -14,6 +15,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -295,6 +298,43 @@ public class UserProfileActivity extends AppCompatActivity{
             Toast.makeText(getApplicationContext(), "파일을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
         }
     }
+    //액션버튼 메뉴 액션바에 집어 넣기
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
+    //액션바 숨기기
+    private void hideActionBar () {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.hide();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.action_record) {
+            Intent homeIntent = new Intent(this, RecordActivity.class);
+            startActivity(homeIntent);
+        }
+        if (id == R.id.action_analysis) {
+            Intent settingIntent = new Intent(this, Analysis.class);
+            startActivity(settingIntent);
+        }
+        if (id == R.id.action_share) {
+            Intent shareIntent = new Intent(this, Shareboard.class);
+            startActivity(shareIntent);
+        }
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

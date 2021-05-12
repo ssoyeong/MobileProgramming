@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,10 +43,12 @@ public class Shareboard extends AppCompatActivity {
     public String context;
     private FloatingActionButton sendbt;
     private TextView userID;
-    public String user;
+    public String uid;
     int cnt=0;
+    int count =0;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    DatabaseReference mDB2=FirebaseDatabase.getInstance().getReference().child("Users");
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ChildEventListener mChild;
@@ -52,11 +56,11 @@ public class Shareboard extends AppCompatActivity {
     ArrayList<ListViewItem_shareboard> item=new ArrayList<ListViewItem_shareboard>();
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setTitle("공유 게시판");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shareboard);
-
 
         //글쓰기 화면으로 넘어가는 버튼
         sendbt = (FloatingActionButton) findViewById(R.id.button2);
@@ -68,7 +72,7 @@ public class Shareboard extends AppCompatActivity {
             startActivityForResult(intent,1);
         });
 
-
+        uid = user.getUid();
         listView = (ListView) findViewById(R.id.listviewmsg);
         initDatabase();
 
@@ -88,6 +92,12 @@ public class Shareboard extends AppCompatActivity {
                 //새로운 메세지를 리스뷰에 추가하기 위해 ArrayList에 추가
                 item.add(listViewItem);
                 G.keyList.add(dataSnapshot.getKey());
+                int index = G.keyList.indexOf(dataSnapshot.getKey());
+
+                if(listViewItem.getUid().equals(uid)){
+                    count=count+1;
+                }
+                mDB2.child(user.getUid()).child("share").setValue(count);
                 //리스트뷰를 갱신
                 adapter.notifyDataSetChanged();
                 listView.setSelection(adapter.getCount()-1); //리스트뷰의 마지막 위치로 스크롤 위치 이동
@@ -104,6 +114,8 @@ public class Shareboard extends AppCompatActivity {
                 item.remove(index);
                 G.keyList.remove(index);
                 adapter.notifyDataSetChanged();
+                count=count-1;
+                mDB2.child(user.getUid()).child("share").setValue(count);
             }
 
             @Override
@@ -194,7 +206,10 @@ public class Shareboard extends AppCompatActivity {
             Intent shareIntent = new Intent(this, Shareboard.class);
             startActivity(shareIntent);
         }
-
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
+        }
 
 
         return super.onOptionsItemSelected(item);

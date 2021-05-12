@@ -7,16 +7,18 @@ public class ListViewItem_shareboard {
     private String content;
     private String imgUrl;
     private String fileName;
+    private String uid;
 
     ListViewItem_shareboard(){
 
     }
 
-    public ListViewItem_shareboard(String title,String content,String imgUrl,String fileName){
+    public ListViewItem_shareboard(String title,String content,String imgUrl,String fileName,String uid){
         this.title=title;
         this.content=content;
         this.imgUrl = imgUrl;
         this.fileName = fileName;
+        this.uid = uid;
     }
     public String getTitle() {
         return title ;
@@ -24,6 +26,7 @@ public class ListViewItem_shareboard {
     public String getContent(){return content;}
     public String getImgUrl(){return imgUrl;}
     public String getFileName(){return fileName;}
+    public String getUid(){return uid;}
 
 
 

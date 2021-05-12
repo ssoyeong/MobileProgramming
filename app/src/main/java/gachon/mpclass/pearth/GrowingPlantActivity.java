@@ -1,12 +1,15 @@
 package gachon.mpclass.pearth;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -119,5 +122,43 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
             });
             alert_confirm.show();
         }
+    }
+    //액션버튼 메뉴 액션바에 집어 넣기
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //액션바 숨기기
+    private void hideActionBar () {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.hide();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.action_record) {
+            Intent homeIntent = new Intent(this, RecordActivity.class);
+            startActivity(homeIntent);
+        }
+        if (id == R.id.action_analysis) {
+            Intent settingIntent = new Intent(this, Analysis.class);
+            startActivity(settingIntent);
+        }
+        if (id == R.id.action_share) {
+            Intent shareIntent = new Intent(this, Shareboard.class);
+            startActivity(shareIntent);
+        }
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -163,6 +163,10 @@ public class Analysis extends AppCompatActivity {
             Intent shareIntent = new Intent(this, Shareboard.class);
             startActivity(shareIntent);
         }
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
+        }
 
 
 

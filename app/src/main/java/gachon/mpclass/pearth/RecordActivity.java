@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +43,7 @@ public class RecordActivity extends AppCompatActivity {
     public String context;
     private FloatingActionButton sendbt;
     private TextView userID;
-    public String user;
+    public String uid;
     int cnt=0;
     int water=0;
     int elec=0;
@@ -51,8 +53,10 @@ public class RecordActivity extends AppCompatActivity {
     int zero=0;
     int harm=0;
     int eat=0;
+    int count =0;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    DatabaseReference mDB2=FirebaseDatabase.getInstance().getReference().child("Users");
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ChildEventListener mChild;
@@ -61,6 +65,7 @@ public class RecordActivity extends AppCompatActivity {
     ArrayList<ListViewItem> item=new ArrayList<ListViewItem>();
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
@@ -76,7 +81,7 @@ public class RecordActivity extends AppCompatActivity {
             startActivityForResult(intent,1);
         });
 
-
+        uid = user.getUid();
         listView = (ListView) findViewById(R.id.listviewmsg);
         initDatabase();
 
@@ -128,6 +133,12 @@ public class RecordActivity extends AppCompatActivity {
                 mDB.child("zero-waste").setValue(zero);
                 mDB.child("harm").setValue(harm);
                 mDB.child("eat").setValue(eat);
+                int index = G.keyList.indexOf(dataSnapshot.getKey());
+
+                if(listViewItem.getTitle().equals(uid)){
+                    count=count+1;
+                }
+                mDB2.child(user.getUid()).child("report").setValue(count);
                 //리스트뷰를 갱신
                 adapter.notifyDataSetChanged();
                 listView.setSelection(adapter.getCount()-1); //리스트뷰의 마지막 위치로 스크롤 위치 이동
@@ -135,7 +146,11 @@ public class RecordActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                int index = G.keyList.indexOf(dataSnapshot.getKey());
+//                if(listViewItem.getTitle().equals(uid)){
+//                    count=3;
+//                }
+//                mDB2.child(user.getUid()).child("report").push().setValue(count);
             }
 
             @Override
@@ -144,6 +159,8 @@ public class RecordActivity extends AppCompatActivity {
                 item.remove(index);
                 G.keyList.remove(index);
                 adapter.notifyDataSetChanged();
+                count=count-1;
+                mDB2.child(user.getUid()).child("report").setValue(count);
             }
 
             @Override
@@ -232,6 +249,10 @@ public class RecordActivity extends AppCompatActivity {
         if (id == R.id.action_share) {
             Intent shareIntent = new Intent(this, Shareboard.class);
             startActivity(shareIntent);
+        }
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
         }
 
 
