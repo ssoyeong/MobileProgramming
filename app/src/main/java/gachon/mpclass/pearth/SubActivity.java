@@ -168,7 +168,7 @@ public class SubActivity extends AppCompatActivity {
 
             }
         });
-        uid = user.getUid();
+
         sendbt.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -189,7 +189,7 @@ public class SubActivity extends AppCompatActivity {
                 if(tag==null){
                     tag="";
                 }
-                uid = user.getUid();
+                uid = mDB2.child(uid).child("nickname").getKey();
                 if(uid==null){
                     uid="";
                 }
