@@ -91,7 +91,6 @@ public class Shareboard_write extends AppCompatActivity {
         content = (EditText)findViewById(R.id.content);
         sendbt = (Button) findViewById(R.id.upload);
         imagebt = (ImageButton) findViewById(R.id.imageUploadButton);
-        uploadbt = (ImageButton) findViewById(R.id.gpsUploadButton);
         ivPreview = (ImageView) findViewById(R.id.iv_preview);
         uid = user.getUid();
 
