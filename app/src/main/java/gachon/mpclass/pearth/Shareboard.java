@@ -93,9 +93,10 @@ public class Shareboard extends AppCompatActivity {
                 item.add(listViewItem);
                 G.keyList.add(dataSnapshot.getKey());
                 int index = G.keyList.indexOf(dataSnapshot.getKey());
-
-                if(listViewItem.getUid().equals(uid)){
-                    count=count+1;
+                String Uid =  listViewItem.getUid();
+                if(Uid != null){
+                    if(Uid.equals(uid)){
+                        count=count+1;}
                 }
                 mDB2.child(user.getUid()).child("share").setValue(count);
                 //리스트뷰를 갱신

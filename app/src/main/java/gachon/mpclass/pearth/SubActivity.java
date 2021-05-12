@@ -117,7 +117,6 @@ public class SubActivity extends AppCompatActivity {
         content = (EditText)findViewById(R.id.content);
         sendbt = (Button) findViewById(R.id.upload);
         imagebt = (ImageButton) findViewById(R.id.imageUploadButton);
-        uploadbt = (ImageButton) findViewById(R.id.gpsUploadButton);
         ivPreview = (ImageView) findViewById(R.id.iv_preview);
 
         mDB=FirebaseDatabase.getInstance().getReference();
@@ -187,7 +186,7 @@ public class SubActivity extends AppCompatActivity {
                 }
                 tit = uid; //닉넴으로 바꿔야됨
                 if(tit==null){
-                    img="title";
+                    tit="title";
                 }
                 tag=tag_list.getText().toString();
                 if(tag==null){

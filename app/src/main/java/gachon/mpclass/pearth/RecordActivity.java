@@ -134,9 +134,10 @@ public class RecordActivity extends AppCompatActivity {
                 mDB.child("harm").setValue(harm);
                 mDB.child("eat").setValue(eat);
                 int index = G.keyList.indexOf(dataSnapshot.getKey());
-
-                if(listViewItem.getTitle().equals(uid)){
-                    count=count+1;
+                String Uid =  listViewItem.getUid();
+                if(Uid != null){
+                    if(Uid.equals(uid)){
+                        count=count+1;}
                 }
                 mDB2.child(user.getUid()).child("report").setValue(count);
                 //리스트뷰를 갱신

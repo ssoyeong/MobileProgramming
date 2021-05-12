@@ -68,6 +68,7 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ListViewItem_shareboard list=data.get(position);
         convertView=inflater.inflate(R.layout.shareboard,parent,false);
+        TextView textView0 = (TextView) convertView.findViewById(R.id.textView0);
         TextView textView1 = (TextView) convertView.findViewById(R.id.textView1);
         TextView textView2 = (TextView) convertView.findViewById(R.id.textView2);
         Button good=(Button)convertView.findViewById(R.id.good);
@@ -82,8 +83,10 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
         });
         report.setOnClickListener(new View.OnClickListener(){
             String ref = G.keyList.get(position); //클릭한 글의 고유주소
+//            String user = list.getUid();
             public void onClick(View v){
-                mDB.child("report"+cnt).setValue("Report : "+ref);
+                mDB.child("report"+cnt).child("postRef").setValue(ref);
+//                mDB.child("report"+cnt).child("postUser").setValue(user);
                 Toast.makeText(context,"신고되었습니다.",Toast.LENGTH_SHORT).show();
 
             }
@@ -112,11 +115,13 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
 
         if (list.getImgUrl()==null)//사진이 있을때
         {
+            textView0.setText("["+list.getLocation()+"]");
             textView1.setText(list.getTitle());
             textView2.setText(list.getContent());
         }
         else
         {
+            textView0.setText("["+list.getLocation()+"]");
             textView1.setText(list.getTitle());
             textView2.setText(list.getContent());
             Glide.with(convertView)

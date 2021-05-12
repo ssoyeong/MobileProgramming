@@ -2,6 +2,7 @@ package gachon.mpclass.pearth;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,14 +31,18 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ListViewAdapter extends BaseAdapter {
     int cnt=0;
     Context context;
     ArrayList<ListViewItem> data;
+    Uri profileUri= null;
+    Uri defaultUri = null;
     int check = 0;
     DatabaseReference mDB=FirebaseDatabase.getInstance().getReference().child("report");
     DatabaseReference dbRef=FirebaseDatabase.getInstance().getReference().child("board");
-
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     ListViewAdapter(Context context){
         this.context=context;
     }
@@ -75,6 +82,7 @@ public class ListViewAdapter extends BaseAdapter {
         Button report=(Button)convertView.findViewById(R.id.report);
         ImageButton delete = (ImageButton)convertView.findViewById(R.id.delete);
         ImageView imageView = (ImageView)convertView.findViewById(R.id.iv_preview);
+        CircleImageView circleImageView = (CircleImageView)convertView.findViewById(R.id.profileImage);
 
         good.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -83,14 +91,17 @@ public class ListViewAdapter extends BaseAdapter {
         });
         report.setOnClickListener(new View.OnClickListener(){
             String ref = G.keyList.get(position); //클릭한 글의 고유주소
+//            String user = list.getUid();
             public void onClick(View v){
-                mDB.child("report"+cnt).setValue("Report : "+ref);
+                mDB.child("report"+cnt).child("postRef").setValue(ref);
+//                mDB.child("report"+cnt).child("postUser").setValue(user);
                 Toast.makeText(context,"신고되었습니다.",Toast.LENGTH_SHORT).show();
 
             }
         });
+
         delete.setOnClickListener(new View.OnClickListener() {
-            FirebaseStorage storage = FirebaseStorage.getInstance();
+
             StorageReference storageRef = storage.getReferenceFromUrl("gs://pearth-7ec20.appspot.com").child("images/" + list.getFileName());
 
             @Override
@@ -111,11 +122,38 @@ public class ListViewAdapter extends BaseAdapter {
                 }
         });
 
+        StorageReference profileRef = storage.getReference();
+        profileRef.child("profile/"+list.getUid()+".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                profileUri = uri;
+            }
+        });
+        StorageReference defaultRef = storage.getReference();
+        profileRef.child("profile/plant.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                defaultUri = uri;
+            }
+        });
+
         if (list.getImgUrl()==null)//사진이 있을때
         {
             textView1.setText(list.getTitle());
             textView2.setText(list.getContent());
             tag.setText(list.getTag());
+            if(profileUri!=null)
+            {
+                Glide.with(convertView)
+                        .load(profileUri)
+                        .into(circleImageView);
+            }
+            else
+            {
+                Glide.with(convertView)
+                        .load(defaultUri)
+                        .into(circleImageView);
+            }
         }
         else
         {
@@ -125,6 +163,18 @@ public class ListViewAdapter extends BaseAdapter {
             Glide.with(convertView)
                     .load(list.getImgUrl())
                     .into(imageView);
+            if(profileUri!=null)
+            {
+                Glide.with(convertView)
+                        .load(profileUri)
+                        .into(circleImageView);
+            }
+            else
+            {
+                Glide.with(convertView)
+                        .load(defaultUri)
+                        .into(circleImageView);
+            }
         }
 
 

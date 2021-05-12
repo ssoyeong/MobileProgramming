@@ -47,7 +47,7 @@ dependencies {
     implementation files('libs\\poi-5.0.0.jar')
     implementation files('libs\\poi-ooxml-5.0.0.jar')
     implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
-    
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 
 
