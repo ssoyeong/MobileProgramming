@@ -103,13 +103,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             {
                                 finish();
 
-//                                Intent intent=new Intent(LoginActivity.this,GrowingPlantActivity.class);
+                                Intent intent=new Intent(LoginActivity.this,GrowingPlantActivity.class);
 
 //                                //todo: 체크리스트 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
 //                                Intent intent=new Intent(LoginActivity.this,CheckListActivity.class);
 
                                 //todo: 사용자 설정 화면 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
-                                Intent intent=new Intent(LoginActivity.this,UserProfileActivity.class);
+  //                              Intent intent=new Intent(LoginActivity.this,UserProfileActivity.class);
 
 
                                 DatabaseReference mReference;
