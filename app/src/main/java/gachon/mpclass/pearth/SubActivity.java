@@ -124,7 +124,7 @@ public class SubActivity extends AppCompatActivity {
 
         initDatabase();
         mRef=mDatabase.getReference("Users").child(user.getUid());
-        uid = user.getUid();
+
 //        mRef.addValueEventListener(new ValueEventListener() {
 //
 //            @Override
@@ -138,13 +138,10 @@ public class SubActivity extends AppCompatActivity {
 //                            count=count+1;
 //                        }
 //                        else if(count==1){
-//                            tit=msg2;
-//                            title.setText(tit);
+//                            uid=msg2;
 //                            count=count+1;
 //                        }
-//                        else if(count==2){
-//                            record=Integer.parseInt(msg2);
-//                        }
+//
 //
 //
 //                    }
@@ -159,7 +156,7 @@ public class SubActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
+//
 
 
         imagebt.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +190,7 @@ public class SubActivity extends AppCompatActivity {
                 if(tag==null){
                     tag="";
                 }
-                uid = user.getUid();
+                uid = mDB2.child(uid).child("nickname").getKey();
                 if(uid==null){
                     uid="";
                 }

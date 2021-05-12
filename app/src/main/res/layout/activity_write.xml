@@ -65,15 +65,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         />
-
-    <ImageButton
-        android:id="@+id/gpsUploadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        app:srcCompat="@android:drawable/ic_dialog_map"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/imageUploadButton"
-        />
     <Button
         android:id="@+id/upload"
         android:layout_height="53dp"
@@ -81,7 +72,7 @@
         android:layout_weight="1"
         android:text="등록"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/gpsUploadButton"/>
+        android:layout_toRightOf="@id/imageUploadButton"/>
     <!--    </LinearLayout>-->
 
 </RelativeLayout>
