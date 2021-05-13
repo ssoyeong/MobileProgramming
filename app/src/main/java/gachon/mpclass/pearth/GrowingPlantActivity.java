@@ -107,13 +107,13 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         // 식당 추천 임시 버튼
         buttonRest = (Button) findViewById(R.id.btnRest);
 
-        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.transparent);
+        Animation anim = AnimationUtils.loadAnimation(GrowingPlantActivity.this, R.anim.transparent);
         buttonRest.startAnimation(anim);
 
         buttonRest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SetLocationActivity.class);
+                Intent intent = new Intent(GrowingPlantActivity.this, SetLocationActivity.class);
                 startActivity(intent);
                 finish();
 
