@@ -62,6 +62,7 @@ public class SubActivity extends AppCompatActivity {
     public String con;
     public String img;
     public String tag;
+    public String pro;
     public String child_nickname;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -139,6 +140,7 @@ public class SubActivity extends AppCompatActivity {
                         else if(count==1){
                             tit=msg2;
                             title.setText(tit);
+                            count=count+1;
                         }
 //                        else if(count==2){
 //                            record=Integer.parseInt(msg2);
@@ -193,6 +195,11 @@ public class SubActivity extends AppCompatActivity {
                 uid = user.getUid();
                 if(uid==null){
                     uid="";
+                }
+                pro = G.profileUrl;
+                if(G.profileUrl==null)
+                {
+                    G.profileUrl = "https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8";
                 }
                 //사진주소, 제목, 내용 한번에 업로드
                 uploadFile();
@@ -272,7 +279,7 @@ public class SubActivity extends AppCompatActivity {
                                     //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
                                     //profileRef.child("board").setValue(G.imgUrl);
                                     //여기서 업로드
-                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName,uid);
+                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName,uid,pro);
                                     databaseReference.child("board").push().setValue(list);
 
 
