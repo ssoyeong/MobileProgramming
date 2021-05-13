@@ -210,6 +210,7 @@ public class UserProfileActivity extends AppCompatActivity{
         FirebaseStorage storage=FirebaseStorage.getInstance();
         StorageReference storageReference=storage.getReferenceFromUrl("gs://pearth-7ec20.appspot.com/");
         StorageReference pathReference=storageReference.child("profile");
+
         if(pathReference==null)
         {
             Toast.makeText(UserProfileActivity.this,"저장소에 사진이 없습니다.",Toast.LENGTH_SHORT).show();
