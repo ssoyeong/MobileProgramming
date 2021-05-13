@@ -9,18 +9,20 @@ public class ListViewItem {
     private String tag;
     private String fileName;
     private String uid;
+    private String profileUrl;
 
     ListViewItem(){
 
     }
 
-    public ListViewItem(String title,String content,String imgUrl,String tag,String fileName,String uid){
+    public ListViewItem(String title,String content,String imgUrl,String tag,String fileName,String uid,String profileUrl){
         this.title=title;
         this.content=content;
         this.imgUrl = imgUrl;
         this.tag=tag;
         this.fileName = fileName;
         this.uid = uid;
+        this.profileUrl = profileUrl;
     }
     public String getTitle() {
         return title ;
@@ -30,6 +32,7 @@ public class ListViewItem {
     public String getTag(){return tag;}
     public String getFileName(){return fileName;}
     public String getUid(){return uid;}
+    public String getProfileUrl(){return profileUrl;}
 
 
 

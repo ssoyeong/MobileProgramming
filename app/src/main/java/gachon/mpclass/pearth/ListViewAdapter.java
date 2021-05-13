@@ -44,9 +44,8 @@ public class ListViewAdapter extends BaseAdapter {
     int cnt = 0;
     Context context;
     ArrayList<ListViewItem> data;
-    Uri profileUri = null;
-    Uri defaultUri = null;
-    String userProfile = null;
+    Uri profileUri;
+    Uri defaultUri;
     int check = 0;
     String n;
     DatabaseReference mDB = FirebaseDatabase.getInstance().getReference().child("report");
@@ -90,6 +89,33 @@ public class ListViewAdapter extends BaseAdapter {
     public void hideButton(ImageButton btn) {
         btn.setVisibility(View.INVISIBLE);
     }
+//    public Uri searchProfile(String uid){
+//
+//        StorageReference profileRef = storage.getReference();
+//        profileRef.child(uid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//            @Override
+//            public void onSuccess(Uri uri) {
+//                profileUri = uri;
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                profileUri = null;
+//            }
+//        });
+//        return profileUri;
+//    }
+    public Uri defaultProfile(){
+        defaultUri = null;
+        StorageReference defaultRef = storage.getReference();
+        defaultRef.child("profile/plant.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                defaultUri = uri;
+            }
+        });
+        return defaultUri;
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -106,8 +132,8 @@ public class ListViewAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_preview);
         CircleImageView circleImageView = (CircleImageView) convertView.findViewById(R.id.profileImage);
         String Uid = user.getUid(); //현재사용자
-        String profile = "profile/" + list.getTitle() + ".png"; //글쓴 사용자의 프로필 사진
         String post = list.getUid(); //글쓴사용자
+        String profile = "profile/" + list.getUid() + ".png";
         good.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(context, "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
@@ -155,26 +181,8 @@ public class ListViewAdapter extends BaseAdapter {
             }
         }
 
-        StorageReference profileRef = storage.getReference();
 
-        profileRef.child(profile).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                profileUri = uri;
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
 
-            }
-        });
-        StorageReference defaultRef = storage.getReference();
-        profileRef.child("profile/plant.png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                defaultUri = uri;
-            }
-        });
 
         if (list.getImgUrl() == null)//사진이 있을때
         {
@@ -182,18 +190,23 @@ public class ListViewAdapter extends BaseAdapter {
             textView2.setText(list.getContent());
             tag.setText(list.getTag());
 
-            if (Uid != null) {
-                if (Uid.equals(post)&&profileUri!=null) {
-                    Glide.with(convertView)
-                            .load(profileUri)
-                            .into(circleImageView);
-                } else {
-                    Glide.with(convertView)
-                            .load(defaultUri)
-                            .into(circleImageView);
+//                profileUri = null;
+//                Uri uriP = searchProfile(profile);
+//                Uri uriD = defaultProfile();
+//                if (uriP!=null) {
+//                    Glide.with(convertView)
+//                            .load(uriP)
+//                            .into(circleImageView);
+//                } else {
+//                    Glide.with(convertView)
+//                            .load(uriD)
+//                            .into(circleImageView);
+//
+//                }
+            Glide.with(convertView)
+                    .load(list.getProfileUrl())
+                    .into(circleImageView);
 
-                }
-            }
 
 
         } else {
@@ -203,18 +216,27 @@ public class ListViewAdapter extends BaseAdapter {
             Glide.with(convertView)
                     .load(list.getImgUrl())
                     .into(imageView);
-            if (Uid != null) {
-                if (Uid.equals(post)&&profileUri!=null) {
-                    Glide.with(convertView)
-                            .load(profileUri)
-                            .into(circleImageView);
-                } else {
-                    Glide.with(convertView)
-                            .load(defaultUri)
-                            .into(circleImageView);
 
-                }
-            }
+
+//            profileUri = null;
+//            profileUri = searchProfile(profile);
+//            defaultUri = defaultProfile();
+//            if (profileUri==null) {
+//                Glide.with(convertView)
+//                        .load(defaultUri)
+//                        .into(circleImageView);
+//            } else {
+//                Glide.with(convertView)
+//                        .load(profileUri)
+//                        .into(circleImageView);
+//
+//            }
+
+                Glide.with(convertView)
+                        .load(list.getProfileUrl())
+                        .into(circleImageView);
+
+
         }
 
         cnt++;
