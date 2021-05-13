@@ -10,7 +10,7 @@
         android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LV 3"
+        android:text="Lv. "
         android:textSize="40dp"
         android:layout_above="@+id/plantImage"
         android:layout_alignRight="@+id/plantImage"
@@ -18,7 +18,7 @@
 
     <ImageView
         android:id="@+id/plantImage"
-        android:src="@drawable/plant_2"
+
         android:layout_gravity="center_horizontal"
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -28,7 +28,7 @@
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="500 / 2000"
+        android:text="Score"
         android:textSize="40dp"
         android:layout_below="@+id/plantImage"
         android:layout_centerInParent="true"
