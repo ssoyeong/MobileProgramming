@@ -44,7 +44,7 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
     private Button buttonLogout;
     private TextView textivewDelete;
     private Button buttonRest;
-    Integer report;
+    Long report;
     Integer share;
 
     @Override
@@ -81,11 +81,12 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         //유저 report, share 정보 가져오기
         String uid = user.getUid();
 
-        userDatabaseReference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        userDatabaseReference.child(uid).child("report").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                report = snapshot.child("report").getValue(Integer.class);
-                share = snapshot.child("share").getValue(Integer.class);
+                report = (Long)snapshot.getValue();
+                Toast.makeText(GrowingPlantActivity.this, "유저 report 수: "+ report, Toast.LENGTH_LONG).show();
+//                share = snapshot.child("share").getValue(Integer.class);
             }
 
             @Override
@@ -95,7 +96,7 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         });
 
 //        Toast.makeText(GrowingPlantActivity.this, "유저 id: "+ uid, Toast.LENGTH_LONG).show();
-        Toast.makeText(GrowingPlantActivity.this, "유저 report 수: "+ report, Toast.LENGTH_LONG).show();
+//        Toast.makeText(GrowingPlantActivity.this, "유저 report 수: "+ report, Toast.LENGTH_LONG).show();
 //        Toast.makeText(GrowingPlantActivity.this, "유저 share 수: "+ share, Toast.LENGTH_LONG).show();
 
 

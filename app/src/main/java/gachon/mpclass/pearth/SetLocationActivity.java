@@ -340,7 +340,7 @@ public class SetLocationActivity extends AppCompatActivity {
         complete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+                Intent intent = new Intent(SetLocationActivity.this, MapActivity.class);
                 Bundle mybundle = new Bundle();
 
                 String[] areas = area.split(" ");
@@ -356,7 +356,7 @@ public class SetLocationActivity extends AppCompatActivity {
                 mybundle.putString("SIDO", SIDO);
 
 
-                Toast.makeText(getApplicationContext(), SIGUN + " " + SIDO, Toast.LENGTH_LONG).show();
+                Toast.makeText(SetLocationActivity.this, SIGUN + " " + SIDO, Toast.LENGTH_LONG).show();
 
 
 
@@ -372,8 +372,8 @@ public class SetLocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                gpsTracker = new GpsTracker(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+                gpsTracker = new GpsTracker(SetLocationActivity.this);
+                Intent intent = new Intent(SetLocationActivity.this, MapActivity.class);
                 Bundle mybundle = new Bundle();
 
                 double latitude = gpsTracker.getLatitude();
@@ -404,7 +404,7 @@ public class SetLocationActivity extends AppCompatActivity {
                 mybundle.putString("SIGUN", SIGUN);
                 mybundle.putString("SIDO", SIDO);
 
-                Toast.makeText(getApplicationContext(), SIGUN + " " + SIDO, Toast.LENGTH_LONG).show();
+                Toast.makeText(SetLocationActivity.this, SIGUN + " " + SIDO, Toast.LENGTH_LONG).show();
 
                 intent.putExtras(mybundle);
                 startActivity(intent);
@@ -446,13 +446,13 @@ public class SetLocationActivity extends AppCompatActivity {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSIONS[0])
                         || ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSIONS[1])) {
 
-                    Toast.makeText(getApplicationContext(), "퍼미션이 거부되었습니다. 앱을 다시 실행하여 퍼미션을 허용해주세요.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SetLocationActivity.this, "퍼미션이 거부되었습니다. 앱을 다시 실행하여 퍼미션을 허용해주세요.", Toast.LENGTH_LONG).show();
                     finish();
 
 
                 } else {
 
-                    Toast.makeText(getApplicationContext(), "퍼미션이 거부되었습니다. 설정(앱 정보)에서 퍼미션을 허용해야 합니다. ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SetLocationActivity.this, "퍼미션이 거부되었습니다. 설정(앱 정보)에서 퍼미션을 허용해야 합니다. ", Toast.LENGTH_LONG).show();
 
                 }
             }
@@ -464,9 +464,9 @@ public class SetLocationActivity extends AppCompatActivity {
 
         //런타임 퍼미션 처리
         // 1. 위치 퍼미션을 가지고 있는지 체크합니다.
-        int hasFineLocationPermission = ContextCompat.checkSelfPermission(getApplicationContext(),
+        int hasFineLocationPermission = ContextCompat.checkSelfPermission(SetLocationActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
-        int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(getApplicationContext(),
+        int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(SetLocationActivity.this,
                 Manifest.permission.ACCESS_COARSE_LOCATION);
 
 
@@ -486,7 +486,7 @@ public class SetLocationActivity extends AppCompatActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSIONS[0])) {
 
                 // 3-2. 요청을 진행하기 전에 사용자가에게 퍼미션이 필요한 이유를 설명해줄 필요가 있습니다.
-                Toast.makeText(getApplicationContext(), "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(SetLocationActivity.this, "이 앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_LONG).show();
                 // 3-3. 사용자게에 퍼미션 요청을 합니다. 요청 결과는 onRequestPermissionResult에서 수신됩니다.
                 ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS,
                         PERMISSIONS_REQUEST_CODE);
