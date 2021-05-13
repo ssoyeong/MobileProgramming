@@ -55,7 +55,7 @@ public class CheckListActivity extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference();
-
+    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +70,7 @@ public class CheckListActivity extends AppCompatActivity {
         date_tv = (TextView) findViewById(R.id.date);
 
         Intent intent = getIntent();
-        String uid = intent.getStringExtra("uid");
+        uid = intent.getStringExtra("uid");
         items = new ArrayList<>();
 
 //        String nickname=reference.child("Users").child(uid).child("nickname").toString();
@@ -258,14 +258,13 @@ public class CheckListActivity extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(this,CheckListActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            //uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
             Intent intent=new Intent(this,UserProfileActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }

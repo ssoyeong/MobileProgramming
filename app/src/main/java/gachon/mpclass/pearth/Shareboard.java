@@ -180,6 +180,13 @@ public class Shareboard extends AppCompatActivity {
 
 
 
+    //액션버튼 메뉴 액션바에 집어 넣기
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
     //액션바 숨기기
     private void hideActionBar () {
         ActionBar actionBar = getSupportActionBar();
@@ -209,14 +216,14 @@ public class Shareboard extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(this,CheckListActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            //String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
             Intent intent=new Intent(this,UserProfileActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            //String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
