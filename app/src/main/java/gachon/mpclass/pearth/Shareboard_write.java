@@ -62,6 +62,7 @@ public class Shareboard_write extends AppCompatActivity {
     public String img;
     public String tag;
     public String uid;
+    public String loc;
     String good="0";
     public String userid;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -78,7 +79,8 @@ public class Shareboard_write extends AppCompatActivity {
     private boolean isImg = true;
     int share=0;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+    private Spinner spinner;
+    private String[] listSpinner;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -86,6 +88,23 @@ public class Shareboard_write extends AppCompatActivity {
         final int[] cnt = {0};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shareboard_write);
+
+        Spinner spinner=(Spinner)findViewById(R.id.spinner);
+        listSpinner = getResources().getStringArray(R.array.spinner_shareboard);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listSpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView adapterView, View view, int position, long id){
+                String item = (String)adapterView.getItemAtPosition(position);
+                loc = item;
+            }
+            @Override
+            public void onNothingSelected(AdapterView adapterView){
+                loc="";
+            }
+        });
 
         title = (EditText) findViewById(R.id.title);
         content = (EditText)findViewById(R.id.content);
@@ -96,34 +115,34 @@ public class Shareboard_write extends AppCompatActivity {
 
         initDatabase();
         mRef=mDatabase.getReference("Users").child(user.getUid());
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int count=0;
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot messageData : snapshot.getChildren()) {
-                        String msg2=messageData.getValue().toString();
-                        if(count!=3){
-                            count=count+1;
-                        }
-                        else if(count==3){
-                            share=Integer.parseInt(msg2);
-                        }
-
-
-                    }
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        mRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                int count=0;
+//                if(snapshot.exists())
+//                {
+//                    for(DataSnapshot messageData : snapshot.getChildren()) {
+//                        String msg2=messageData.getValue().toString();
+//                        if(count!=3){
+//                            count=count+1;
+//                        }
+//                        else if(count==3){
+//                            share=Integer.parseInt(msg2);
+//                        }
+//
+//
+//                    }
+//                }
+//                else
+//                {
+//                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
         imagebt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,6 +173,10 @@ public class Shareboard_write extends AppCompatActivity {
                 uid = user.getUid();
                 if(uid==null){
                     uid="";
+                }
+                if(loc==null)
+                {
+                    loc = "";
                 }
                 //사진주소, 제목, 내용 한번에 업로드
                 uploadFile();
@@ -193,7 +216,7 @@ public class Shareboard_write extends AppCompatActivity {
     //upload the file
     private void uploadFile() {
         //업로드할 파일이 있으면 수행
-        if (filePath != null&&tag !="") {
+        if (filePath != null&&loc !="") {
             //업로드 진행 Dialog 보이기
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("업로드중...");
@@ -233,7 +256,7 @@ public class Shareboard_write extends AppCompatActivity {
                                     //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
                                     //profileRef.child("board").setValue(G.imgUrl);
                                     //여기서 업로드
-                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName,uid);
+                                    ListViewItem_shareboard list=new ListViewItem_shareboard(tit,con,G.imgUrl,loc,G.fileName,uid);
                                     databaseReference.child("share").push().setValue(list);
 
                                 }
@@ -250,9 +273,9 @@ public class Shareboard_write extends AppCompatActivity {
         }
         else {
             isImg = false;
-            if(filePath==null&&tag==""){Toast.makeText(getApplicationContext(), "이미지와 태그를 선택하세요.", Toast.LENGTH_SHORT).show();}
+            if(filePath==null&&loc==""){Toast.makeText(getApplicationContext(), "이미지와 말머리를 선택하세요.", Toast.LENGTH_SHORT).show();}
             else if(filePath==null){Toast.makeText(getApplicationContext(), "이미지를 선택하세요.", Toast.LENGTH_SHORT).show();}
-            else if(tag==""){Toast.makeText(getApplicationContext(), "태그를 선택하세요.", Toast.LENGTH_SHORT).show();}}
+            else if(loc==""){Toast.makeText(getApplicationContext(), "말머리를 선택하세요.", Toast.LENGTH_SHORT).show();}}
         //saveData() ..
     }
 

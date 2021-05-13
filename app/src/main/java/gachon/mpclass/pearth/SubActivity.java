@@ -123,7 +123,7 @@ public class SubActivity extends AppCompatActivity {
 
         initDatabase();
         mRef=mDatabase.getReference("Users").child(user.getUid());
-
+        uid = user.getUid();
 //        mRef.addValueEventListener(new ValueEventListener() {
 //
 //            @Override
@@ -137,10 +137,13 @@ public class SubActivity extends AppCompatActivity {
 //                            count=count+1;
 //                        }
 //                        else if(count==1){
-//                            uid=msg2;
+//                            tit=msg2;
+//                            title.setText(tit);
 //                            count=count+1;
 //                        }
-//
+//                        else if(count==2){
+//                            record=Integer.parseInt(msg2);
+//                        }
 //
 //
 //                    }
@@ -155,7 +158,7 @@ public class SubActivity extends AppCompatActivity {
 //
 //            }
 //        });
-//
+
 
 
         imagebt.setOnClickListener(new View.OnClickListener() {
@@ -183,13 +186,13 @@ public class SubActivity extends AppCompatActivity {
                 }
                 tit = uid; //닉넴으로 바꿔야됨
                 if(tit==null){
-                    img="title";
+                    tit="title";
                 }
                 tag=tag_list.getText().toString();
                 if(tag==null){
                     tag="";
                 }
-                uid = mDB2.child(uid).child("nickname").getKey();
+                uid = user.getUid();
                 if(uid==null){
                     uid="";
                 }

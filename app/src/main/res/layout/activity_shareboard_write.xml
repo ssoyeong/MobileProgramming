@@ -18,22 +18,20 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/title"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                />
 
             <EditText
                 android:id="@+id/title"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="start"
                 android:layout_margin="5dp"
-                android:layout_toRightOf ="@+id/spinner"
+                android:layout_toRightOf="@+id/spinner"
                 android:hint="제목을 입력하세요"/>
             <ImageView
                 android:id="@+id/iv_preview"
@@ -52,7 +50,10 @@
         </LinearLayout>
 
     </ScrollView>
-
+    <!--    <LinearLayout-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content">-->
     <ImageButton
         android:id="@+id/imageUploadButton"
         android:layout_width="wrap_content"
@@ -61,7 +62,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         />
-
     <Button
         android:id="@+id/upload"
         android:layout_height="53dp"

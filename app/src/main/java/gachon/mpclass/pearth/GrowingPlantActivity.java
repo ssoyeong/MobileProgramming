@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Set;
 
@@ -31,12 +37,15 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
 
     //firebase auth object
     private FirebaseAuth firebaseAuth;
-
+    DatabaseReference mRootDatabaseReference = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference userDatabaseReference = mRootDatabaseReference.child("Users");
     //view objects
     private TextView textViewUserEmail;
     private Button buttonLogout;
     private TextView textivewDelete;
     private Button buttonRest;
+    Integer report;
+    Integer share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +76,30 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         buttonLogout.setOnClickListener(this);
         textivewDelete.setOnClickListener(this);
         buttonRest.setOnClickListener(this);
+
+
+        //유저 report, share 정보 가져오기
+        String uid = user.getUid();
+
+        userDatabaseReference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                report = snapshot.child("report").getValue(Integer.class);
+                share = snapshot.child("share").getValue(Integer.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                throw error.toException();
+            }
+        });
+
+//        Toast.makeText(GrowingPlantActivity.this, "유저 id: "+ uid, Toast.LENGTH_LONG).show();
+        Toast.makeText(GrowingPlantActivity.this, "유저 report 수: "+ report, Toast.LENGTH_LONG).show();
+//        Toast.makeText(GrowingPlantActivity.this, "유저 share 수: "+ share, Toast.LENGTH_LONG).show();
+
+
+
 
 
 
