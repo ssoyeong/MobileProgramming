@@ -137,7 +137,8 @@ public class RecordActivity extends AppCompatActivity {
                 String Uid =  listViewItem.getUid();
                 if(Uid != null){
                     if(Uid.equals(uid)){
-                        count=count+1;}
+                        count=count+1;
+                        }
                 }
                 mDB2.child(user.getUid()).child("report").setValue(count);
                 //리스트뷰를 갱신

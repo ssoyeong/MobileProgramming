@@ -124,40 +124,39 @@ public class SubActivity extends AppCompatActivity {
         initDatabase();
         mRef=mDatabase.getReference("Users").child(user.getUid());
         uid = user.getUid();
-//        mRef.addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                int count=0;
-//                if(snapshot.exists())
-//                {
-//                    for(DataSnapshot messageData : snapshot.getChildren()) {
-//                        String msg2=messageData.getValue().toString();
-//                        if(count==0){
-//                            count=count+1;
-//                        }
-//                        else if(count==1){
-//                            tit=msg2;
-//                            title.setText(tit);
-//                            count=count+1;
-//                        }
+        mRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count=0;
+                if(snapshot.exists())
+                {
+                    for(DataSnapshot messageData : snapshot.getChildren()) {
+                        String msg2=messageData.getValue().toString();
+                        if(count==0){
+                            count=count+1;
+                        }
+                        else if(count==1){
+                            tit=msg2;
+                            title.setText(tit);
+                        }
 //                        else if(count==2){
 //                            record=Integer.parseInt(msg2);
 //                        }
-//
-//
-//                    }
-//                }
-//                else
-//                {
-//                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+
+
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
@@ -184,7 +183,6 @@ public class SubActivity extends AppCompatActivity {
                 if(img==null){
                     img="imgUrl";
                 }
-                tit = uid; //닉넴으로 바꿔야됨
                 if(tit==null){
                     tit="title";
                 }
