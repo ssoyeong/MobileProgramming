@@ -65,8 +65,6 @@ public class PopUpActivity extends Activity {
         store_addr = (TextView) findViewById(R.id.store_addr);
         store_tel = (TextView) findViewById(R.id.store_tel);
 
-
-
         map_btn = (Button) findViewById(R.id.map_btn);
         call_btn = (Button) findViewById(R.id.call_btn);
         favorite_btn = (Button) findViewById(R.id.favorite_btn);
@@ -98,9 +96,7 @@ public class PopUpActivity extends Activity {
             store_addr.setText(store.getAddr());
             store_tel.setText(store.getTel());
             store_type.setText(store.getType());
-
         }
-
 
 
         for (Store s : storeList){
@@ -109,7 +105,6 @@ public class PopUpActivity extends Activity {
             }
         }
 
-//        applySharedPreference();
 
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,19 +140,11 @@ public class PopUpActivity extends Activity {
         });
 
 
-
-
-
-
-
         favorite_btn.setOnClickListener(new View.OnClickListener(){
 
             int flag = 0;
             @Override
             public void onClick(View view){
-
-
-
 
 
                 for (Store str : stores) {
@@ -195,11 +182,6 @@ public class PopUpActivity extends Activity {
 
 
 
-
-
-
-
-
                 if(flag == 0){
                     favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                     stores.add(store);
@@ -217,35 +199,8 @@ public class PopUpActivity extends Activity {
                     listData();
 
                 }
-
-
-
-//                bundleStore = new Store();
-//                bundleStore.setStores(store);
-                Intent intent = new Intent(PopUpActivity.this, FavoriteFragment.class);
-
-                intent.putExtra("store", store);
-                intent.putExtra("flag", flag);
-//                startActivity(intent);
-
-
             }
-
-
-
         });
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -275,14 +230,6 @@ public class PopUpActivity extends Activity {
         toEdit.commit();
     }
 
-//    public void applySharedPreference(){
-//        sh_Pref = getSharedPreferences("Login Credentials", MODE_PRIVATE);
-//        if (sh_Pref!=null && sh_Pref.contains("Username")){
-//            String name = sh_Pref.getString("Username", "noname");  userinput.setText(name);
-//        }
-
-
-
     public void listData(){
        if(sh_Pref != null){
            int one = sh_Pref.getInt("제로비건", -1);
@@ -293,8 +240,4 @@ public class PopUpActivity extends Activity {
            Log.d("data", String.valueOf(thr));
        }
     }
-
-
-
-
 }
