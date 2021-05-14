@@ -88,8 +88,12 @@ public class GrowingPlantActivity extends AppCompatActivity {
 
                 report = (Long)snapshot.child("report").getValue();
                 share = (Long)snapshot.child("share").getValue();
-                score = Long.valueOf(report).intValue() * 10 + Long.valueOf(share).intValue() * 20;
-
+                if(report == null || share == null){
+                    score = 0;
+                }
+                else {
+                    score = Long.valueOf(report).intValue() * 10 + Long.valueOf(share).intValue() * 20;
+                }
                 textViewScore.setText(String.valueOf(score));
 
                 if(0<= score && score < 20){

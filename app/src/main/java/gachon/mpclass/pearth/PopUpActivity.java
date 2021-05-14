@@ -2,12 +2,10 @@ package gachon.mpclass.pearth;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,11 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import org.json.JSONException;
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 
 public class PopUpActivity extends Activity {
@@ -50,6 +54,11 @@ public class PopUpActivity extends Activity {
     SharedPreferences sh_Pref;
     SharedPreferences.Editor toEdit;
 
+    private FirebaseAuth firebaseAuth;
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference conditionRef = mRootRef.child("Users");
+    String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +68,18 @@ public class PopUpActivity extends Activity {
 
         sh_Pref = getSharedPreferences("Favorite Stores", MODE_PRIVATE);
         toEdit = sh_Pref.edit();
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        uid = user.getUid();
+        Log.d("uid", uid);
+
+
+
+
+
+
 
         store_name = (TextView) findViewById(R.id.store_name);
         store_type = (TextView) findViewById(R.id.store_type);
@@ -181,27 +202,70 @@ public class PopUpActivity extends Activity {
                 }
 
 
+//
+//                if(flag == 0){
+//                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
+//                    stores.add(store);
+//                    Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
+//
+//                    saveData();
+//                    listData();
+//                }
+//                else if(flag == 1){
+//                    stores.remove(store);
+//                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
+//                    Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
+//
+//                    deleteData();
+//                    listData();
+//
+//                }
 
-                if(flag == 0){
-                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
-                    stores.add(store);
-                    Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
 
-                    saveData();
-                    listData();
-                }
-                else if(flag == 1){
-                    stores.remove(store);
-                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
-                    Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
 
-                    deleteData();
-                    listData();
+                conditionRef.child(name).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(flag == 0) {
 
-                }
+                            stores.add(store);
+                            favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
+                            Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
+
+                            conditionRef.child(uid).child("Favorite").child(name).setValue(index);
+                            Log.d("fb", "추가" + name);
+                        }
+                        else if(flag == 1){
+
+                            stores.remove(store);
+                            favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
+                            Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
+
+                            conditionRef.child(uid).child("Favorite").child(name).removeValue();
+                            Log.d("fb", "삭제" + name);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+
+
             }
         });
     }
+
+
+
+
+
+
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
