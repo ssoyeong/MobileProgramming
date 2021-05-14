@@ -21,11 +21,11 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class PopUpActivity extends Activity {
 
-    private
     TextView store_name;
     TextView store_type;
     TextView store_addr;
@@ -37,14 +37,18 @@ public class PopUpActivity extends Activity {
     String SIGUN = "";
     String DONG = "";
 
-    String name;
-    String address;
-    String telephone;
-    String type;
+    private String name;
+    private String address;
+    private  String telephone;
+    private String type;
+    private int index;
 
     Store store;
     ArrayList<Store> stores;
+    ArrayList<Store> storeList;
     Store bundleStore;
+    SharedPreferences sh_Pref;
+    SharedPreferences.Editor toEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class PopUpActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
 
+        sh_Pref = getSharedPreferences("Favorite Stores", MODE_PRIVATE);
+        toEdit = sh_Pref.edit();
 
         store_name = (TextView) findViewById(R.id.store_name);
         store_type = (TextView) findViewById(R.id.store_type);
@@ -67,6 +73,16 @@ public class PopUpActivity extends Activity {
         ok_btn = (Button) findViewById(R.id.ok_btn);
 
         stores = new ArrayList<Store>();
+        storeList = new ArrayList<Store>();
+
+        storeList.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
+        storeList.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
+        storeList.add(new Store("블렌드랩", "37.50129", "127.10353", "카페", "서울특별시 송파구 석촌동 257 1층", "070-4922-2700"));
+        storeList.add(new Store("씨젬므주르", "37.50817", "127.1069", "비건 프렌치 레스토랑", "서울특별시 송파구 송파동 백제고분로41길 25", "050713474142"));
+        storeList.add(new Store("제로비건", "37.51308", "127.09642", "채식 전문식당", "서울특별시 송파구 잠실3동 올림픽로 240", "02-2143-1609"));
+        storeList.add(new Store("해피비건", "37.49582", "127.12215", "화장품 산업", "서울특별시 송파구 가락동 송파대로28길 43", "070-8800-7766"));
+        storeList.add(new Store("닥터비건", "37.52199", "127.04464", "비건 채식 레스토랑", "서울특별시 강남구 청담동 17-7", "02-543-2030"));
+        storeList.add(new Store("비건이삼", "37.51508", "127.04876", "비건 베이커리", "서울특별시 강남구 삼성동 26-33", "050713634460"));
 
         Intent data = getIntent();
         if (data != null) {
@@ -85,6 +101,15 @@ public class PopUpActivity extends Activity {
 
         }
 
+
+
+        for (Store s : storeList){
+            if(s.getName().equals(name)){
+                index = storeList.indexOf(s);
+            }
+        }
+
+//        applySharedPreference();
 
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,22 +148,10 @@ public class PopUpActivity extends Activity {
 
 
 
-        stores = new ArrayList<Store>();
-//        stores.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
-//        stores.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
-//        stores.add(new Store("블렌드랩", "37.50129", "127.10353", "카페", "서울특별시 송파구 석촌동 257 1층", "070-4922-2700"));
-//        stores.add(new Store("씨젬므주르", "37.50817", "127.1069", "비건 프렌치 레스토랑", "서울특별시 송파구 송파동 백제고분로41길 25", "050713474142"));
-//        stores.add(new Store("제로비건", "37.51308", "127.09642", "채식 전문식당", "서울특별시 송파구 잠실3동 올림픽로 240", "02-2143-1609"));
-//        stores.add(new Store("해피비건", "37.49582", "127.12215", "화장품 산업", "서울특별시 송파구 가락동 송파대로28길 43", "070-8800-7766"));
-//        stores.add(new Store("닥터비건", "37.52199", "127.04464", "비건 채식 레스토랑", "서울특별시 강남구 청담동 17-7", "02-543-2030"));
-//        stores.add(new Store("비건이삼", "37.51508", "127.04876", "비건 베이커리", "서울특별시 강남구 삼성동 26-33", "050713634460"));
-
-
-
-
 
 
         favorite_btn.setOnClickListener(new View.OnClickListener(){
+
             int flag = 0;
             @Override
             public void onClick(View view){
@@ -186,17 +199,22 @@ public class PopUpActivity extends Activity {
 
 
 
+
                 if(flag == 0){
                     favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                     stores.add(store);
                     Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
 
+                    saveData();
+                    listData();
                 }
                 else if(flag == 1){
                     stores.remove(store);
                     favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
                     Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
 
+                    deleteData();
+                    listData();
 
                 }
 
@@ -209,7 +227,7 @@ public class PopUpActivity extends Activity {
                 intent.putExtra("store", store);
                 intent.putExtra("flag", flag);
 //                startActivity(intent);
-// todo: favoritefragment로 연결 어려움. 파베 써야할 듯,,,,,
+
 
             }
 
@@ -245,6 +263,36 @@ public class PopUpActivity extends Activity {
         return;
     }
 
+
+    public void saveData() {
+
+        toEdit.putInt(name, index);
+        toEdit.commit();
+    }
+
+    public void deleteData() {
+        toEdit.remove(name);
+        toEdit.commit();
+    }
+
+//    public void applySharedPreference(){
+//        sh_Pref = getSharedPreferences("Login Credentials", MODE_PRIVATE);
+//        if (sh_Pref!=null && sh_Pref.contains("Username")){
+//            String name = sh_Pref.getString("Username", "noname");  userinput.setText(name);
+//        }
+
+
+
+    public void listData(){
+       if(sh_Pref != null){
+           int one = sh_Pref.getInt("제로비건", -1);
+           Log.d("data", String.valueOf(one));
+           int two = sh_Pref.getInt("해피비건", -1);
+           Log.d("data", String.valueOf(two));
+           int thr = sh_Pref.getInt("닥터비건", -1);
+           Log.d("data", String.valueOf(thr));
+       }
+    }
 
 
 

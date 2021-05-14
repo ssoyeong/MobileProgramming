@@ -41,6 +41,10 @@ public class Store implements Parcelable{
         this.tel = tel;
     }
 
+    public Store(String name){
+        this.name = name;
+    }
+
     protected Store(Parcel in) {
         name = in.readString();
         lat = in.readString();
@@ -138,6 +142,11 @@ public class Store implements Parcelable{
 
     public void setStores(Store stores){
         this.stores = stores;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        return this.name.equals(((Store)obj).getName());
     }
 }
 
