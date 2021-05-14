@@ -232,7 +232,7 @@ public class PopUpActivity extends Activity {
                             favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                             Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
 
-                            conditionRef.child(uid).child("Favorite").child(name).setValue(index);
+                            conditionRef.child(uid).child("favorite").child(name).setValue(index);
                             Log.d("fb", "추가" + name);
                         }
                         else if(flag == 1){
@@ -241,7 +241,7 @@ public class PopUpActivity extends Activity {
                             favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
                             Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
 
-                            conditionRef.child(uid).child("Favorite").child(name).removeValue();
+                            conditionRef.child(uid).child("favorite").child(name).removeValue();
                             Log.d("fb", "삭제" + name);
                         }
                     }
