@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,9 +83,7 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
         //textViewUserEmail의 내용을 변경해 준다.
         textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
 
-        //logout button event
-        buttonLogout.setOnClickListener(this);
-        textivewDelete.setOnClickListener(this);
+
         buttonRest.setOnClickListener(this);
 
 
@@ -94,75 +93,31 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
 
 
 
-//
-//                // report, share 수 가져오기
-//        userDatabaseReference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                report = (Long)snapshot.child("report").getValue();
-//                score = Long.valueOf(report).intValue() * 10;
-//
-//                share = (Long)snapshot.child("share").getValue();
-//                score = score + Long.valueOf(share).intValue() * 20;
-//
-//
-////                theUser.setReport(Long.valueOf(report).intValue());
-////                Toast.makeText(GrowingPlantActivity.this, "theUser report 수: "+ theUser.getReport(), Toast.LENGTH_LONG).show();
-//
-//                Toast.makeText(GrowingPlantActivity.this, "유저 report 수: "+ score, Toast.LENGTH_LONG).show();
-////                report_num = Long.valueOf(report).intValue();
-////                score = report * 10;
-////                Toast.makeText(GrowingPlantActivity.this, "report 점수: "+ score, Toast.LENGTH_LONG).show();
-//            }
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                throw error.toException();
-//            }
-//        });
-//
 
-
-
-
-
-
-
-        // report 가져오기 및 설정     todo: share도 반영
-        userDatabaseReference.child(uid).child("report").addListenerForSingleValueEvent(new ValueEventListener() {
+                // report, share 수 가져오기
+        userDatabaseReference.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                report = (Long)snapshot.getValue();
-                Toast.makeText(GrowingPlantActivity.this, "유저 report 수: "+ report, Toast.LENGTH_LONG).show();
-                score = Long.valueOf(report).intValue() * 10;
+                report = (Long)snapshot.child("report").getValue();
+                Log.d("score", "report 수: " + report);
 
-//                textViewScore.setText(score);     todo: 점수 설정
 
-                if(0<= score && score < 20){
-                    textViewLevel.setText("Lv. 1");
-                    imageViewPlant.setImageResource(R.drawable.plant_1);
-                }
-                else if(20<= score && score < 40){
-                    textViewLevel.setText("Lv. 2");
-                    imageViewPlant.setImageResource(R.drawable.plant_2);
-                }
-                else if(40<= score && score < 60){
-                    textViewLevel.setText("Lv. 3");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);
-                }
-                else if(60<= score && score < 80){
-                    textViewLevel.setText("Lv. 4");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);        //todo: 식물사진 추가
-                }
-                else if(80<= score && score < 100){
-                    textViewLevel.setText("Lv. 5");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);
-                }
-                else if(100<= score){
-                    textViewLevel.setText("Lv. 6");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);
-                }
+
+                share = (Long)snapshot.child("share").getValue();
+                Log.d("score", "share 수: " + share);
+//                score = score + Long.valueOf(share).intValue() * 20;
+                score = Long.valueOf(report).intValue() * 10 + Long.valueOf(share).intValue() * 20;
+                Log.d("score", "score: " + score);
+                textViewScore.setText(String.valueOf(score));
+
+
+//                theUser.setReport(Long.valueOf(report).intValue());
+//                Toast.makeText(GrowingPlantActivity.this, "theUser report 수: "+ theUser.getReport(), Toast.LENGTH_LONG).show();
+
+
+//                report_num = Long.valueOf(report).intValue();
+//                score = report * 10;
+//                Toast.makeText(GrowingPlantActivity.this, "report 점수: "+ score, Toast.LENGTH_LONG).show();
             }
 
 
@@ -175,13 +130,45 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
 
 
 
+
+
 //
-//        // share 수 가져오기
-//        userDatabaseReference.child(uid).child("share").addListenerForSingleValueEvent(new ValueEventListener() {
+//
+//        // report 가져오기 및 설정     todo: share도 반영
+//        userDatabaseReference.child(uid).child("report").addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                share = (Long)snapshot.getValue();
+//                report = (Long)snapshot.getValue();
+//                Log.d("score", "report 수: " + report);
+//                score = Long.valueOf(report).intValue() * 10;
+//                Log.d("score", "score: " + score);
+////                textViewScore.setText(Long.valueOf(score).intValue());
+//                textViewScore.setText(String.valueOf(score));
 //
+//                if(0<= score && score < 20){
+//                    textViewLevel.setText("Lv. 1");
+//                    imageViewPlant.setImageResource(R.drawable.plant_1);
+//                }
+//                else if(20<= score && score < 40){
+//                    textViewLevel.setText("Lv. 2");
+//                    imageViewPlant.setImageResource(R.drawable.plant_2);
+//                }
+//                else if(40<= score && score < 60){
+//                    textViewLevel.setText("Lv. 3");
+//                    imageViewPlant.setImageResource(R.drawable.plant_3);
+//                }
+//                else if(60<= score && score < 80){
+//                    textViewLevel.setText("Lv. 4");
+//                    imageViewPlant.setImageResource(R.drawable.plant_3);        //todo: 식물사진 추가
+//                }
+//                else if(80<= score && score < 100){
+//                    textViewLevel.setText("Lv. 5");
+//                    imageViewPlant.setImageResource(R.drawable.plant_3);
+//                }
+//                else if(100<= score){
+//                    textViewLevel.setText("Lv. 6");
+//                    imageViewPlant.setImageResource(R.drawable.plant_3);
+//                }
 //            }
 //
 //
@@ -190,15 +177,26 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
 //                throw error.toException();
 //            }
 //        });
+//
+//
+//
+//
+//
+//        // share 수 가져오기
+//        userDatabaseReference.child(uid).child("share").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                share = (Long)snapshot.getValue();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                throw error.toException();
+//            }
+//        });
+//        Log.d("score", "share 수: " + share);
 
-//        score = Long.valueOf(report).intValue() * 10 + Long.valueOf(score).intValue() * 20;
-//        Toast.makeText(GrowingPlantActivity.this, "score: "+ score, Toast.LENGTH_LONG).show();
 
-
-
-//        Toast.makeText(GrowingPlantActivity.this, "유저 id: "+ uid, Toast.LENGTH_LONG).show();
-//        Toast.makeText(GrowingPlantActivity.this, "theUser report 수: "+ theUser.getReport(), Toast.LENGTH_LONG).show();
-//        Toast.makeText(GrowingPlantActivity.this, "유저 share 수: "+ share, Toast.LENGTH_LONG).show();
 
 
 
@@ -305,7 +303,13 @@ public class GrowingPlantActivity extends AppCompatActivity implements View.OnCl
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
-
+        if(id==R.id.action_store)
+        {
+            Intent intent=new Intent(GrowingPlantActivity.this,SetLocationActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
 
         return super.onOptionsItemSelected(item);
     }

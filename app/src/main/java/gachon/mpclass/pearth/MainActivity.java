@@ -78,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
             Intent shareIntent = new Intent(this, Shareboard.class);
             startActivity(shareIntent);
         }
+        if (id == R.id.action_UserProfile) {
+            Intent userIntent = new Intent(this, UserProfileActivity.class);
+            startActivity(userIntent);
+        }
+        if (id == R.id.action_store) {
+            Intent mapIntent = new Intent(this, SetLocationActivity.class);
+            startActivity(mapIntent);
+        }
 
 
 

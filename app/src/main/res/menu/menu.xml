@@ -28,5 +28,8 @@
     <item android:id="@+id/action_UserProfile"
         android:title="사용자 설정 화면"
         app:showAsAction="withText"/>
+    <item android:id="@+id/action_store"
+        android:title="비건 음식점"
+        app:showAsAction="withText"/>
 
 </menu>
