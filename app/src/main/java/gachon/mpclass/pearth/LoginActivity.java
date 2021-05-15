@@ -48,12 +48,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //initializig firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
-//        if(firebaseAuth.getCurrentUser() != null){
-//            //이미 로그인 되었다면 이 액티비티를 종료함
-//            finish();
-//            //그리고 profile 액티비티를 연다.
-//            startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
-//        }
+        //로그인 상태라면 로그인 유지
+        if(firebaseAuth.getCurrentUser() != null){
+            //이미 로그인 되었다면 이 액티비티를 종료함
+            finish();
+            //그리고 GrowingPlantActivity 액티비티를 연다.
+            startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
+        }
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.email);
         editTextPassword = (EditText) findViewById(R.id.password);

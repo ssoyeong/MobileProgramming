@@ -56,7 +56,10 @@ public class ChangeNicknameActivity extends Activity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
+                Intent intent1=new Intent();
+                setResult(2,intent1);
+                finish();
+                //startActivity(new Intent(getApplicationContext(), UserProfileActivity.class));
             }
         });
         check_duplicate=(Button)findViewById(R.id.check_duplicate_btn); //중복체크하는 버튼
@@ -143,5 +146,9 @@ public class ChangeNicknameActivity extends Activity {
 
 
 
+    }
+    public void onBackPressed() {
+        //안드로이드 백버튼 막기
+        return;
     }
 }

@@ -22,11 +22,13 @@ public class CheckList_Adapter extends BaseAdapter {
     String d;
     Context context;
     CheckBox checkBox;
+    String mode;
 
-    CheckList_Adapter(String uid,String date,ArrayList<CheckListData> item){
+    CheckList_Adapter(String uid,String date,ArrayList<CheckListData> item,String m){
         user_id=uid;
         list=item;
         d=date;
+        mode=m;
     }
 
     public int getCount(){
@@ -44,6 +46,7 @@ public class CheckList_Adapter extends BaseAdapter {
     public void clearItem(){
         list.clear();
     }
+
     public View getView(final int position, View convertView, ViewGroup parent){
         Context context=parent.getContext();
         if(convertView==null){
@@ -62,9 +65,18 @@ public class CheckList_Adapter extends BaseAdapter {
         checkBox.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view){
-                boolean newState= !list.get(position).isChecked();
-                list.get(position).CheckList_done=newState;
-                reference.child("Checklist").child(user_id).child(d).child(list.get(position).CheckList_item).setValue(list.get(position).CheckList_done);
+                if(mode=="V") //view_checklist
+                {
+                    boolean newState= !list.get(position).isChecked();
+                    list.get(position).CheckList_done=newState;
+                    reference.child("Checklist").child(user_id).child(d).child(list.get(position).CheckList_item).setValue(list.get(position).CheckList_done);
+                }
+                if(mode=="M")
+                {
+                    boolean newState= !list.get(position).isChecked();
+                    list.get(position).CheckList_done=newState;
+                }
+
             }
         });
         checkBox.setChecked(isChecked(position));

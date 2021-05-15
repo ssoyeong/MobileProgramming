@@ -260,14 +260,14 @@ public class RecordActivity extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(RecordActivity.this,CheckListActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            String uid = user.getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
             Intent intent=new Intent(RecordActivity.this,UserProfileActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            String uid = user.getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }

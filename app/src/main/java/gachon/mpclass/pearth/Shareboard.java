@@ -215,15 +215,15 @@ public class Shareboard extends AppCompatActivity {
         }
         if(id==R.id.action_checklist)
         {
-            Intent intent=new Intent(Shareboard.this,CheckListActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            Intent intent=new Intent(this,CheckListActivity.class);
+            String uid = user.getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
-            Intent intent=new Intent(Shareboard.this,UserProfileActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            Intent intent=new Intent(this,UserProfileActivity.class);
+            String uid = user.getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }

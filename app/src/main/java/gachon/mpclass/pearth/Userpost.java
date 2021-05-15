@@ -23,6 +23,7 @@ public class Userpost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userpost);
+        firebaseAuth = FirebaseAuth.getInstance();
         getSupportActionBar().setTitle("내 글 보기");
         recordfragment=new Recordfragemnt();
         sharefragment=new Sharefragment();

@@ -63,9 +63,18 @@ public class Modify_Checklist extends Fragment {
         date=bundle.getString("Date");
         items=new ArrayList<CheckListData>();
         items=bundle.getParcelableArrayList("list");
+        for(CheckListData item:items)
+        {
+            item.CheckList_done=false;
+        }
+        for(CheckListData item:items)
+        {
+            Log.e("TODO: ",item.CheckList_item);
+            Log.e("DONE: ",String.valueOf(item.CheckList_done));
+        }
         //initItems();
         listView=v.findViewById(R.id.listView);
-        CheckList_Adapter mAdapter=new CheckList_Adapter(uid,date,items);
+        CheckList_Adapter mAdapter=new CheckList_Adapter(uid,date,items,"M");
         listView.setAdapter(mAdapter);
 
 
@@ -74,31 +83,41 @@ public class Modify_Checklist extends Fragment {
             @Override
             public void onClick(View v) {
 
-                reference.child("Checklist").child(uid).child(date).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists())
-                        {
-                            for(DataSnapshot itemData:snapshot.getChildren())
-                            {
-                                String todo=itemData.getKey().toString(); //할 일 내용
-                                Log.v("todo",todo);
-                                boolean done=Boolean.parseBoolean(itemData.getValue().toString());
-                                Log.v("done",String.valueOf(done));
-                                //체크박스 true인 목록(데이터 삭제)
-                                if(done==true)
-                                {
-                                    reference.child("Checklist").child(uid).child(date).child(todo).setValue(null);
-                                }
-                            }
-                        }
+                for(CheckListData item:items)
+                {
+                    Log.e(">>TODO: ",item.CheckList_item);
+                    Log.e(">>DONE: ",String.valueOf(item.CheckList_done));
+                    if(item.CheckList_done==true)
+                    {
+                        Log.e("CHECKED: ",String.valueOf(item.CheckList_done));
+                        reference.child("Checklist").child(uid).child(date).child(item.CheckList_item).setValue(null);
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                }
+//                reference.child("Checklist").child(uid).child(date).addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if(snapshot.exists())
+//                        {
+//                            for(DataSnapshot itemData:snapshot.getChildren())
+//                            {
+//                                String todo=itemData.getKey().toString(); //할 일 내용
+//                                Log.v("todo",todo);
+//                                boolean done=Boolean.parseBoolean(itemData.getValue().toString());
+//                                Log.v("done",String.valueOf(done));
+//                                //체크박스 true인 목록(데이터 삭제)
+//                                if(done==true)
+//                                {
+//                                    reference.child("Checklist").child(uid).child(date).child(todo).setValue(null);
+//                                }
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
             }
         });
         return v;

@@ -45,6 +45,8 @@ public class Analysis extends AppCompatActivity {
         TextView harm = (TextView) findViewById(R.id.toxic);
         TextView eat = (TextView) findViewById(R.id.eat);
         initDatabase();
+
+        firebaseAuth = FirebaseAuth.getInstance();
         mRef=mDatabase.getReference("Tag");
         mRef.addValueEventListener(new ValueEventListener() {
             @Override

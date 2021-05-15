@@ -204,7 +204,10 @@ public class UserProfileActivity extends AppCompatActivity{
             String new_nickname=data.getStringExtra("new nickname");
             nickname.setText(new_nickname);
         }
-
+        if(resultCode==2)
+        {
+            nickname.setText(nick);
+        }
     }
     private void setProfile(){
         FirebaseStorage storage=FirebaseStorage.getInstance();
