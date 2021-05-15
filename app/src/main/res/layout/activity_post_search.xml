@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+        <EditText
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:hint="검색할 단어를 입력해주세요"
+            android:id="@+id/keyword"
+            android:layout_alignParentLeft="true"
+            android:textSize="20dp"/>
+    <Button
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/search_icon"
+        android:layout_toRightOf="@id/keyword"/>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/keyword">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="Instantiatable,MissingClass"
+            android:name="gachon.mpclass.pearth.nosearchfragment" />
+
+
+
+    </FrameLayout>
+
+</RelativeLayout>

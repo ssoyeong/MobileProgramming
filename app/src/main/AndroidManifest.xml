@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
         <activity android:name=".Userpost"/>
+        <activity android:name=".searchActivity"/>
         <activity android:name=".StoreViewActivity"/>
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".Shareboard_write" />
@@ -53,6 +54,7 @@
         <activity android:name=".spinneritem" />
         <activity android:name=".PopUpActivity" />
         <activity android:name=".SetLocationActivity" />
+
         <activity
             android:name=".MapFragment"
             tools:ignore="Instantiatable" />

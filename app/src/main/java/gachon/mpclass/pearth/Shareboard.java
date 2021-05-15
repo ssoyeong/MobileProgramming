@@ -183,7 +183,7 @@ public class Shareboard extends AppCompatActivity {
     //액션버튼 메뉴 액션바에 집어 넣기
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.seacrhmenu, menu);
         return true;
     }
 
@@ -231,9 +231,14 @@ public class Shareboard extends AppCompatActivity {
             Intent PostIntent = new Intent(this, Userpost.class);
             startActivity(PostIntent);
         }
+        if(id ==R.id.action_search){
+            Intent searchIntent = new Intent(this,searchActivity.class);
+            startActivity(searchIntent);
+        }
         if (id == R.id.action_back) {
             finish();
         }
+
 
 
         return super.onOptionsItemSelected(item);
