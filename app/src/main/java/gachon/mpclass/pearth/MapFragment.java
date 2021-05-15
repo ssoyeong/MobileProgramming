@@ -55,6 +55,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mapView.getMapAsync(this);
 
+
         return rootView;
     }
 

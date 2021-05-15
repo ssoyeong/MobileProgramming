@@ -42,6 +42,12 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
         context = this;
 
+        Toolbar toolbar = findViewById(R.id.my_toolbar);
+        toolbar.setTitle("추천 비건 음식점");
+        toolbar.setTitleTextColor(Color.BLACK);
+
+
+
 //        Toolbar toolbar = findViewById(R.id.my_toolbar);
 //        //toolbar.setTitleTextColor(Color.parseColor("#ffff33"));
 //        toolbar.setTitle("");
@@ -51,7 +57,7 @@ public class MapActivity extends AppCompatActivity {
 
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
-        findAdr_btn = (Button) findViewById(R.id.findAdr_btn);
+//        findAdr_btn = (Button) findViewById(R.id.findAdr_btn);
         favorite_btn=(Button) findViewById(R.id.favorite_btn);
 
         loadingMessage = (TextView) findViewById(R.id.loadingMessage);

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,30 +92,44 @@ public class FavoriteFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
+                if (listStores.size() == 0) {
+                    for (DataSnapshot child : snapshot.getChildren()) {
+                        String key = child.getKey();
+                        Log.d("Store", key);
 
-                for (DataSnapshot child : snapshot.getChildren()) {
-                    String key = child.getKey();
-                    Log.d("Store", key);
-
-                    for (Store s : allStores) {
-                        if (s.getName().equals(key)) {
-                            Log.d("keyStore", key);
-
-
-                            if(listStores.size() == 0){
+                        for (Store s : allStores) {
+                            if (s.getName().equals(key)) {
+                                Log.d("keyStore", key);
                                 listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
+
                             }
-                            else {
+                        }
+                    }
+
+                }
+                else {
+
+                   ArrayList<String> keyList = new ArrayList<String>();
+
+
+                    for (DataSnapshot child : snapshot.getChildren()) {
+                        String key = child.getKey();
+                        keyList.add(key);
+                        Log.d("Store", key);
+
+                        for (Store s : allStores) {
+                            if (s.getName().equals(key)) {
+                                Log.d("keyStore", key);
 
                                 Store s1 = new Store(s.getName());
-                                if(!listStores.contains(s1)){
+                                if (!listStores.contains(s1)) {
                                     listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
                                     Log.d("insert", s.getName());
                                 }
                             }
                         }
-                    }
 
+                    }
                 }
             }
 
@@ -127,8 +142,6 @@ public class FavoriteFragment extends Fragment {
 
         return rootView;
     }
-
-
 
 
 
