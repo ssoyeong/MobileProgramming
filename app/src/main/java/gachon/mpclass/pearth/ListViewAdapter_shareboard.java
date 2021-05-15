@@ -105,7 +105,8 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
             //            String user = list.getUid();
             public void onClick(View v) {
                 mDB.child("report" + cnt).child("postRef").setValue(ref);
-//                mDB.child("report"+cnt).child("postUser").setValue(user);
+                mDB.child("report" + cnt).child("postUser").setValue(post);
+                mDB.child("report" + cnt).child("reportUser").setValue(Uid);
                 Toast.makeText(context, "신고되었습니다.", Toast.LENGTH_SHORT).show();
 
             }

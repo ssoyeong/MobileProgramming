@@ -76,7 +76,7 @@ public class SubActivity extends AppCompatActivity {
     List<Object> Array = new ArrayList<Object>();
     private ImageView ivPreview;
     private Uri filePath;
-    String[] tag_item={"#물절약","#전기절약","#식물심기","#깨끗한공기","#환경자원봉사","#제로웨이스트","#유해물질안전폐기","#친환경식습관"};
+    String[] tag_item={"","#물절약","#전기절약","#식물심기","#깨끗한공기","#환경자원봉사","#제로웨이스트","#유해물질안전폐기","#친환경식습관"};
     TextView tag_list;
     String items="";
     private boolean isImg = true;
@@ -101,13 +101,8 @@ public class SubActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView adapterView, View view, int position, long id){
-                if(cnt[0] ==0){
-                    cnt[0]++;
-                }
-                else {
-                    items = items + adapter.getItem(position);
-                    tag_list.setText(items);
-                }
+                items = items + adapter.getItem(position);
+                tag_list.setText(items);
             }
             @Override
             public void onNothingSelected(AdapterView adapterView){

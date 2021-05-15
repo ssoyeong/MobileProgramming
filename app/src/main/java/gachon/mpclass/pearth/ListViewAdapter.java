@@ -89,22 +89,7 @@ public class ListViewAdapter extends BaseAdapter {
     public void hideButton(ImageButton btn) {
         btn.setVisibility(View.INVISIBLE);
     }
-//    public Uri searchProfile(String uid){
-//
-//        StorageReference profileRef = storage.getReference();
-//        profileRef.child(uid).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                profileUri = uri;
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                profileUri = null;
-//            }
-//        });
-//        return profileUri;
-//    }
+
     public Uri defaultProfile(){
         defaultUri = null;
         StorageReference defaultRef = storage.getReference();
@@ -142,11 +127,10 @@ public class ListViewAdapter extends BaseAdapter {
         report.setOnClickListener(new View.OnClickListener() {
             String ref = G.keyList.get(position); //클릭한 글의 고유주소
 
-            //            String user = list.getUid();
             public void onClick(View v) {
                 mDB.child("report" + cnt).child("postRef").setValue(ref);
-
-//                mDB.child("report"+cnt).child("postUser").setValue(user);
+                mDB.child("report" + cnt).child("postUser").setValue(post);
+                mDB.child("report" + cnt).child("reportUser").setValue(Uid);
                 Toast.makeText(context, "신고되었습니다.", Toast.LENGTH_SHORT).show();
 
             }
@@ -189,20 +173,6 @@ public class ListViewAdapter extends BaseAdapter {
             textView1.setText(list.getTitle());
             textView2.setText(list.getContent());
             tag.setText(list.getTag());
-
-//                profileUri = null;
-//                Uri uriP = searchProfile(profile);
-//                Uri uriD = defaultProfile();
-//                if (uriP!=null) {
-//                    Glide.with(convertView)
-//                            .load(uriP)
-//                            .into(circleImageView);
-//                } else {
-//                    Glide.with(convertView)
-//                            .load(uriD)
-//                            .into(circleImageView);
-//
-//                }
             Glide.with(convertView)
                     .load(list.getProfileUrl())
                     .into(circleImageView);
@@ -216,22 +186,6 @@ public class ListViewAdapter extends BaseAdapter {
             Glide.with(convertView)
                     .load(list.getImgUrl())
                     .into(imageView);
-
-
-//            profileUri = null;
-//            profileUri = searchProfile(profile);
-//            defaultUri = defaultProfile();
-//            if (profileUri==null) {
-//                Glide.with(convertView)
-//                        .load(defaultUri)
-//                        .into(circleImageView);
-//            } else {
-//                Glide.with(convertView)
-//                        .load(profileUri)
-//                        .into(circleImageView);
-//
-//            }
-
                 Glide.with(convertView)
                         .load(list.getProfileUrl())
                         .into(circleImageView);

@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pearth">
-        <activity android:name=".StoreViewActivity"></activity>
+        <activity android:name=".Userpost"/>
+        <activity android:name=".StoreViewActivity"/>
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".Shareboard_write" />
         <activity android:name=".Shareboard" />
