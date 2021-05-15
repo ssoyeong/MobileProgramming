@@ -34,5 +34,10 @@
     <item android:id="@+id/action_post"
         android:title="내 글 보기"
         app:showAsAction="withText"/>
+    <item android:id="@+id/action_back"
+        android:title="Back"
+        android:icon="@drawable/ic_action_back"
+        app:showAsAction="always"
+        />
 
 </menu>

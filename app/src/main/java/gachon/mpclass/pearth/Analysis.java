@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +29,7 @@ public class Analysis extends AppCompatActivity {
     private DatabaseReference mRef;
     ChildEventListener mChild;
     int count=0;
-
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +153,7 @@ public class Analysis extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_record) {
-            Intent homeIntent = new Intent(this, MainActivity.class);
+            Intent homeIntent = new Intent(this, RecordActivity.class);
             startActivity(homeIntent);
         }
         if (id == R.id.action_analysis) {
@@ -167,7 +168,27 @@ public class Analysis extends AppCompatActivity {
             Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
             startActivity(plantIntent);
         }
-
+        if(id==R.id.action_checklist)
+        {
+            Intent intent=new Intent(Analysis.this,CheckListActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_UserProfile)
+        {
+            Intent intent=new Intent(Analysis.this,UserProfileActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_post){
+            Intent PostIntent = new Intent(this, Userpost.class);
+            startActivity(PostIntent);
+        }
+        if (id == R.id.action_back) {
+            finish();
+        }
 
 
         return super.onOptionsItemSelected(item);

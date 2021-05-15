@@ -68,7 +68,7 @@ public class UserProfileActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
+        getSupportActionBar().setTitle("프로필 설정");
         Intent intent=getIntent();
         uid=intent.getStringExtra("uid");
 
@@ -304,7 +304,6 @@ public class UserProfileActivity extends AppCompatActivity{
 
 
 
-
     //액션버튼 메뉴 액션바에 집어 넣기
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
@@ -340,21 +339,27 @@ public class UserProfileActivity extends AppCompatActivity{
         }
         if(id==R.id.action_checklist)
         {
-            Intent intent=new Intent(this,CheckListActivity.class);
-            //uid = firebaseAuth.getCurrentUser().getUid();
+            Intent intent=new Intent(UserProfileActivity.this,CheckListActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
-            Intent intent=new Intent(this,UserProfileActivity.class);
-            //uid = firebaseAuth.getCurrentUser().getUid();
+            Intent intent=new Intent(UserProfileActivity.this,UserProfileActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
+        }
+        if(id==R.id.action_post){
+            Intent PostIntent = new Intent(this, Userpost.class);
+            startActivity(PostIntent);
+        }
+        if (id == R.id.action_back) {
+            finish();
         }
 
 
         return super.onOptionsItemSelected(item);
     }
-    
 }

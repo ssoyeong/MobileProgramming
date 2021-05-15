@@ -177,13 +177,14 @@ public class GrowingPlantActivity extends AppCompatActivity {
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
-        if(id==R.id.action_store)
-        {
-            Intent intent=new Intent(GrowingPlantActivity.this,SetLocationActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
-            intent.putExtra("uid",uid);
-            startActivity(intent);
+        if(id==R.id.action_post){
+            Intent PostIntent = new Intent(this, Userpost.class);
+            startActivity(PostIntent);
         }
+        if (id == R.id.action_back) {
+            finish();
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

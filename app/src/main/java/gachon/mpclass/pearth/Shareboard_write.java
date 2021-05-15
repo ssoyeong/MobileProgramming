@@ -88,7 +88,7 @@ public class Shareboard_write extends AppCompatActivity {
         final int[] cnt = {0};
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shareboard_write);
-
+        getSupportActionBar().setTitle("");
         Spinner spinner=(Spinner)findViewById(R.id.spinner);
         listSpinner = getResources().getStringArray(R.array.spinner_shareboard);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,listSpinner);
@@ -327,7 +327,7 @@ public class Shareboard_write extends AppCompatActivity {
     //액션버튼 메뉴 액션바에 집어 넣기
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.writemenu, menu);
         return true;
     }
 
@@ -341,18 +341,10 @@ public class Shareboard_write extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
 
-        if (id == R.id.action_record) {
-            Intent homeIntent = new Intent(this, RecordActivity.class);
-            startActivity(homeIntent);
+        if (id == R.id.action_back) {
+            finish();
         }
-        if (id == R.id.action_analysis) {
-            Intent settingIntent = new Intent(this, Analysis.class);
-            startActivity(settingIntent);
-        }
-        if (id == R.id.action_share) {
-            Intent shareIntent = new Intent(this, Shareboard.class);
-            startActivity(shareIntent);
-        }
+
 
 
 
