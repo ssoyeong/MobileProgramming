@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import java.io.Serializable;
@@ -39,6 +40,9 @@ public class ListViewFragment extends Fragment {
 
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_listview, container, false);
 
+//        ActionBar actionBar = ((MapActivity)getActivity()).getSupportActionBar();
+//        actionBar.setTitle("리스트 보기");
+//        actionBar.setDisplayHomeAsUpEnabled(false);
         return rootView;
     }
 

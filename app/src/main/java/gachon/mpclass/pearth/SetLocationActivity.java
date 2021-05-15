@@ -12,6 +12,8 @@ import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -49,6 +52,9 @@ public class SetLocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
         setContentView(R.layout.activity_set_location);
 
         if (!checkLocationServicesStatus()) {
@@ -59,10 +65,10 @@ public class SetLocationActivity extends AppCompatActivity {
             checkRunTimePermission();
         }
 
+        getSupportActionBar().setTitle("추천 비건 음식점");
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         toolbar.setTitle("지역 설정");
         toolbar.setTitleTextColor(Color.BLACK);
-//        setSupportActionBar(toolbar);
 
         gps_btn = (Button) findViewById(R.id.gps_btn);
         complete_btn = (Button) findViewById(R.id.complete_btn);
@@ -594,6 +600,70 @@ public class SetLocationActivity extends AppCompatActivity {
     }
 
 
+
+
+    //액션버튼 메뉴 액션바에 집어 넣기
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    //액션바 숨기기
+    private void hideActionBar () {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null)
+            actionBar.hide();
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if (id == R.id.action_record) {
+            Intent homeIntent = new Intent(this, RecordActivity.class);
+            startActivity(homeIntent);
+        }
+        if (id == R.id.action_analysis) {
+            Intent settingIntent = new Intent(this, Analysis.class);
+            startActivity(settingIntent);
+        }
+        if (id == R.id.action_share) {
+            Intent shareIntent = new Intent(this, Shareboard.class);
+            startActivity(shareIntent);
+        }
+        if (id == R.id.action_plant) {
+            Intent plantIntent = new Intent(this, GrowingPlantActivity.class);
+            startActivity(plantIntent);
+        }
+        if(id==R.id.action_checklist)
+        {
+            Intent intent=new Intent(this,CheckListActivity.class);
+//            String uid = firebaseAuth.getCurrentUser().getUid();
+//            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_UserProfile)
+        {
+            Intent intent=new Intent(this,UserProfileActivity.class);
+//            String uid = firebaseAuth.getCurrentUser().getUid();
+//            intent.putExtra("uid",uid);
+            startActivity(intent);
+        }
+        if(id==R.id.action_post){
+            Intent PostIntent = new Intent(this, Userpost.class);
+            startActivity(PostIntent);
+        }
+        if(id==R.id.action_store) {
+            Intent intent = new Intent(this, SetLocationActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.action_back) {
+            finish();
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
 }
 
 

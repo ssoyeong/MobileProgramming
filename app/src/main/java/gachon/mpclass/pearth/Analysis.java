@@ -188,6 +188,12 @@ public class Analysis extends AppCompatActivity {
             Intent PostIntent = new Intent(this, Userpost.class);
             startActivity(PostIntent);
         }
+        if(id==R.id.action_store) {
+            Intent intent = new Intent(this, SetLocationActivity.class);
+            String uid = firebaseAuth.getCurrentUser().getUid();
+            intent.putExtra("uid", uid);
+            startActivity(intent);
+        }
         if (id == R.id.action_back) {
             finish();
         }
