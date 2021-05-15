@@ -16,7 +16,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 
 import java.util.ArrayList;
@@ -50,6 +58,13 @@ public class PopUpActivity extends Activity {
     SharedPreferences sh_Pref;
     SharedPreferences.Editor toEdit;
 
+
+    private FirebaseAuth firebaseAuth;
+    DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference conditionRef = mRootRef.child("Users");
+    String uid;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +74,12 @@ public class PopUpActivity extends Activity {
 
         sh_Pref = getSharedPreferences("Favorite Stores", MODE_PRIVATE);
         toEdit = sh_Pref.edit();
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        uid = user.getUid();
+        Log.d("uid", uid);
 
         store_name = (TextView) findViewById(R.id.store_name);
         store_type = (TextView) findViewById(R.id.store_type);
@@ -145,19 +166,11 @@ public class PopUpActivity extends Activity {
         });
 
 
-
-
-
-
-
         favorite_btn.setOnClickListener(new View.OnClickListener(){
 
             int flag = 0;
             @Override
             public void onClick(View view){
-
-
-
 
 
                 for (Store str : stores) {
@@ -195,29 +208,34 @@ public class PopUpActivity extends Activity {
 
 
 
+                conditionRef.child(name).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(flag == 0) {
 
+                            stores.add(store);
+                            favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
+                            Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
 
+                            conditionRef.child(uid).child("favorite").child(name).setValue(index);
+                            Log.d("fb", "추가" + name);
+                        }
+                        else if(flag == 1){
 
+                            stores.remove(store);
+                            favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
+                            Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
 
+                            conditionRef.child(uid).child("favorite").child(name).removeValue();
+                            Log.d("fb", "삭제" + name);
+                        }
+                    }
 
-                if(flag == 0){
-                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
-                    stores.add(store);
-                    Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                    saveData();
-                    listData();
-                }
-                else if(flag == 1){
-                    stores.remove(store);
-                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
-                    Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
-
-                    deleteData();
-                    listData();
-
-                }
-
+                    }
+                });
 
 
 //                bundleStore = new Store();
@@ -230,21 +248,7 @@ public class PopUpActivity extends Activity {
 
 
             }
-
-
-
         });
-
-
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -262,39 +266,5 @@ public class PopUpActivity extends Activity {
         //안드로이드 백버튼 막기
         return;
     }
-
-
-    public void saveData() {
-
-        toEdit.putInt(name, index);
-        toEdit.commit();
-    }
-
-    public void deleteData() {
-        toEdit.remove(name);
-        toEdit.commit();
-    }
-
-//    public void applySharedPreference(){
-//        sh_Pref = getSharedPreferences("Login Credentials", MODE_PRIVATE);
-//        if (sh_Pref!=null && sh_Pref.contains("Username")){
-//            String name = sh_Pref.getString("Username", "noname");  userinput.setText(name);
-//        }
-
-
-
-    public void listData(){
-       if(sh_Pref != null){
-           int one = sh_Pref.getInt("제로비건", -1);
-           Log.d("data", String.valueOf(one));
-           int two = sh_Pref.getInt("해피비건", -1);
-           Log.d("data", String.valueOf(two));
-           int thr = sh_Pref.getInt("닥터비건", -1);
-           Log.d("data", String.valueOf(thr));
-       }
-    }
-
-
-
 
 }

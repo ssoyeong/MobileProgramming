@@ -58,9 +58,6 @@ public class FavoriteFragment extends Fragment {
     String DONG = "";
 
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
@@ -72,7 +69,6 @@ public class FavoriteFragment extends Fragment {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         uid = user.getUid();
         Log.d("uid", uid);
-
 
 
 
@@ -89,20 +85,33 @@ public class FavoriteFragment extends Fragment {
 
 
 
+
         conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-//                String key = conditionRef.child(uid).child("favorite").getKey();
 
-                for (DataSnapshot child : snapshot.getChildren()){
+
+                for (DataSnapshot child : snapshot.getChildren()) {
                     String key = child.getKey();
                     Log.d("Store", key);
 
-                    for(Store s : allStores){
-                        if(s.getName().equals(key)){
+                    for (Store s : allStores) {
+                        if (s.getName().equals(key)) {
                             Log.d("keyStore", key);
-                            listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
+
+
+                            if(listStores.size() == 0){
+                                listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
+                            }
+                            else {
+
+                                Store s1 = new Store(s.getName());
+                                if(!listStores.contains(s1)){
+                                    listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
+                                    Log.d("insert", s.getName());
+                                }
+                            }
                         }
                     }
 
@@ -116,43 +125,19 @@ public class FavoriteFragment extends Fragment {
             }
         });
 
-        onStart();
+        return rootView;
+    }
 
 
 
 
 
+    @Override
+    public void onStart(){
+        super.onStart();
 
-
-
-
-
-//        if(rootView!=null) {
-//            ViewGroup parent = (ViewGroup) rootView.getParent();
-//            parent.removeView(rootView);
-//
-//        }
-//        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_listview, container, false);
-//        mContext = this.getContext();
-
-        //        scrollView = (ScrollView)rootView.findViewById(R.id.scrollView);
-        // ViewGroup header = (ViewGroup) inflater.inflate(R.layout.listview_header_listview, listView, false);
-
-
-
-     //   getData();
-
-
-
-
-
-
-// todo: life cycle 문제
 
         listView = (ListView) rootView.findViewById(R.id.listView);
-//        scrollView.setScrollbarFadingEnabled(true);
-
-        //        listView.addHeaderView(header);
         storeAdapter = new StoreAdapter(getLayoutInflater(), listStores);
         listView.setAdapter(storeAdapter);
 
@@ -177,43 +162,6 @@ public class FavoriteFragment extends Fragment {
 
             }
         });
-
-        return rootView;
-
-    }
-
-
-
-
-
-
-    public void getData(){
-        sh_Pref = mContext.getSharedPreferences("Favorite Stores", Context.MODE_PRIVATE);
-        if(sh_Pref != null) {
-
-
-
-            Map<String, ?> allEntries = sh_Pref.getAll();
-            for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-
-                Log.d("entry", entry.getKey() + " : " + entry.getValue());
-
-                String key = entry.getKey();
-
-                for(Store s : allStores){
-                    if(s.getName().equals(key)){
-                        listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
-                    }
-                }
-
-
-            }
-
-        }
-        else{
-            //todo: 즐겨찾기 항목이 없을 때
-            Toast.makeText(getContext(), "즐겨찾기 항목 없음", Toast.LENGTH_LONG).show();
-        }
 
     }
 }
