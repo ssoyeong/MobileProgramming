@@ -28,7 +28,6 @@ public class MapActivity extends AppCompatActivity {
     Button list_btn;
     Button map_btn;
     Button favorite_btn;
-    Button findAdr_btn;
 
     TextView loadingMessage;
     ArrayList<Store> stores = new ArrayList<>();
@@ -47,17 +46,8 @@ public class MapActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.BLACK);
 
 
-
-//        Toolbar toolbar = findViewById(R.id.my_toolbar);
-//        //toolbar.setTitleTextColor(Color.parseColor("#ffff33"));
-//        toolbar.setTitle("");
-//        setSupportActionBar(toolbar);
-
-
-
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
-//        findAdr_btn = (Button) findViewById(R.id.findAdr_btn);
         favorite_btn=(Button) findViewById(R.id.favorite_btn);
 
         loadingMessage = (TextView) findViewById(R.id.loadingMessage);
@@ -117,4 +107,21 @@ public class MapActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public void onStart(){
+
+        super.onStart();
+
+        loadingMessage.setText("");
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("stores_key", stores);
+        bundle.putString("SIGUN", SIGUN);
+        bundle.putString("DONG", DONG);
+        mapFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
+        map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+        list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+        favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+    }
 }
