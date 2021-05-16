@@ -60,19 +60,13 @@ public class FavoriteFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState){
 
-        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_favorite, container, false);
-
-        mContext = this.getContext();
-
+        super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         uid = user.getUid();
         Log.d("uid", uid);
-
-
-
 
         allStores.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
         allStores.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
@@ -83,14 +77,53 @@ public class FavoriteFragment extends Fragment {
         allStores.add(new Store("닥터비건", "37.52199", "127.04464", "비건 채식 레스토랑", "서울특별시 강남구 청담동 17-7", "02-543-2030"));
         allStores.add(new Store("비건이삼", "37.51508", "127.04876", "비건 베이커리", "서울특별시 강남구 삼성동 26-33", "050713634460"));
 
+        getFavoriteData();
+
+    }
 
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        rootView = (ViewGroup) inflater.inflate(R.layout.fragment_favorite, container, false);
+
+        mContext = this.getContext();
+
+        listView = (ListView) rootView.findViewById(R.id.listView);
+        storeAdapter = new StoreAdapter(getLayoutInflater(), listStores);
+        listView.setAdapter(storeAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    Intent intent = new Intent(getActivity(), PopUpActivity.class);
+
+                    Store obj = (Store) listView.getAdapter().getItem(position);
+
+                    Bundle mybundle = new Bundle();
+                    mybundle.putParcelable("store", obj);
+                    mybundle.putString("name", obj.getName());
+                    mybundle.putString("address", obj.getAddr());
+                    mybundle.putString("telephone", obj.getTel());
+                    mybundle.putString("type", obj.getType());
+
+                    intent.putExtras(mybundle);
+                    startActivity(intent);
+                }
+
+            }
+        });
+
+        return rootView;
+    }
+
+
+    public void getFavoriteData(){
 
         conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
 
                 if (listStores.size() == 0) {
                     for (DataSnapshot child : snapshot.getChildren()) {
@@ -105,12 +138,10 @@ public class FavoriteFragment extends Fragment {
                             }
                         }
                     }
-
                 }
                 else {
 
-                   ArrayList<String> keyList = new ArrayList<String>();
-
+                    ArrayList<String> keyList = new ArrayList<String>();
 
                     for (DataSnapshot child : snapshot.getChildren()) {
                         String key = child.getKey();
@@ -128,9 +159,10 @@ public class FavoriteFragment extends Fragment {
                                 }
                             }
                         }
-
                     }
                 }
+
+                storeAdapter.notifyDataSetChanged();
             }
 
 
@@ -139,43 +171,6 @@ public class FavoriteFragment extends Fragment {
                 throw error.toException();
             }
         });
-
-        return rootView;
-    }
-
-
-
-    @Override
-    public void onStart(){
-        super.onStart();
-
-
-        listView = (ListView) rootView.findViewById(R.id.listView);
-        storeAdapter = new StoreAdapter(getLayoutInflater(), listStores);
-        listView.setAdapter(storeAdapter);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
-                    Intent intent = new Intent(getActivity(), PopUpActivity.class);
-
-                    Store obj = (Store) listView.getAdapter().getItem(position);
-
-                    Bundle mybundle = new Bundle();
-                    mybundle.putParcelable("store", obj);
-                    mybundle.putString("name", obj.getName());
-                    mybundle.putString("address", obj.getAddr());
-                    mybundle.putString("telephone", obj.getTel());
-                    mybundle.putString("type", obj.getType());
-                    intent.putExtras(mybundle);
-                    startActivity(intent);
-                }
-
-            }
-        });
-
     }
 }
 

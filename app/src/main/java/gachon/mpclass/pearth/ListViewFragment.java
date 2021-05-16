@@ -85,6 +85,7 @@ public class ListViewFragment extends Fragment {
                     mybundle.putString("address", obj.getAddr());
                     mybundle.putString("telephone", obj.getTel());
                     mybundle.putString("type", obj.getType());
+
                     intent.putExtras(mybundle);
                     startActivity(intent);
                 }

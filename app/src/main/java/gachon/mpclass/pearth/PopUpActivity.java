@@ -115,6 +115,7 @@ public class PopUpActivity extends Activity {
             telephone = bundle.getString("telephone");
             type = bundle.getString("type");
 
+
             store_name.setText(store.getName());
             store_addr.setText(store.getAddr());
             store_tel.setText(store.getTel());
@@ -135,9 +136,10 @@ public class PopUpActivity extends Activity {
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ListViewFragment.class);
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+
+                    Intent intent = new Intent(getApplicationContext(), ListViewFragment.class);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
             }
         });
 

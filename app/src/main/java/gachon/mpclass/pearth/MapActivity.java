@@ -8,11 +8,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,6 +39,7 @@ public class MapActivity extends AppCompatActivity {
     ArrayList<Store> stores = new ArrayList<>();
     String SIGUN = "";
     String DONG = "";
+    FrameLayout container;
 
 
     @Override
@@ -64,6 +67,8 @@ public class MapActivity extends AppCompatActivity {
         listViewFragment = new ListViewFragment();
         mapFragment = new MapFragment();
         favoriteFragment = new FavoriteFragment();
+
+
 
 
         map_btn.setOnClickListener(new View.OnClickListener() {
@@ -122,16 +127,20 @@ public class MapActivity extends AppCompatActivity {
 
         super.onStart();
 
-        loadingMessage.setText("");
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("stores_key", stores);
-        bundle.putString("SIGUN", SIGUN);
-        bundle.putString("DONG", DONG);
-        mapFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
-        map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-        list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-        favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+        Intent data = getIntent();
+
+        if(data != null) {
+            loadingMessage.setText("");
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("stores_key", stores);
+            bundle.putString("SIGUN", SIGUN);
+            bundle.putString("DONG", DONG);
+            mapFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
+            map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+            list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+            favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+        }
     }
 
 
