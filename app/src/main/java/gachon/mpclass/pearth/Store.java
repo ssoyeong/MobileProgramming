@@ -42,8 +42,10 @@ public class Store implements Parcelable{
     }
 
     public Store(String name){
+
         this.name = name;
     }
+
 
     protected Store(Parcel in) {
         name = in.readString();

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,8 +53,9 @@ public class PopUpActivity extends Activity {
     private int index;
 
     Store store;
-    ArrayList<Store> stores;
+    //    ArrayList<Store> stores;
     ArrayList<Store> storeList;
+    ArrayList<String> favorites;
     Store bundleStore;
     SharedPreferences sh_Pref;
     SharedPreferences.Editor toEdit;
@@ -93,7 +95,7 @@ public class PopUpActivity extends Activity {
         favorite_btn = (Button) findViewById(R.id.favorite_btn);
         ok_btn = (Button) findViewById(R.id.ok_btn);
 
-        stores = new ArrayList<Store>();
+//        stores = new ArrayList<Store>();
         storeList = new ArrayList<Store>();
 
         storeList.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
@@ -115,14 +117,11 @@ public class PopUpActivity extends Activity {
             telephone = bundle.getString("telephone");
             type = bundle.getString("type");
 
-
             store_name.setText(store.getName());
             store_addr.setText(store.getAddr());
             store_tel.setText(store.getTel());
             store_type.setText(store.getType());
-
         }
-
 
 
         for (Store s : storeList){
@@ -131,15 +130,44 @@ public class PopUpActivity extends Activity {
             }
         }
 
-//        applySharedPreference();
+
+        favorites = new ArrayList<>();
+        conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot data : snapshot.getChildren()) {
+
+                    if(!favorites.contains(data.getKey())) {
+                        favorites.add(data.getKey());
+                    }
+                }
+
+                System.out.println(favorites);
+                if(favorites.contains(name)){
+                    System.out.println("contains: " + name);
+                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
+                }
+                else{
+                    System.out.println("Not contains: " + name);
+                    favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                    Intent intent = new Intent(getApplicationContext(), ListViewFragment.class);
-                    setResult(Activity.RESULT_OK, intent);
-                    finish();
+                Intent intent = new Intent(getApplicationContext(), ListViewFragment.class);
+                setResult(Activity.RESULT_OK, intent);
+                finish();
             }
         });
 
@@ -175,78 +203,41 @@ public class PopUpActivity extends Activity {
             public void onClick(View view){
 
 
-                for (Store str : stores) {
-                    if (str.getName().equals(store.getName())) {
-                        if (store.getType() == null || str.getType() == null) {
-                            if (str.getAddr() == null || store.getAddr() == null) {
-                                flag = 1;
-                                break;
-                            } else if (str.getAddr() != null && store.getAddr() != null) {
-                                if (str.getAddr().equals(store.getAddr())) {
-                                    flag = 1;
-                                    break;
-                                } else
-                                    flag = 0;
-                            }
-                        } else if (str.getType() != null && store.getType() != null) {
-                            if (str.getType().equals(store.getType())) {
-                                if (str.getAddr() == null || store.getAddr() == null) {
-                                    flag = 1;
-                                    break;
-                                } else if (str.getAddr() != null && store.getAddr() != null) {
-                                    if (str.getAddr().equals(store.getAddr())) {
-                                        flag = 1;
-                                        break;
-                                    } else
-                                        flag = 0;
-                                }
-                            } else
-                                flag = 0;
-                        }
-                    } else {
-                        flag = 0;
-                    }
-                }
-
-
-
-                conditionRef.child(name).addValueEventListener(new ValueEventListener() {
+                conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(flag == 0) {
 
-                            stores.add(store);
+                        favorites.clear();
+                        for(DataSnapshot data : snapshot.getChildren()) {
+
+                            if(!favorites.contains(data.getKey())) {
+                                favorites.add(data.getKey());
+                            }
+                        }
+
+                        System.out.println("favorites 목록" + favorites);
+
+                        if(!favorites.contains(name)) {
+
                             favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                             Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
-
                             conditionRef.child(uid).child("favorite").child(name).setValue(index);
-                            Log.d("fb", "추가" + name);
+                            System.out.println("popup에서 즐겨찾기 추가: " + name);
                         }
-                        else if(flag == 1){
+                        else{
 
-                            stores.remove(store);
                             favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
                             Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
-
                             conditionRef.child(uid).child("favorite").child(name).removeValue();
-                            Log.d("fb", "삭제" + name);
+                            System.out.println("popup에서 즐겨찾기 해제: " + name);
                         }
-                    }
 
+                    }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-
-
-//                bundleStore = new Store();
-//                bundleStore.setStores(store);
-                Intent intent = new Intent(PopUpActivity.this, FavoriteFragment.class);
-
-                intent.putExtra("store", store);
-                intent.putExtra("flag", flag);
-//                startActivity(intent);
 
 
             }
@@ -268,5 +259,4 @@ public class PopUpActivity extends Activity {
         //안드로이드 백버튼 막기
         return;
     }
-
 }

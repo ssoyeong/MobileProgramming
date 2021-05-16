@@ -54,6 +54,7 @@ public class FavoriteFragment extends Fragment {
     DatabaseReference conditionRef = mRootRef.child("Users");
     String uid;
     int index;
+    ArrayList<String> favorites;
 
     String SIGUN = "";
     String DONG = "";
@@ -68,6 +69,7 @@ public class FavoriteFragment extends Fragment {
         uid = user.getUid();
         Log.d("uid", uid);
 
+
         allStores.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
         allStores.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
         allStores.add(new Store("블렌드랩", "37.50129", "127.10353", "카페", "서울특별시 송파구 석촌동 257 1층", "070-4922-2700"));
@@ -77,8 +79,9 @@ public class FavoriteFragment extends Fragment {
         allStores.add(new Store("닥터비건", "37.52199", "127.04464", "비건 채식 레스토랑", "서울특별시 강남구 청담동 17-7", "02-543-2030"));
         allStores.add(new Store("비건이삼", "37.51508", "127.04876", "비건 베이커리", "서울특별시 강남구 삼성동 26-33", "050713634460"));
 
+        System.out.println("함수 시작 전");
         getFavoriteData();
-
+        System.out.println("함수 시작 후");
     }
 
 
@@ -121,56 +124,95 @@ public class FavoriteFragment extends Fragment {
 
     public void getFavoriteData(){
 
-        conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
+//        conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                if (listStores.size() == 0) {
+//                    for (DataSnapshot child : snapshot.getChildren()) {
+//                        String key = child.getKey();
+//                        Log.d("Store", key);
+//
+//                        for (Store s : allStores) {
+//                            if (s.getName().equals(key)) {
+//                                Log.d("keyStore", key);
+//                                listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
+//
+//                            }
+//                        }
+//                    }
+//                }
+//                else {
+//
+//                    ArrayList<String> keyList = new ArrayList<String>();
+//
+//                    for (DataSnapshot child : snapshot.getChildren()) {
+//                        String key = child.getKey();
+//                        keyList.add(key);
+//                        Log.d("Store", key);
+//
+//                        for (Store s : allStores) {
+//                            if (s.getName().equals(key)) {
+//                                Log.d("keyStore", key);
+//
+//                                Store s1 = new Store(s.getName());
+//                                if (!listStores.contains(s1)) {
+//                                    listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
+//                                    Log.d("insert", s.getName());
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                storeAdapter.notifyDataSetChanged();
+//            }
+//
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                throw error.toException();
+//            }
+//        });
+
+        System.out.println("getFavoriteData 시작");
+//        listStores.clear();
+//        storeAdapter.notifyDataSetChanged();
+        System.out.println("listStores 클리어");
+        System.out.println("listStores 사이즈: " + listStores.size());
+
+
+        favorites = new ArrayList<>();
+        conditionRef.child(uid).child("favorite").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if (listStores.size() == 0) {
-                    for (DataSnapshot child : snapshot.getChildren()) {
-                        String key = child.getKey();
-                        Log.d("Store", key);
-
-                        for (Store s : allStores) {
-                            if (s.getName().equals(key)) {
-                                Log.d("keyStore", key);
-                                listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
-
-                            }
-                        }
-                    }
+                for(DataSnapshot data : snapshot.getChildren()) {
+                    System.out.println(data.getKey());
+                    favorites.add(data.getKey());
                 }
-                else {
 
-                    ArrayList<String> keyList = new ArrayList<String>();
+                System.out.println(favorites);
 
-                    for (DataSnapshot child : snapshot.getChildren()) {
-                        String key = child.getKey();
-                        keyList.add(key);
-                        Log.d("Store", key);
+                for(String str : favorites){
 
-                        for (Store s : allStores) {
-                            if (s.getName().equals(key)) {
-                                Log.d("keyStore", key);
-
-                                Store s1 = new Store(s.getName());
-                                if (!listStores.contains(s1)) {
-                                    listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
-                                    Log.d("insert", s.getName());
-                                }
-                            }
+                    for(Store s1 : allStores){
+                        if(s1.getName().equals(str) && !listStores.contains(s1)){
+                            listStores.add(new Store(s1.getName(), s1.getLat(), s1.getLongt(), s1.getType(), s1.getAddr(), s1.getTel()));
+                            System.out.println("리스트에 추가 완료");
                         }
                     }
                 }
 
                 storeAdapter.notifyDataSetChanged();
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                throw error.toException();
+
             }
         });
+
+        System.out.println("getFavoriteData 종료");
     }
 }
 
