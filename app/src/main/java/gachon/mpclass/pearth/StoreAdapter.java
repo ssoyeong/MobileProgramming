@@ -73,4 +73,8 @@ public class StoreAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public void clearData(){
+        listStore.clear();
+    }
+
 }

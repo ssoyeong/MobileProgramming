@@ -70,6 +70,7 @@ public class FavoriteFragment extends Fragment {
         Log.d("uid", uid);
 
 
+
         allStores.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
         allStores.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
         allStores.add(new Store("블렌드랩", "37.50129", "127.10353", "카페", "서울특별시 송파구 석촌동 257 1층", "070-4922-2700"));
@@ -176,7 +177,7 @@ public class FavoriteFragment extends Fragment {
 //        });
 
         System.out.println("getFavoriteData 시작");
-//        listStores.clear();
+//        storeAdapter.clearData();
 //        storeAdapter.notifyDataSetChanged();
         System.out.println("listStores 클리어");
         System.out.println("listStores 사이즈: " + listStores.size());
