@@ -386,13 +386,20 @@ public class SetLocationActivity extends AppCompatActivity {
                 double longitude = gpsTracker.getLongitude();
 
                 String address = getCurrentAddress(latitude, longitude);
+                //todo: 주소 좌표값 변환 오류
+                Log.d("address", address);
                 String split[] = address.split(" ");
                 area = split[2];
+                int isShort = 0;
                 if(!split[3].substring(split[3].length()-1).equals("동")) {
                     area = area + " " + split[3];
-                    if(split[4].substring(split[4].length()-1).equals("동")) {
-                        areaTown = split[4];
+
+                    if(split.length > 4) {
+                        if (split[4].substring(split[4].length() - 1).equals("동")) {
+                            areaTown = split[4];
+                        }
                     }
+                    else isShort = 1;
                 }
                 else {
                     areaTown = split[3];
@@ -401,7 +408,12 @@ public class SetLocationActivity extends AppCompatActivity {
                 String[] areas = area.split(" ");
                 if(areas.length == 2){
                     SIGUN = area.split(" ")[0];
-                    SIDO = area.split(" ")[1] + " " + areaTown;
+                    if(isShort == 0) {
+                        SIDO = area.split(" ")[1] + " " + areaTown;
+                    }
+                    else{
+                        SIDO = area.split(" ")[1];
+                    }
                 }else {
                     SIGUN = areas[0];
                     SIDO = areaTown;
