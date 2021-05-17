@@ -145,11 +145,9 @@ public class PopUpActivity extends Activity {
 
                 System.out.println(favorites);
                 if(favorites.contains(name)){
-                    System.out.println("contains: " + name);
                     favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                 }
                 else{
-                    System.out.println("Not contains: " + name);
                     favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
 
                 }
@@ -215,21 +213,18 @@ public class PopUpActivity extends Activity {
                             }
                         }
 
-                        System.out.println("favorites 목록" + favorites);
 
                         if(!favorites.contains(name)) {
 
                             favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_black_24dp, 0, 0);
                             Toast.makeText(PopUpActivity.this, "즐겨찾기 추가", Toast.LENGTH_LONG).show();
                             conditionRef.child(uid).child("favorite").child(name).setValue(index);
-                            System.out.println("popup에서 즐겨찾기 추가: " + name);
                         }
                         else{
 
                             favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
                             Toast.makeText(PopUpActivity.this, "즐겨찾기 해제", Toast.LENGTH_LONG).show();
                             conditionRef.child(uid).child("favorite").child(name).removeValue();
-                            System.out.println("popup에서 즐겨찾기 해제: " + name);
                         }
 
                     }

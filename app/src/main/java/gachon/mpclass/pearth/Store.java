@@ -71,7 +71,7 @@ public class Store implements Parcelable{
 
     @Override
     public String toString() {
-        return this.getName() + "\n" + this.getTel() + "\n" + this.getAddr();
+        return this.getName() + " " + this.getTel() + " " + this.getAddr() + "\n";
     }
 
 

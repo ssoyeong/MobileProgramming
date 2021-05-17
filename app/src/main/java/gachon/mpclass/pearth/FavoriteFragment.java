@@ -80,9 +80,7 @@ public class FavoriteFragment extends Fragment {
         allStores.add(new Store("닥터비건", "37.52199", "127.04464", "비건 채식 레스토랑", "서울특별시 강남구 청담동 17-7", "02-543-2030"));
         allStores.add(new Store("비건이삼", "37.51508", "127.04876", "비건 베이커리", "서울특별시 강남구 삼성동 26-33", "050713634460"));
 
-        System.out.println("함수 시작 전");
         getFavoriteData();
-        System.out.println("함수 시작 후");
     }
 
 
@@ -125,86 +123,40 @@ public class FavoriteFragment extends Fragment {
 
     public void getFavoriteData(){
 
-//        conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                if (listStores.size() == 0) {
-//                    for (DataSnapshot child : snapshot.getChildren()) {
-//                        String key = child.getKey();
-//                        Log.d("Store", key);
-//
-//                        for (Store s : allStores) {
-//                            if (s.getName().equals(key)) {
-//                                Log.d("keyStore", key);
-//                                listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
-//
-//                            }
-//                        }
-//                    }
-//                }
-//                else {
-//
-//                    ArrayList<String> keyList = new ArrayList<String>();
-//
-//                    for (DataSnapshot child : snapshot.getChildren()) {
-//                        String key = child.getKey();
-//                        keyList.add(key);
-//                        Log.d("Store", key);
-//
-//                        for (Store s : allStores) {
-//                            if (s.getName().equals(key)) {
-//                                Log.d("keyStore", key);
-//
-//                                Store s1 = new Store(s.getName());
-//                                if (!listStores.contains(s1)) {
-//                                    listStores.add(new Store(s.getName(), s.getLat(), s.getLongt(), s.getType(), s.getAddr(), s.getTel()));
-//                                    Log.d("insert", s.getName());
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                storeAdapter.notifyDataSetChanged();
-//            }
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                throw error.toException();
-//            }
-//        });
-
-        System.out.println("getFavoriteData 시작");
-//        storeAdapter.clearData();
-//        storeAdapter.notifyDataSetChanged();
-        System.out.println("listStores 클리어");
-        System.out.println("listStores 사이즈: " + listStores.size());
-
-
         favorites = new ArrayList<>();
         conditionRef.child(uid).child("favorite").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot data : snapshot.getChildren()) {
-                    System.out.println(data.getKey());
                     favorites.add(data.getKey());
                 }
 
-                System.out.println(favorites);
+                System.out.println("현재 DB favorites: " + favorites);
 
                 for(String str : favorites){
 
                     for(Store s1 : allStores){
                         if(s1.getName().equals(str) && !listStores.contains(s1)){
                             listStores.add(new Store(s1.getName(), s1.getLat(), s1.getLongt(), s1.getType(), s1.getAddr(), s1.getTel()));
-                            System.out.println("리스트에 추가 완료");
                         }
                     }
                 }
 
+                for(Store s2 : listStores){
+                    int flag = 0;
+                    for(String str : favorites) {
+                        if (s2.getName().equals(str)) flag = 1;
+                    }
+                    if(flag == 0){
+                        listStores.remove(new Store(s2.getName(), s2.getLat(), s2.getLongt(), s2.getType(), s2.getAddr(), s2.getTel()));
+                    }
+                }
+
+
+
+                favorites.clear();
+                System.out.println("최종 listStores: " + listStores);
                 storeAdapter.notifyDataSetChanged();
             }
             @Override
@@ -213,7 +165,6 @@ public class FavoriteFragment extends Fragment {
             }
         });
 
-        System.out.println("getFavoriteData 종료");
     }
 }
 
