@@ -143,14 +143,34 @@ public class FavoriteFragment extends Fragment {
                     }
                 }
 
+
+
+
+//                for(Store s2 : listStores){
+//                    int flag = 0;
+//                    for(String str : favorites) {
+//                        if (s2.getName().equals(str)) flag = 1;
+//                    }
+//                    if(flag == 0){
+//                        listStores.remove(new Store(s2.getName(), s2.getLat(), s2.getLongt(), s2.getType(), s2.getAddr(), s2.getTel()));
+//                    }
+//                }
+
+
+                ArrayList<Store> removeList = new ArrayList<Store>();
+
                 for(Store s2 : listStores){
                     int flag = 0;
                     for(String str : favorites) {
                         if (s2.getName().equals(str)) flag = 1;
                     }
                     if(flag == 0){
-                        listStores.remove(new Store(s2.getName(), s2.getLat(), s2.getLongt(), s2.getType(), s2.getAddr(), s2.getTel()));
+                        removeList.add(new Store(s2.getName(), s2.getLat(), s2.getLongt(), s2.getType(), s2.getAddr(), s2.getTel()));
                     }
+                }
+
+                for(Store s3 : removeList){
+                    listStores.remove(s3);
                 }
 
 

@@ -102,24 +102,6 @@
             android:layout_marginLeft="2.5dp"
             android:layout_marginRight="2.5dp"/>
 
-<!--        <Button-->
-<!--            android:id="@+id/search_btn"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@color/teal_700"-->
-<!--            android:drawableTop="@drawable/ic_search_black_24dp"-->
-<!--            android:paddingTop="20dp"-->
-<!--            android:text="검색하기"-->
-<!--            app:backgroundTint="@color/mainGreen" />-->
-
-<!--        <View-->
-<!--            android:layout_width="0.3dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:background="#555"-->
-<!--            android:layout_marginLeft="2.5dp"-->
-<!--            android:layout_marginRight="2.5dp"/>-->
-
         <Button
             android:id="@+id/favorite_btn"
             android:layout_width="80dp"
