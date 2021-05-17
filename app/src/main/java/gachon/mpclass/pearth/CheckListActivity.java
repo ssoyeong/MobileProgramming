@@ -66,7 +66,7 @@ public class CheckListActivity extends AppCompatActivity {
         view_checklist = new View_Checklist();
         blank = new BlankFragment();
         modify = (Button) findViewById(R.id.modify);
-
+        modify.setEnabled(false);
         date_tv = (TextView) findViewById(R.id.date);
 
         Intent intent = getIntent();
@@ -82,6 +82,7 @@ public class CheckListActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
 
+                modify.setEnabled(true);
                 ft = manager.beginTransaction();
                 ft.replace(R.id.fragment_container, blank);
                 ft.commit();

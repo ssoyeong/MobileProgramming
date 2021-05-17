@@ -17,6 +17,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity {
@@ -39,6 +42,8 @@ public class MapActivity extends AppCompatActivity {
     String DONG = "";
     String address = "";
 
+    private FirebaseAuth firebaseAuth;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,15 +161,18 @@ public class MapActivity extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(this,CheckListActivity.class);
-//            String uid = firebaseAuth.getCurrentUser().getUid();
-//            intent.putExtra("uid",uid);
+            String uid = user.getUid();
+            Log.v("uid: ",uid);
+            intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
+            Log.v("<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>지도","mapActivity");
             Intent intent=new Intent(this,UserProfileActivity.class);
-//            String uid = firebaseAuth.getCurrentUser().getUid();
-//            intent.putExtra("uid",uid);
+            String uid = user.getUid();
+            Log.v("uid: ",uid);
+            intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_post){

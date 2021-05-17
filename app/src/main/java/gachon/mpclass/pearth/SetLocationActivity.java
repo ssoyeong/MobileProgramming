@@ -30,6 +30,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -49,10 +52,14 @@ public class SetLocationActivity extends AppCompatActivity {
     Button complete_btn;
     Button gps_btn;
 
+    private FirebaseAuth firebaseAuth;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.v("<<>>>><<>>>","SetLocationActivity");
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
         setContentView(R.layout.activity_set_location);
@@ -650,15 +657,17 @@ public class SetLocationActivity extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(this,CheckListActivity.class);
-//            String uid = firebaseAuth.getCurrentUser().getUid();
-//            intent.putExtra("uid",uid);
+            String uid = user.getUid();
+            Log.v("uid: ",uid);
+          intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
             Intent intent=new Intent(this,UserProfileActivity.class);
-//            String uid = firebaseAuth.getCurrentUser().getUid();
-//            intent.putExtra("uid",uid);
+            String uid = user.getUid();
+            Log.v("uid: ",uid);
+            intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_post){
