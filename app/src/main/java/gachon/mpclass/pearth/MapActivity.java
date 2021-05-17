@@ -17,8 +17,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
 
 public class MapActivity extends AppCompatActivity {
@@ -39,36 +37,40 @@ public class MapActivity extends AppCompatActivity {
     ArrayList<Store> stores = new ArrayList<>();
     String SIGUN = "";
     String DONG = "";
-    FrameLayout container;
+    String address = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.hide();
 
         setContentView(R.layout.activity_map);
         context = this;
 
-        getSupportActionBar().setTitle("추천 비건 음식점");
+        Intent data = getIntent();
+        if (data != null) {
+
+            Bundle bundle = data.getExtras();
+            SIGUN = bundle.getString("SIGUN");
+            DONG = bundle.getString("SIDO");
+            Log.d("address", SIGUN);
+            Log.d("address", DONG);
+            address = SIGUN.concat(" " + DONG);
+        }
+
         Toolbar toolbar = findViewById(R.id.my_toolbar);
-        toolbar.setTitle("추천 비건 음식점");
+        toolbar.setTitle(address);
         toolbar.setTitleTextColor(Color.BLACK);
 
 
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
         favorite_btn=(Button) findViewById(R.id.favorite_btn);
-
         loadingMessage = (TextView) findViewById(R.id.loadingMessage);
 
         listViewFragment = new ListViewFragment();
         mapFragment = new MapFragment();
         favoriteFragment = new FavoriteFragment();
-
-
 
 
         map_btn.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +90,6 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-
         list_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,10 +103,8 @@ public class MapActivity extends AppCompatActivity {
                 map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 list_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
                 favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-
             }
         });
-
 
         favorite_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,9 +116,7 @@ public class MapActivity extends AppCompatActivity {
                 favorite_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
             }
         });
-
     }
-
 
 
     //액션버튼 메뉴 액션바에 집어 넣기
@@ -135,7 +132,6 @@ public class MapActivity extends AppCompatActivity {
         if (actionBar != null)
             actionBar.hide();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -182,7 +178,6 @@ public class MapActivity extends AppCompatActivity {
         if (id == R.id.action_back) {
             finish();
         }
-
 
         return super.onOptionsItemSelected(item);
     }

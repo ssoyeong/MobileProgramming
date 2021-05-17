@@ -98,7 +98,7 @@ public class FavoriteFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position != 0) {
+                if (position >= 0) {
                     Intent intent = new Intent(getActivity(), PopUpActivity.class);
 
                     Store obj = (Store) listView.getAdapter().getItem(position);

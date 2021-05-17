@@ -23,14 +23,9 @@ import java.util.List;
 
 
 public class ListViewFragment extends Fragment {
-    private static final String STORESKEY = "stores_key";
-    private ArrayList<Store> listStores = new ArrayList<Store>();
 
+    private ArrayList<Store> listStores = new ArrayList<Store>();
     ListView listView;
-    //    ScrollView scrollView;
-    String SIGUN = "";
-    String DONG = "";
-    TextView list_title;
     View rootView;
     StoreAdapter storeAdapter;
 
@@ -39,17 +34,12 @@ public class ListViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_listview, container, false);
-
-//        ActionBar actionBar = ((MapActivity)getActivity()).getSupportActionBar();
-//        actionBar.setTitle("리스트 보기");
-//        actionBar.setDisplayHomeAsUpEnabled(false);
         return rootView;
     }
 
     @Override
     public void onStart(){
         super.onStart();
-
 
         if(listStores.size() == 0) {
 
@@ -64,17 +54,14 @@ public class ListViewFragment extends Fragment {
 
         }
 
-
-
         listView = (ListView)rootView.findViewById(R.id.listView);
         storeAdapter = new StoreAdapter(getLayoutInflater(), listStores);
         listView.setAdapter(storeAdapter);
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position != 0) {
+                if(position >= 0) {
                     Intent intent = new Intent(getActivity(), PopUpActivity.class);
 
                     Store obj = (Store) listView.getAdapter().getItem(position);
@@ -89,7 +76,6 @@ public class ListViewFragment extends Fragment {
                     intent.putExtras(mybundle);
                     startActivity(intent);
                 }
-
             }
         });
     }

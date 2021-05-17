@@ -26,11 +26,8 @@ public class Store implements Parcelable{
     private String addr = null;
     private String tel = null;
 
-
-
     public Store(){
     }
-
 
     public Store(String name, String lat, String longt, String type, String addr, String tel){
         this.name = name;
@@ -42,10 +39,8 @@ public class Store implements Parcelable{
     }
 
     public Store(String name){
-
         this.name = name;
     }
-
 
     protected Store(Parcel in) {
         name = in.readString();
@@ -137,10 +132,6 @@ public class Store implements Parcelable{
         parcel.writeString(addr);
         parcel.writeString(tel);
     }
-
-//    public ArrayList<Store> getStores(){
-//        return stores;
-//    }
 
     public void setStores(Store stores){
         this.stores = stores;

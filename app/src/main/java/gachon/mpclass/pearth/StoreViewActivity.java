@@ -36,10 +36,6 @@ public class StoreViewActivity extends FragmentActivity implements OnMapReadyCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_view);
 
-        Toolbar toolbar = findViewById(R.id.my_toolbar);
-
-       // setSupportActionBar(toolbar);
-
         store_name = (TextView) findViewById(R.id.store_name);
         store_addr = (TextView) findViewById(R.id.store_addr);
         back_btn = (ImageButton) findViewById(R.id.back_btn);

@@ -1,6 +1,4 @@
 package gachon.mpclass.pearth;
-
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
-
-
 public class StoreAdapter extends BaseAdapter {
 
     private ArrayList<Store> listStore = new ArrayList<>();
@@ -26,7 +21,6 @@ public class StoreAdapter extends BaseAdapter {
         this.listStore = listStore;
         this.inflater = inflater;
     }
-
 
     @Override
     public int getCount() {
@@ -72,9 +66,4 @@ public class StoreAdapter extends BaseAdapter {
 
         return convertView;
     }
-
-    public void clearData(){
-        listStore.clear();
-    }
-
 }

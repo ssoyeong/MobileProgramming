@@ -30,9 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Set;
 
-// 식물키우기 - 현재는 로그인 성공 후 화면 - 현재 해당 activity 기능: 로그아웃, 탈퇴
 public class GrowingPlantActivity extends AppCompatActivity {
 
     private static final String TAG = "ProfileActivity";
@@ -179,8 +177,6 @@ public class GrowingPlantActivity extends AppCompatActivity {
         }
         if(id==R.id.action_store) {
             Intent intent = new Intent(GrowingPlantActivity.this, SetLocationActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
-            intent.putExtra("uid", uid);
             startActivity(intent);
         }
         if(id==R.id.action_post){

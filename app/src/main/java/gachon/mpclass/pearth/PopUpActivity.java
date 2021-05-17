@@ -26,12 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import org.json.JSONException;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 
 public class PopUpActivity extends Activity {
 
@@ -43,23 +38,16 @@ public class PopUpActivity extends Activity {
     Button call_btn;
     Button ok_btn;
     Button favorite_btn;
-    String SIGUN = "";
-    String DONG = "";
 
     private String name;
     private String address;
-    private  String telephone;
+    private String telephone;
     private String type;
     private int index;
 
     Store store;
-    //    ArrayList<Store> stores;
     ArrayList<Store> storeList;
     ArrayList<String> favorites;
-    Store bundleStore;
-    SharedPreferences sh_Pref;
-    SharedPreferences.Editor toEdit;
-
 
     private FirebaseAuth firebaseAuth;
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -74,10 +62,6 @@ public class PopUpActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_popup);
 
-        sh_Pref = getSharedPreferences("Favorite Stores", MODE_PRIVATE);
-        toEdit = sh_Pref.edit();
-
-
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         uid = user.getUid();
@@ -88,16 +72,12 @@ public class PopUpActivity extends Activity {
         store_addr = (TextView) findViewById(R.id.store_addr);
         store_tel = (TextView) findViewById(R.id.store_tel);
 
-
-
         map_btn = (Button) findViewById(R.id.map_btn);
         call_btn = (Button) findViewById(R.id.call_btn);
         favorite_btn = (Button) findViewById(R.id.favorite_btn);
         ok_btn = (Button) findViewById(R.id.ok_btn);
 
-//        stores = new ArrayList<Store>();
         storeList = new ArrayList<Store>();
-
         storeList.add(new Store("걸구쟁이네", "37.464159", "127.12277", "한식당", "서울특별시 송파구 문정동 송파대로 111", "02-401-4320"));
         storeList.add(new Store("스윗솔", "37.50872", "127.08157", "비건 채식 레스토랑", "서울특별시 송파구 잠실동 225번지 자연빌라 2층 201호", "070-8888-3816"));
         storeList.add(new Store("블렌드랩", "37.50129", "127.10353", "카페", "서울특별시 송파구 석촌동 257 1층", "070-4922-2700"));
@@ -123,13 +103,11 @@ public class PopUpActivity extends Activity {
             store_type.setText(store.getType());
         }
 
-
         for (Store s : storeList){
             if(s.getName().equals(name)){
                 index = storeList.indexOf(s);
             }
         }
-
 
         favorites = new ArrayList<>();
         conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -149,12 +127,10 @@ public class PopUpActivity extends Activity {
                 }
                 else{
                     favorite_btn.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_star_border_black_24dp, 0, 0);
-
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -162,7 +138,6 @@ public class PopUpActivity extends Activity {
         ok_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(getApplicationContext(), ListViewFragment.class);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
@@ -199,8 +174,6 @@ public class PopUpActivity extends Activity {
             int flag = 0;
             @Override
             public void onClick(View view){
-
-
                 conditionRef.child(uid).child("favorite").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -212,7 +185,6 @@ public class PopUpActivity extends Activity {
                                 favorites.add(data.getKey());
                             }
                         }
-
 
                         if(!favorites.contains(name)) {
 
@@ -230,14 +202,10 @@ public class PopUpActivity extends Activity {
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
             }
         });
-
     }
 
     @Override

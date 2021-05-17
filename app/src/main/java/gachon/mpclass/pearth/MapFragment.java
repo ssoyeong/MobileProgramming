@@ -1,7 +1,5 @@
 package gachon.mpclass.pearth;
 
-
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -11,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,11 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
 
-
-
-//public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     View rootView;
     MapView mapView;
@@ -37,7 +30,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
     }
 
     @Override
@@ -47,14 +39,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_map, container, false);
         mapView = (MapView) rootView.findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
-
         mapView.getMapAsync(this);
-
 
         return rootView;
     }
@@ -84,10 +73,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         // Updates the location and zoom of the MapView
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.502431, 127.111466), 14);
-
         googleMap.animateCamera(cameraUpdate);
-
-
 
 
         googleMap.addMarker(new MarkerOptions()
@@ -121,10 +107,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 .position(new LatLng(37.51508, 127.04876))
                 .title("비건이삼").snippet("비건 베이커리"));
 
-
-
     }
-
 }
 
 
