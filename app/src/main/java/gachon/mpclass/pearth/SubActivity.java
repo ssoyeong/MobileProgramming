@@ -119,8 +119,6 @@ public class SubActivity extends AppCompatActivity {
         mDB=FirebaseDatabase.getInstance().getReference();
 
         initDatabase();
-        mRef=mDatabase.getReference("Users").child(user.getUid());
-        uid = user.getUid();
         mRef.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -134,14 +132,13 @@ public class SubActivity extends AppCompatActivity {
                             count=count+1;
                         }
                         else if(count==1){
+                            count=count+1;
+                        }
+                        else if(count==2){
                             tit=msg2;
                             title.setText(tit);
                             count=count+1;
                         }
-//                        else if(count==2){
-//                            record=Integer.parseInt(msg2);
-//                        }
-
 
                     }
                 }
@@ -155,7 +152,6 @@ public class SubActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         imagebt.setOnClickListener(new View.OnClickListener() {
