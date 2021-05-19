@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffe6b3">
+    android:background="@color/mainBeige">
 
     <TextView
         android:id="@+id/level"
@@ -14,7 +14,7 @@
         android:textSize="40dp"
         android:layout_above="@+id/plantImage"
         android:layout_alignRight="@+id/plantImage"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="10dp" />
 
     <ImageView
         android:id="@+id/plantImage"
@@ -31,7 +31,7 @@
         android:textSize="40dp"
         android:layout_below="@+id/plantImage"
         android:layout_centerInParent="true"
-        android:paddingTop="30dp"/>
+        android:paddingTop="30dp" />
 
     <LinearLayout
         android:orientation="vertical"

@@ -67,6 +67,11 @@
         <activity
             android:name=".SearchFragment"
             tools:ignore="Instantiatable" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
+
     </application>
 
 </manifest>
