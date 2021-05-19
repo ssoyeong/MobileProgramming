@@ -38,6 +38,7 @@
             android:layout_weight="1"/>
         <!--width 비율 바꿔야함 -->
         <EditText
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/new_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <Button
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

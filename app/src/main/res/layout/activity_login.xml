@@ -23,6 +23,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/sangsangtitle"
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
             app:srcCompat="@drawable/ecology" />
 
         <EditText
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,6 +54,7 @@
             android:inputType="textEmailAddress" />
 
         <EditText
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +65,7 @@
             android:inputType="textPassword" />
 
         <Button
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,6 +85,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/sangsangbody"
                 android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,6 +93,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:fontFamily="@font/sangsangbody"
                 android:id="@+id/find_pw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,6 +103,7 @@
                 android:textSize="20sp" />
         </LinearLayout>
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/purple_200"
             android:id="@+id/textviewMessage"

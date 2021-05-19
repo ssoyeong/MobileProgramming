@@ -28,6 +28,7 @@
     </LinearLayout>
 
     <Button
+        android:fontFamily="@font/sangsangbody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="삭제"

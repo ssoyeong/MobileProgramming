@@ -21,6 +21,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/date"
@@ -33,6 +34,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <Button
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
