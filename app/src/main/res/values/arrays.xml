@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="checklist">
-        <item>"111"</item>
-        <item>"222"</item>
-        <item>"333"</item>
-        <item>"444"</item>
-        <item>"555"</item>
-        <item>"666"</item>
-        <item>"777"</item>
-        <item>"888"</item>
-        <item>"999"</item>
-        <item>"101010"</item>
-        <item>"111111"</item>
-        <item>"121212"</item>
-        <item>"131313"</item>
-        <item>"141414"</item>
-        <item>"151515"</item>
-        <item>"161616"</item>
-        <item>"171717"</item>
+        <item>"텀블러 사용하기"</item>
+        <item>"에코백 사용하기"</item>
+        <item>"포장 시 냄비 가져가기"</item>
+        <item>"분리수거 잘하기"</item>
+        <item>"안쓰는 플러그 뽑기"</item>
+        <item>"이메일 정리하기"</item>
+        <item>"친환경 섬유 유연제 만들기(정제수 1리터+구연산 소주잔 1컵)"</item>
+        <item>"3정거장 미만 걸어가기"</item>
+        <item>"마스크 잘 버리기"</item>
+        <item>"난방 온도 1도 낮추기"</item>
     </array>
 </resources>

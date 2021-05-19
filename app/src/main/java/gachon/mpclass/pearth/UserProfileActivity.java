@@ -163,6 +163,7 @@ public class UserProfileActivity extends AppCompatActivity{
                 startActivityForResult(intent1,1);
             }
         });
+
         imageView=(ImageView)findViewById(R.id.imageView);
         setProfile();
         imageView.setOnClickListener(new View.OnClickListener()

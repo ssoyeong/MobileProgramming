@@ -110,7 +110,7 @@ public class CheckListActivity extends AppCompatActivity {
                             int index;
                             HashMap<String, Boolean> hashMap = new HashMap<>();
                             for (int i = 0; i < 3; i++) {
-                                a[i] = random.nextInt(16);
+                                a[i] = random.nextInt(10);
                                 for (int j = 0; j < i; j++) {
                                     if (a[i] == a[j]) {
                                         i--;
@@ -259,14 +259,14 @@ public class CheckListActivity extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(CheckListActivity.this,CheckListActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            //String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
             Intent intent=new Intent(CheckListActivity.this,UserProfileActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
+            //String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
