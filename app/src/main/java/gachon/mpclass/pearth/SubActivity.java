@@ -58,7 +58,7 @@ public class SubActivity extends AppCompatActivity {
     private EditText content;
     private ImageButton imagebt;
     private ImageButton uploadbt;
-    public String tit="";
+    public String tit = "";
     public String con;
     public String img;
     public String tag;
@@ -67,7 +67,7 @@ public class SubActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private FirebaseDatabase mDatabase;
-    DatabaseReference mDB2=FirebaseDatabase.getInstance().getReference().child("Users");
+    DatabaseReference mDB2 = FirebaseDatabase.getInstance().getReference().child("Users");
     private DatabaseReference mDB;
     private DatabaseReference mReference;
     private DatabaseReference mRef;
@@ -76,11 +76,11 @@ public class SubActivity extends AppCompatActivity {
     List<Object> Array = new ArrayList<Object>();
     private ImageView ivPreview;
     private Uri filePath;
-    String[] tag_item={"","#물절약","#전기절약","#식물심기","#깨끗한공기","#환경자원봉사","#제로웨이스트","#유해물질안전폐기","#친환경식습관"};
+    String[] tag_item = {"", "#물절약", "#전기절약", "#식물심기", "#깨끗한공기", "#환경자원봉사", "#제로웨이스트", "#유해물질안전폐기", "#친환경식습관"};
     TextView tag_list;
-    String items="";
+    String items = "";
     private boolean isImg = true;
-    int record=0;
+    int record = 0;
     String uid;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -94,59 +94,46 @@ public class SubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
         getSupportActionBar().setTitle("");
-        Spinner spinner=(Spinner)findViewById(R.id.spinner);
-        tag_list=(TextView)findViewById(R.id.taglist);
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,tag_item);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        tag_list = (TextView) findViewById(R.id.taglist);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tag_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView adapterView, View view, int position, long id){
+            public void onItemSelected(AdapterView adapterView, View view, int position, long id) {
                 items = items + adapter.getItem(position);
                 tag_list.setText(items);
             }
+
             @Override
-            public void onNothingSelected(AdapterView adapterView){
+            public void onNothingSelected(AdapterView adapterView) {
                 tag_list.setText("");
             }
         });
         title = (TextView) findViewById(R.id.title);
-        content = (EditText)findViewById(R.id.content);
+        content = (EditText) findViewById(R.id.content);
         sendbt = (Button) findViewById(R.id.upload);
         imagebt = (ImageButton) findViewById(R.id.imageUploadButton);
         ivPreview = (ImageView) findViewById(R.id.iv_preview);
 
-        mDB=FirebaseDatabase.getInstance().getReference();
+        mDB = FirebaseDatabase.getInstance().getReference();
 
         initDatabase();
+        mRef = mDatabase.getReference("Users").child(user.getUid());
+        uid = user.getUid();
         mRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int count=0;
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot messageData : snapshot.getChildren()) {
-                        String msg2=messageData.getValue().toString();
-                        if(count==0){
-                            count=count+1;
-                        }
-                        else if(count==1){
-                            count=count+1;
-                        }
-                        else if(count==2){
-                            tit=msg2;
-                            title.setText(tit);
-                            count=count+1;
-                        }
-
-                    }
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_LONG).show();
+                String nick;
+                if (snapshot.hasChild("nickname")) {
+                    nick = snapshot.child("nickname").getValue().toString();
+                    tit = nick;
+                    title.setText(tit);
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -170,32 +157,31 @@ public class SubActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 con = content.getText().toString();
-                if(con==null){
-                    con="content";
+                if (con == null) {
+                    con = "content";
                 }
                 img = G.imgUrl;
-                if(img==null){
-                    img="imgUrl";
+                if (img == null) {
+                    img = "imgUrl";
                 }
-                if(tit==null){
-                    tit="title";
+                if (tit == null) {
+                    tit = "title";
                 }
-                tag=tag_list.getText().toString();
-                if(tag==null){
-                    tag="";
+                tag = tag_list.getText().toString();
+                if (tag == null) {
+                    tag = "";
                 }
                 uid = user.getUid();
-                if(uid==null){
-                    uid="";
+                if (uid == null) {
+                    uid = "";
                 }
                 pro = G.profileUrl;
-                if(G.profileUrl==null)
-                {
+                if (G.profileUrl == null) {
                     G.profileUrl = "https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8";
                 }
                 //사진주소, 제목, 내용 한번에 업로드
                 uploadFile();
-                if(isImg==true) {
+                if (isImg == true) {
                     finish();//글을 등록하면 메인화면으로 돌아감
                 }
 
@@ -205,17 +191,14 @@ public class SubActivity extends AppCompatActivity {
         mReference = mDatabase.getReference("board"); // 변경값을 확인할 child 이름
 
 
-
-
-
-
     }
+
     //결과 처리
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //request코드가 0이고 OK를 선택했고 data에 뭔가가 들어 있다면
-        if(requestCode == 0 && resultCode == RESULT_OK){
+        if (requestCode == 0 && resultCode == RESULT_OK) {
             filePath = data.getData();
             Log.d(TAG, "uri:" + String.valueOf(filePath));
             try {
@@ -231,7 +214,7 @@ public class SubActivity extends AppCompatActivity {
     //upload the file
     private void uploadFile() {
         //업로드할 파일이 있으면 수행
-        if (filePath != null&&tag !="") {
+        if (filePath != null && tag != "") {
             //업로드 진행 Dialog 보이기
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("업로드중...");
@@ -271,7 +254,7 @@ public class SubActivity extends AppCompatActivity {
                                     //닉네임을 key 식별자로 하고 프로필 이미지의 주소를 값으로 저장
                                     //profileRef.child("board").setValue(G.imgUrl);
                                     //여기서 업로드
-                                    ListViewItem list=new ListViewItem(tit,con,G.imgUrl,tag,G.fileName,uid,pro);
+                                    ListViewItem list = new ListViewItem(tit, con, G.imgUrl, tag, G.fileName, uid, pro);
                                     databaseReference.child("board").push().setValue(list);
 
 
@@ -286,14 +269,19 @@ public class SubActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
                         }
                     });
-        }
-        else {
+        } else {
             isImg = false;
-            if(filePath==null&&tag==""){Toast.makeText(getApplicationContext(), "이미지와 태그를 선택하세요.", Toast.LENGTH_SHORT).show();}
-            else if(filePath==null){Toast.makeText(getApplicationContext(), "이미지를 선택하세요.", Toast.LENGTH_SHORT).show();}
-            else if(tag==""){Toast.makeText(getApplicationContext(), "태그를 선택하세요.", Toast.LENGTH_SHORT).show();}}
+            if (filePath == null && tag == "") {
+                Toast.makeText(getApplicationContext(), "이미지와 태그를 선택하세요.", Toast.LENGTH_SHORT).show();
+            } else if (filePath == null) {
+                Toast.makeText(getApplicationContext(), "이미지를 선택하세요.", Toast.LENGTH_SHORT).show();
+            } else if (tag == "") {
+                Toast.makeText(getApplicationContext(), "태그를 선택하세요.", Toast.LENGTH_SHORT).show();
+            }
+        }
         //saveData() ..
     }
+
     private void initDatabase() {
 
         mDatabase = FirebaseDatabase.getInstance();
@@ -341,19 +329,20 @@ public class SubActivity extends AppCompatActivity {
 
     //액션버튼 메뉴 액션바에 집어 넣기
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.writemenu, menu);
         return true;
     }
 
     //액션바 숨기기
-    private void hideActionBar () {
+    private void hideActionBar() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.hide();
     }
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.action_back) {
@@ -361,13 +350,12 @@ public class SubActivity extends AppCompatActivity {
         }
 
 
-
-
         return super.onOptionsItemSelected(item);
     }
+
     //키보드 안올라오게 하는거
     @Override
-    protected  void onResume(){
+    protected void onResume() {
         super.onResume();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }

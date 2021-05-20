@@ -108,15 +108,11 @@ public class GrowingPlantActivity extends AppCompatActivity {
                 }
                 else if(60<= score && score < 80){
                     textViewLevel.setText("Lv. 4");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);        //todo: 식물사진 추가
+                    imageViewPlant.setImageResource(R.drawable.plant_4);
                 }
-                else if(80<= score && score < 100){
+                else if(80<= score){
                     textViewLevel.setText("Lv. 5");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);
-                }
-                else if(100<= score){
-                    textViewLevel.setText("Lv. 6");
-                    imageViewPlant.setImageResource(R.drawable.plant_3);
+                    imageViewPlant.setImageResource(R.drawable.plant_5);
                 }
             }
 
