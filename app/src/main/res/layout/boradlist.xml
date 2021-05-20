@@ -3,13 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginRight="10dp"
         android:id="@+id/profileImage"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
         />
     <TextView
         android:id="@+id/textView1"
@@ -19,7 +22,9 @@
         android:text="New Text"
         android:textColor="#000000"
         android:textSize="24dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sangsangbody"/>
 
     <ImageView
         android:id="@+id/iv_preview"
@@ -27,41 +32,49 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/profileImage"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"/>
-
-    <Button
-        android:id="@+id/good"
-        android:layout_width="30dp"
-        android:layout_height="32dp"
-        android:layout_below="@id/iv_preview"
-        android:layout_gravity="left"
-        android:background="@drawable/heart" />
+        android:layout_marginTop="5dp"
+        android:padding="20dp"/>
 
     <Button
         android:id="@+id/report"
         android:layout_width="30dp"
         android:layout_height="32dp"
         android:layout_below="@id/iv_preview"
-        android:layout_toRightOf="@+id/good"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
         android:background="@drawable/ic_action_report" />
     <ImageButton
-        android:id="@+id/delete"
+        android:id="@+id/change"
         android:layout_width="30dp"
         android:layout_height="32dp"
         android:layout_below="@id/iv_preview"
         android:layout_toRightOf="@+id/report"
         android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_below="@id/iv_preview"
+        android:layout_toRightOf="@+id/change"
+        android:background="@android:color/transparent"
         app:srcCompat="@android:drawable/ic_menu_delete"
         />
+
 
     <TextView
         android:id="@+id/Tag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/good"
+        android:layout_below="@+id/change"
         android:text="Tag"
-        android:textColor="#FF00DDFF"
-        android:textSize="18dp" />
+        android:textColor="#056320"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/sangsangbody"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -70,6 +83,9 @@
         android:layout_below="@+id/Tag"
         android:text="New Text"
         android:textColor="#666666"
-        android:textSize="16dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/sangsangbody"/>
 
 </RelativeLayout>

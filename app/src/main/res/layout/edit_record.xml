@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="start"
+        android:layout_margin="5dp"
+        android:background="@null"
+        android:hint="내용을 입력하세요"
+        android:fontFamily="@font/sangsangbody"/>
+
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_height="53dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:text="수정"
+        android:layout_below="@id/content"
+        android:backgroundTint="@color/mainGreen"
+        android:fontFamily="@font/sangsangbody"/>
+
+
+</RelativeLayout>

@@ -102,29 +102,33 @@ public class RecordActivity extends AppCompatActivity {
                 //새로운 메세지를 리스뷰에 추가하기 위해 ArrayList에 추가
                 item.add(listViewItem);
                 G.keyList.add(dataSnapshot.getKey());
-                if (listViewItem.getTag().indexOf("#물절약") >= 0) {
-                    water = water + 1;
-                }
-                if (listViewItem.getTag().indexOf("#전기절약") >= 0) {
-                    elec = elec + 1;
-                }
-                if (listViewItem.getTag().indexOf("#식물심기") >= 0) {
-                    plant = plant + 1;
-                }
-                if (listViewItem.getTag().indexOf("#깨끗한공기") >= 0) {
-                    air = air + 1;
-                }
-                if (listViewItem.getTag().indexOf("#환경자원봉사") >= 0) {
-                    volun = volun + 1;
-                }
-                if (listViewItem.getTag().indexOf("#제로웨이스트") >= 0) {
-                    zero = zero + 1;
-                }
-                if (listViewItem.getTag().indexOf("#유해물질안전폐기") >= 0) {
-                    harm = harm + 1;
-                }
-                if (listViewItem.getTag().indexOf("#친환경식습관") >= 0) {
-                    eat = eat + 1;
+                try {
+                    if (listViewItem.getTag().indexOf("#물절약") >= 0) {
+                        water = water + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#전기절약") >= 0) {
+                        elec = elec + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#식물심기") >= 0) {
+                        plant = plant + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#깨끗한공기") >= 0) {
+                        air = air + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#환경자원봉사") >= 0) {
+                        volun = volun + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#제로웨이스트") >= 0) {
+                        zero = zero + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#유해물질안전폐기") >= 0) {
+                        harm = harm + 1;
+                    }
+                    if (listViewItem.getTag().indexOf("#친환경식습관") >= 0) {
+                        eat = eat + 1;
+                    }
+                }catch (NullPointerException e){
+                    Log.d("Tag","tag null"+e);
                 }
                 mDB.child("water").setValue(water);
                 mDB.child("electricity").setValue(elec);
