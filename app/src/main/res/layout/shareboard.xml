@@ -11,7 +11,10 @@
         android:textSize="24dp"
         android:textColor="#000000"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="7dp"/>
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/sangsangbody"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +22,9 @@
         android:id="@+id/textView1"
         android:textSize="24dp"
         android:textColor="#000000"
-        android:layout_toRightOf="@+id/textView0" />
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/textView0"
+        android:fontFamily="@font/sangsangbody"/>
 
 
     <ImageView
@@ -28,39 +33,44 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_below="@+id/textView1"
-        android:layout_marginTop="5dp"/>
-    <Button
-        android:id="@+id/good"
-        android:layout_width="30dp"
-        android:layout_height="32dp"
-        android:layout_below="@id/iv_preview"
-        android:layout_gravity="left"
-        android:background="@drawable/heart" />
-
+        android:layout_marginTop="5dp"
+        android:padding="20dp"/>
     <Button
         android:id="@+id/report"
         android:layout_width="30dp"
         android:layout_height="32dp"
         android:layout_below="@id/iv_preview"
-        android:layout_toRightOf="@+id/good"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
         android:background="@drawable/ic_action_report" />
     <ImageButton
-        android:id="@+id/delete"
+        android:id="@+id/change"
         android:layout_width="30dp"
         android:layout_height="32dp"
         android:layout_below="@id/iv_preview"
         android:layout_toRightOf="@+id/report"
         android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:layout_width="30dp"
+        android:layout_height="32dp"
+        android:layout_below="@id/iv_preview"
+        android:layout_toRightOf="@+id/change"
+        android:background="@android:color/transparent"
         app:srcCompat="@android:drawable/ic_menu_delete"
         />
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textView2"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textColor="#666666"
-        android:layout_below="@+id/good" />
+        android:layout_below="@+id/change"
+        android:fontFamily="@font/sangsangbody"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"/>
 </RelativeLayout>

@@ -12,7 +12,8 @@
         android:hint="검색할 단어를 입력해주세요"
         android:id="@+id/keyword"
         android:layout_alignParentLeft="true"
-        android:textSize="20dp"/>
+        android:textSize="20dp"
+        android:fontFamily="@font/sangsangbody"/>
     <Button
         android:id="@+id/search"
         android:layout_width="match_parent"
