@@ -118,7 +118,7 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
                 }
             }
         });
-
+try{
         if (Uid != null) {
             if (Uid.equals(post)) {
                 showButton(delete);
@@ -135,6 +135,7 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
 
                             }
                         });
+
                         dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -186,7 +187,9 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
                 hideButton(delete);
                 hideButton(change);
             }
-        }
+        }}catch (NullPointerException ignored){
+
+}
 
 
         if (list.getImgUrl() == null)//사진이 있을때

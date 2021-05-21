@@ -1,6 +1,7 @@
 package gachon.mpclass.pearth;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,11 +88,17 @@ public class Recordfragemnt extends Fragment {
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                     int index = G.keyList.indexOf(dataSnapshot.getKey());
-                    item.remove(index);
-                    G.keyList.remove(index);
-                    adapter.notifyDataSetChanged();
-                    count = count - 1;
-                    mDB2.child(user.getUid()).child("report").setValue(count);
+
+                    try {
+                        item.remove(index);
+                        G.keyList.remove(index);
+                        adapter.notifyDataSetChanged();
+                        count = count - 1;
+                        mDB2.child(user.getUid()).child("report").setValue(count);
+                    }catch (NullPointerException e)
+                    {
+                        Log.d("Shareboard","삭제 오류");
+                    }
                 }
 
                 @Override
