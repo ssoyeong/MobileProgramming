@@ -89,16 +89,14 @@ public class Recordfragemnt extends Fragment {
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                     int index = G.keyList.indexOf(dataSnapshot.getKey());
 
-                    try {
+
+                    if(index<item.size()&&index!=-1&&item.size()!=0){
                         item.remove(index);
                         G.keyList.remove(index);
                         adapter.notifyDataSetChanged();
                         count = count - 1;
                         mDB2.child(user.getUid()).child("report").setValue(count);
-                    }catch (NullPointerException e)
-                    {
-                        Log.d("Shareboard","삭제 오류");
-                    }
+                    }else{Log.d("삭제오류","recordfragment");}
                 }
 
                 @Override

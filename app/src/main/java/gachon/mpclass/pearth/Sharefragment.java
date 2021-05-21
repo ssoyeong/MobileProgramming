@@ -10,6 +10,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -85,16 +86,14 @@ public class Sharefragment extends Fragment {
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                     int index = G.keyList.indexOf(dataSnapshot.getKey());
 
-                    try {
+                    if(index<item.size()&&index!=-1&&item.size()!=0){
                         item.remove(index);
                         G.keyList.remove(index);
                         adapter.notifyDataSetChanged();
                         count = count - 1;
                         mDB2.child(user.getUid()).child("share").setValue(count);
-                    }catch (NullPointerException e)
-                    {
-                        Log.d("Shareboard","삭제 오류");
-                    }
+                    }else{Log.d("삭제오류","sharefragment");}
+
                 }
 
                 @Override

@@ -156,6 +156,11 @@ try {
                             //사진 삭제 성공
 
                         }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+//                            dbRef.child(G.keyList.get(position)).removeValue();
+                        }
                     });
                     dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
