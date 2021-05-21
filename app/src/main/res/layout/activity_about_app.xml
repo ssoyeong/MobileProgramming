@@ -7,136 +7,201 @@
     tools:context=".AboutAppActivity"
     android:background="#ffe6b3"
     android:orientation="vertical">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="?android:dividerHorizontal"
-        android:showDividers="middle"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/sangsangtitle"
-                android:layout_gravity="center_horizontal"
+            android:layout_height="match_parent"
+            android:divider="?android:dividerHorizontal"
+            android:showDividers="middle"
+            android:orientation="vertical" >
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="1. About PEARTH" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sangsangbody"
-                android:textSize="20sp"
-                android:layout_marginBottom="10dp"
-                android:text="환경 보호에 관심이 많으신 여러분, 잘 오셨습니다!"/>
-        </LinearLayout>
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="1. About PEARTH" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"
+                    android:text="환경 보호에 관심이 많으신 여러분, 잘 오셨습니다!"/>
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:fontFamily="@font/sangsangtitle"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="2. 비건 음식점" />
-            <TextView
-                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="2. 비건 음식점" />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="18sp"
+                    android:text=" 육류 소비로 인한 환경 오염을 줄이고자 비건 음식점을 추천하고 있습니다.'\n'
+1. 위치 지정 / 현위치 기반 정보 제공'\n'
+2. '리스트 보기'를 통한 비건 식당 리스트 제공'\n'
+3. '지도로 보기'를 통한 지도 위 비건 식당 위치 확인'\n'
+4. '즐겨찾기'를 통한 나의 즐겨찾기 비건 식당 저장"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sangsangbody"
-                android:textSize="20sp"
-                android:text="비건 음식점은,,,"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:fontFamily="@font/sangsangtitle"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="3. 기록 게시판" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"
+                    android:text="기록게시판은 그날 실행한 환경보호실천 운동을 기록하는곳입니다! 다양한 환경보호 방법을 실천하고 어떤 종류의 환경보호를 실천했는지 태그를 달고 사진을 찍어 기록하며 나만의 식물을 키워보세요!!"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="3. 기록 게시판" />
-            <TextView
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="4. 공유 게시판" />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="20sp"
+                    android:text="공유게시판은 다녀와본 비건 식당이나 환경보호에 앞장서는 기업들을 소개하는 곳입니다! 좋은 기업과 식당들을 사람들과 사진을 올리고 위치를 공유해보세요!"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/sangsangbody"
-                android:textSize="20sp"
-                android:layout_marginBottom="10dp"
-                android:text="기록 게시판은,,,"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:fontFamily="@font/sangsangtitle"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="5. 체크리스트" />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="20sp"
+                    android:text="체크리스트는 기본적으로 하루에 3가지의 환경보호실천 운동을 추천하고 있습니다!'\n' 체크리스트를 직접 커스텀하여 매일 환경 보호에 앞장서주세요!"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="4. 공유 게시판" />
-            <TextView
-                android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sangsangbody"
-                android:textSize="20sp"
-                android:text="공유 게시판은,,,"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:fontFamily="@font/sangsangtitle"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="5. 체크리스트" />
-            <TextView
-                android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sangsangbody"
-                android:textSize="20sp"
-                android:text="체크리스트는 기본적으로 하루에 3가지의 환경보호실천 운동을 추천하고 있습니다!'\n' 체크리스트를 직접 커스텀하여 매일 환경 보호에 앞장서주세요!"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:fontFamily="@font/sangsangtitle"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="6. 사용자 설정 화면" />
-            <TextView
-                android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/sangsangbody"
-                android:textSize="20sp"
-                android:text="로그아웃, 탈퇴, 닉네임 변경, 프로필 사진 변경이 가능합니다. '\n' 본인의 프로필을 마음껏 꾸며 커뮤니티에서 활동해보세요!"/>
-        </LinearLayout>
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="6. 사용자 설정 화면" />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="20sp"
+                    android:text="로그아웃, 탈퇴, 닉네임 변경, 프로필 사진 변경이 가능합니다. '\n' 본인의 프로필을 마음껏 꾸며 커뮤니티에서 활동해보세요!"/>
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEDBF">
+                <TextView
+                    android:fontFamily="@font/sangsangtitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="7. 식물키우기" />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sangsangbody"
+                    android:textSize="20sp"
+                    android:text=" 기록게시판과 공유게시판의 게시물 수를 바탕으로 나의 점수와 레벨을 보여줍니다. 환경보호를 실천하는 게시물을 많이 올릴수록 나만의 식물이 성장하여 환경보호 실천에 원동력이 됩니다."/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
