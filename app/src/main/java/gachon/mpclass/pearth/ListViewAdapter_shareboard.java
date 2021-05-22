@@ -133,28 +133,29 @@ try{
                             @Override
                             public void onSuccess(Void aVoid) {
                                 //사진 삭제 성공
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-//                                dbRef.child(G.keyList.get(position)).removeValue();
-                            }
-                        });
-
-                        dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
+                                dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        dbRef.child(G.keyList.get(position)).removeValue();
+                                    }
+                                });
+//                                dbRef.child(G.keyList.get(position)).setValue(null);
+//                                Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 dbRef.child(G.keyList.get(position)).removeValue();
-                                Toast.makeText(context, "삭제 실패", Toast.LENGTH_SHORT).show();
 
                             }
                         });
+
+
                     }
                 });
                 showButton(change);
