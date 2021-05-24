@@ -106,6 +106,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(new MarkerOptions()
                 .position(new LatLng(37.51508, 127.04876))
                 .title("비건이삼").snippet("비건 베이커리"));
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.48567, 127.12386))
+                .title("채식코스요리전문점&굴").snippet("한식당"));
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.4769, 127.04938))
+                .title("러빙헛카페").snippet("비건 채식 레스토랑"));
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.47698, 127.04734))
+                .title("베지 그린").snippet("비건 채식 레스토랑"));
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.51845, 127.038))
+                .title("스타일비건").snippet("음식점"));
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(37.55355, 127.13361))
+                .title("평상시").snippet("카페"));
 
     }
 }
