@@ -14,14 +14,14 @@
         app:fontStyle="normal"
         app:fontWeight="400" />
 
-    <!-- body -->
-    <font
-        android:font="@font/sangsangbody"
-        android:fontStyle="normal"
-        android:fontWeight="400"
-        app:font="@font/sangsangbody"
-        app:fontStyle="normal"
-        app:fontWeight="400" />
+<!--    &lt;!&ndash; body &ndash;&gt;-->
+<!--    <font-->
+<!--        android:font="@font/sangsangbody"-->
+<!--        android:fontStyle="normal"-->
+<!--        android:fontWeight="400"-->
+<!--        app:font="@font/sangsangbody"-->
+<!--        app:fontStyle="normal"-->
+<!--        app:fontWeight="400" />-->
 
 
 </font-family>
