@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
-    android:background="#eeeeee"
+    android:background="#ffe6b3"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -10,21 +10,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#009688"
+        android:background="#ffe6b3"
         android:orientation="horizontal">
         <Button
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="#009688"
+            android:background="#ffe6b3"
             android:text="back"/>
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:background="#009688"
+            android:background="#ffe6b3"
             android:text="닉네임 변경"
-            android:gravity="center"
             android:textSize="30dp"/>
     </LinearLayout>
 

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffe6b3"
     android:orientation="vertical">
     <!-- checklist 리스트뷰 보고 추가할 수 있는 fragment-->
     <!-- TODO: Update blank fragment layout -->
@@ -37,6 +38,7 @@
             android:layout_weight="1"/>
         <!--width 비율 바꿔야함 -->
         <EditText
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/new_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,6 +49,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <Button
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

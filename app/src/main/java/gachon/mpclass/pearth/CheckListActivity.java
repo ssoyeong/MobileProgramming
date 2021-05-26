@@ -66,7 +66,7 @@ public class CheckListActivity extends AppCompatActivity {
         view_checklist = new View_Checklist();
         blank = new BlankFragment();
         modify = (Button) findViewById(R.id.modify);
-
+        modify.setEnabled(false);
         date_tv = (TextView) findViewById(R.id.date);
 
         Intent intent = getIntent();
@@ -82,6 +82,7 @@ public class CheckListActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
 
+                modify.setEnabled(true);
                 ft = manager.beginTransaction();
                 ft.replace(R.id.fragment_container, blank);
                 ft.commit();
@@ -109,7 +110,7 @@ public class CheckListActivity extends AppCompatActivity {
                             int index;
                             HashMap<String, Boolean> hashMap = new HashMap<>();
                             for (int i = 0; i < 3; i++) {
-                                a[i] = random.nextInt(16);
+                                a[i] = random.nextInt(10);
                                 for (int j = 0; j < i; j++) {
                                     if (a[i] == a[j]) {
                                         i--;
@@ -229,7 +230,7 @@ public class CheckListActivity extends AppCompatActivity {
         return true;
     }
 
-    //액션바 숨기기
+
     private void hideActionBar () {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
@@ -258,14 +259,12 @@ public class CheckListActivity extends AppCompatActivity {
         if(id==R.id.action_checklist)
         {
             Intent intent=new Intent(CheckListActivity.this,CheckListActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }
         if(id==R.id.action_UserProfile)
         {
             Intent intent=new Intent(CheckListActivity.this,UserProfileActivity.class);
-            String uid = firebaseAuth.getCurrentUser().getUid();
             intent.putExtra("uid",uid);
             startActivity(intent);
         }

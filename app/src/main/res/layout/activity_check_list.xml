@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#ffe6b3"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!-- 전체적인 checklist 구현을 위한 main xml-->
@@ -11,6 +12,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
+        android:background="#FFF6E0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -19,6 +21,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/date"
@@ -31,6 +34,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <Button
+            android:fontFamily="@font/sangsangbody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

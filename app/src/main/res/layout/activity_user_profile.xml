@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BF7EC560"
+    android:background="#ffe6b3"
     android:orientation="vertical"
     tools:ignore="Deprecated">
 
@@ -38,6 +38,7 @@
         android:orientation="horizontal"
         android:gravity="center_horizontal">
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,6 +47,7 @@
             android:text="닉네임" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,6 +56,7 @@
         android:orientation="vertical" >
 
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/logout"
             android:layout_marginTop="100dp"
             android:layout_gravity="center_horizontal"
@@ -62,6 +65,7 @@
             android:textSize="30sp"
             android:text="로그아웃" />
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/withdrawl"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
@@ -69,6 +73,7 @@
             android:textSize="30sp"
             android:text="탈퇴" />
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/announce"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
@@ -76,6 +81,7 @@
             android:textSize="30sp"
             android:text="공지"/>
         <TextView
+            android:fontFamily="@font/sangsangbody"
             android:id="@+id/aboutApp"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
