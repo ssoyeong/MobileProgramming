@@ -103,7 +103,7 @@ public class ListViewAdapter_shareboard extends BaseAdapter {
         String post = list.getUid(); //글쓴사용자
 
         report.setOnClickListener(new View.OnClickListener() {
-            String ref = G.keyList.get(position); //클릭한 글의 고유주소
+            String ref = G.keyList2.get(position); //클릭한 글의 고유주소
 
             //            String user = list.getUid();
             public void onClick(View v) {
@@ -133,7 +133,7 @@ try{
                             @Override
                             public void onSuccess(Void aVoid) {
                                 //사진 삭제 성공
-                                dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                dbRef.child(G.keyList2.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
@@ -141,7 +141,7 @@ try{
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        dbRef.child(G.keyList.get(position)).removeValue();
+                                        dbRef.child(G.keyList2.get(position)).removeValue();
                                     }
                                 });
 //                                dbRef.child(G.keyList.get(position)).setValue(null);
@@ -150,7 +150,7 @@ try{
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                dbRef.child(G.keyList.get(position)).removeValue();
+                                dbRef.child(G.keyList2.get(position)).removeValue();
 
                             }
                         });
@@ -182,8 +182,8 @@ try{
                                         String edittit = tit.getText().toString();
                                         list.setContent(editcon);
                                         list.setTitle(edittit);
-                                        dbRef.child(G.keyList.get(position)).child("content").setValue(editcon);
-                                        dbRef.child(G.keyList.get(position)).child("title").setValue(edittit);
+                                        dbRef.child(G.keyList2.get(position)).child("content").setValue(editcon);
+                                        dbRef.child(G.keyList2.get(position)).child("title").setValue(edittit);
                                         notifyDataSetChanged();
                                     }
 

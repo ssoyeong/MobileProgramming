@@ -93,8 +93,8 @@ public class Shareboard extends AppCompatActivity {
 
                 //새로운 메세지를 리스뷰에 추가하기 위해 ArrayList에 추가
                 item.add(listViewItem);
-                G.keyList.add(dataSnapshot.getKey());
-                int index = G.keyList.indexOf(dataSnapshot.getKey());
+                G.keyList2.add(dataSnapshot.getKey());
+                int index = G.keyList2.indexOf(dataSnapshot.getKey());
                 String Uid =  listViewItem.getUid();
                 if(Uid != null){
                     if(Uid.equals(uid)){
@@ -113,10 +113,10 @@ public class Shareboard extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                int index = G.keyList.indexOf(dataSnapshot.getKey());
+                int index = G.keyList2.indexOf(dataSnapshot.getKey());
                 if(index<item.size()&&index!=-1&&item.size()!=0){
                     item.remove(index);
-                    G.keyList.remove(index);
+                    G.keyList2.remove(index);
                     adapter.notifyDataSetChanged();
                     count=count-1;
                     mDB2.child(user.getUid()).child("share").setValue(count);
