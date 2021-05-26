@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="#ffe6b3"
     android:orientation="vertical">
 
     <ScrollView
@@ -55,12 +56,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/water"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp"/>
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/elec"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,12 +98,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/plant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp"/>
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/air"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,12 +139,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/volunteer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp"/>
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/zero_waste"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,6 +180,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/toxic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,6 +188,7 @@
                     />
 
                 <TextView
+                    android:fontFamily="@font/sangsangbody"
                     android:id="@+id/eat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

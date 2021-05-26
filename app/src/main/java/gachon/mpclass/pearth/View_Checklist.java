@@ -118,40 +118,40 @@ public class View_Checklist extends Fragment {
                     new_activity.setText("");
 
 
-//                    reference.child("Checklist").child(uid).child(date).addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                            items.clear();
-//                            if(snapshot.exists())
-//                            {
-//                                for(DataSnapshot itemData:snapshot.getChildren())
-//                                {
-//
-//                                    String todo=itemData.getKey().toString(); //할 일 내용
-//                                    Log.v("todo",todo);
-//                                    boolean done=Boolean.parseBoolean(itemData.getValue().toString());
-//                                    Log.v("done",String.valueOf(done));
-//                                    CheckListData item=new CheckListData(todo,done);
-//                                    Log.v("CheckList_item", item.CheckList_item);
-//                                    Log.v("CheckList_done",String.valueOf(item.CheckList_done));
-//                                    items.add(item);
-//
-//                                }
-//
-//
-//                                CheckList_Adapter mAdapter=new CheckList_Adapter(uid,date,items);
-//                                listView.setAdapter(mAdapter);
-//
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
+                    reference.child("Checklist").child(uid).child(date).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            items.clear();
+                            if(snapshot.exists())
+                            {
+                                for(DataSnapshot itemData:snapshot.getChildren())
+                                {
+
+                                    String todo=itemData.getKey().toString(); //할 일 내용
+                                    Log.v("todo",todo);
+                                    boolean done=Boolean.parseBoolean(itemData.getValue().toString());
+                                    Log.v("done",String.valueOf(done));
+                                    CheckListData item=new CheckListData(todo,done);
+                                    Log.v("CheckList_item", item.CheckList_item);
+                                    Log.v("CheckList_done",String.valueOf(item.CheckList_done));
+                                    items.add(item);
+
+                                }
+
+
+                                CheckList_Adapter mAdapter=new CheckList_Adapter(uid,date,items,"A");
+                                listView.setAdapter(mAdapter);
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
         });

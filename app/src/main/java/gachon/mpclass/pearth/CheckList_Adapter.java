@@ -65,7 +65,7 @@ public class CheckList_Adapter extends BaseAdapter {
         checkBox.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view){
-                if(mode=="V") //view_checklist
+                if(mode=="V"||mode=="A") //view_checklist
                 {
                     boolean newState= !list.get(position).isChecked();
                     list.get(position).CheckList_done=newState;
