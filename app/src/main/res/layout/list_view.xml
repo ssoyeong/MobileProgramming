@@ -22,7 +22,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:gravity="left"
-            />
+            android:fontFamily="@font/sangsangbody" />
 
         <TextView
             android:id="@+id/store_list_type"
@@ -34,7 +34,8 @@
             android:layout_weight="5"
             android:ellipsize="end"
             android:maxLines="1"
-            android:gravity="right" />
+            android:gravity="right"
+            android:fontFamily="@font/sangsangbody"/>
     </LinearLayout>
 
     <TextView
@@ -46,7 +47,8 @@
         android:layout_marginRight="15sp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:gravity="left" />
+        android:gravity="left"
+        android:fontFamily="@font/sangsangbody"/>
 
 
 </LinearLayout>
