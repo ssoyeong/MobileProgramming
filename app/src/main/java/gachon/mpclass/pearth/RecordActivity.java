@@ -98,7 +98,7 @@ public class RecordActivity extends AppCompatActivity {
 
                 //새로 추가된 데이터(값 : MessageItem객체) 가져오기
                 ListViewItem listViewItem= dataSnapshot.getValue(ListViewItem.class);
-
+                adapter.notifyDataSetChanged();
                 //새로운 메세지를 리스뷰에 추가하기 위해 ArrayList에 추가
                 item.add(listViewItem);
                 G.keyList.add(dataSnapshot.getKey());
@@ -164,13 +164,13 @@ public class RecordActivity extends AppCompatActivity {
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                 int index = G.keyList.indexOf(dataSnapshot.getKey());
 
-                if(index<item.size()&&index!=-1&&item.size()!=0){
+//                if(index<item.size()&&index!=-1&&item.size()!=0){
                     item.remove(index);
                     G.keyList.remove(index);
                     adapter.notifyDataSetChanged();
                     count=count-1;
                     mDB2.child(user.getUid()).child("report").setValue(count);
-                }
+
             }
 
             @Override

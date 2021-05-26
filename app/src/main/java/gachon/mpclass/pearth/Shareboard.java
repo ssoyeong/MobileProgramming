@@ -114,13 +114,13 @@ public class Shareboard extends AppCompatActivity {
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                 int index = G.keyList2.indexOf(dataSnapshot.getKey());
-                if(index<item.size()&&index!=-1&&item.size()!=0){
+//                if(index<item.size()&&index!=-1&&item.size()!=0){
                     item.remove(index);
                     G.keyList2.remove(index);
                     adapter.notifyDataSetChanged();
                     count=count-1;
                     mDB2.child(user.getUid()).child("share").setValue(count);
-                }
+
 
             }
 
