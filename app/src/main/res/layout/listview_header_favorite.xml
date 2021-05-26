@@ -16,5 +16,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textStyle="bold"
-        android:text="즐겨찾기 음식점" />
+        android:text="즐겨찾기 음식점"
+        android:fontFamily="@font/sangsangbody"/>
 </LinearLayout>

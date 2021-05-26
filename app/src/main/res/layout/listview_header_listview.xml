@@ -16,5 +16,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:textStyle="bold"
-        android:text="추천 비건 음식점" />
+        android:text="추천 비건 음식점"
+        android:fontFamily="@font/sangsangbody"/>
 </LinearLayout>

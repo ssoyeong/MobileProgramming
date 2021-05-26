@@ -21,7 +21,8 @@
             android:gravity="center"
             android:text="에티컬테이블"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:fontFamily="@font/sangsangbody"/>
 
     </LinearLayout>
 
@@ -52,7 +53,8 @@
                     android:text="주소"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:fontFamily="@font/sangsangbody"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -62,7 +64,8 @@
                     android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp"
+                    android:fontFamily="@font/sangsangbody"/>
 
 
             </LinearLayout>
@@ -82,7 +85,8 @@
                     android:paddingLeft="15dp"
                     android:text="경기도 성남시 복정동 685-11 KR 2층"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:fontFamily="@font/sangsangbody"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -106,7 +110,8 @@
                 android:text="전화"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:fontFamily="@font/sangsangbody"/>
 
             <TextView
                 android:id="@+id/store_tel"
@@ -117,7 +122,8 @@
                 android:paddingLeft="15dp"
                 android:text="050-7132-7625"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:fontFamily="@font/sangsangbody"/>
 
         </LinearLayout>
 
@@ -140,7 +146,8 @@
                 android:text="업종"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="15dp"/>
+                android:textSize="15dp"
+                android:fontFamily="@font/sangsangbody"/>
 
 
             <TextView
@@ -152,7 +159,8 @@
                 android:paddingLeft="15dp"
                 android:text="채식 전문 음식점"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:fontFamily="@font/sangsangbody"/>
 
         </LinearLayout>
 
@@ -171,7 +179,8 @@
                 android:drawableTop="@drawable/ic_map_black_24dp"
                 android:padding='10dp'
                 android:layout_gravity="center"
-                android:text="지도로 보기" />
+                android:text="지도로 보기"
+                android:fontFamily="@font/sangsangbody"/>
 
             <Button
                 android:id="@+id/call_btn"
@@ -191,7 +200,8 @@
                 android:backgroundTint="@color/mainGreen"
                 android:padding='10dp'
                 android:layout_gravity="center"
-                android:text = "즐겨찾기"/>
+                android:text = "즐겨찾기"
+                android:fontFamily="@font/sangsangbody"/>
 
         </LinearLayout>
 
