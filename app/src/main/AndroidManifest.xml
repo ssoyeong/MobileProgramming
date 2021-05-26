@@ -52,7 +52,7 @@
         <activity android:name=".SignupActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".spinneritem" />
-        <activity android:name=".PopUpActivity" />
+        <activity android:name=".PopUpActivity" android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".SetLocationActivity" />
 
         <activity
