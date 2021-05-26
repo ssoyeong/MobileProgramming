@@ -106,13 +106,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                 Intent intent=new Intent(LoginActivity.this,GrowingPlantActivity.class);
 
-//                                //todo: 체크리스트 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
-//                                Intent intent=new Intent(LoginActivity.this,CheckListActivity.class);
-
-                                //todo: 사용자 설정 화면 확인을 위해 임시로 넣어놓은 코드 - 추후 삭제 예정
-  //                              Intent intent=new Intent(LoginActivity.this,UserProfileActivity.class);
-
-
                                 DatabaseReference mReference;
                                 FirebaseDatabase mDatabase;
                                 mDatabase = FirebaseDatabase.getInstance();
@@ -121,15 +114,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String uid = user.getUid();
                                 intent.putExtra("uid",uid);
                                 startActivity(intent);
-
-//                                //식물키우기 - 메인화면
-//                                startActivity(new Intent(getApplicationContext(), GrowingPlantActivity.class));
-
                             }
 
-                        } else {
+                        }
+                        else {
                             Toast.makeText(getApplicationContext(), "로그인 실패!", Toast.LENGTH_LONG).show();
-                            //textviewMessage.setText("로그인 실패 유형\n - password가 맞지 않습니다.\n -서버에러");
                         }
                     }
                 });

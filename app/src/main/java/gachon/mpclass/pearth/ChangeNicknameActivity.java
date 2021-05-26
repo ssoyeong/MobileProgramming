@@ -37,7 +37,7 @@ public class ChangeNicknameActivity extends Activity {
     DatabaseReference mRootDatabaseReference= FirebaseDatabase.getInstance().getReference();
     DatabaseReference userDatabaseReference=mRootDatabaseReference.child("Users");
     String new_nickname="";
-    int checked=0;
+    int checked=0; //중복확인 체크
     int duplicated=0; //1이면 중복->사용 불가능
     String child_nickname;
     @Override
@@ -81,8 +81,6 @@ public class ChangeNicknameActivity extends Activity {
                             while(child.hasNext())
                             {
                                 child_nickname=String.valueOf(child.next().child("nickname").getValue());
-                                Log.v("child.next().getvalue: ",child_nickname);
-                                Log.v("<<<<<팝업창 new nickname:>",new_nickname);
                                 if(new_nickname.equals(child_nickname))
                                 {
                                     duplicated=1;

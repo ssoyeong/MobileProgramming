@@ -122,14 +122,6 @@ public class UserProfileActivity extends AppCompatActivity{
             }
         });
 
-        //공지사항
-        announce=(TextView)findViewById(R.id.announce);
-        announce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         //앱설명
         aboutApp=(TextView)findViewById(R.id.aboutApp);

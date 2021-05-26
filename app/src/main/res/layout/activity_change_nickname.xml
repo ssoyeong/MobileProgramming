@@ -13,6 +13,7 @@
         android:background="#ffe6b3"
         android:orientation="horizontal">
         <Button
+            android:backgroundTint="@color/mainGreen"
             android:fontFamily="@font/sangsangbody"
             android:id="@+id/back"
             android:layout_width="wrap_content"
@@ -21,6 +22,8 @@
             android:background="#ffe6b3"
             android:text="back"/>
         <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
             android:fontFamily="@font/sangsangbody"
             android:layout_width="match_parent"
             android:layout_height="53dp"
@@ -31,6 +34,8 @@
 
 
     <TextView
+        android:fontFamily="@font/sangsangbody"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -48,6 +53,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <EditText
+            android:fontFamily="@font/sangsangbody"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="닉네임을 입력하세요."
@@ -55,6 +62,8 @@
             android:layout_centerHorizontal="true"/>
 
         <Button
+            android:fontFamily="@font/sangsangbody"
+            android:backgroundTint="@color/mainGreen"
             android:id="@+id/check_duplicate_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,12 +74,16 @@
     </RelativeLayout>
 
     <TextView
+        android:fontFamily="@font/sangsangbody"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/available"
         android:gravity="center_horizontal" />
 
     <Button
+        android:fontFamily="@font/sangsangbody"
+        android:backgroundTint="@color/mainGreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/change_btn"
