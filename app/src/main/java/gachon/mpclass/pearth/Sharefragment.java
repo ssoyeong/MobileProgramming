@@ -1,6 +1,7 @@
 package gachon.mpclass.pearth;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -83,11 +85,15 @@ public class Sharefragment extends Fragment {
                 @Override
                 public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                     int index = G.keyList.indexOf(dataSnapshot.getKey());
-                    item.remove(index);
-                    G.keyList.remove(index);
-                    adapter.notifyDataSetChanged();
-                    count = count - 1;
-                    mDB2.child(user.getUid()).child("share").setValue(count);
+
+                    if(index<item.size()&&index!=-1&&item.size()!=0){
+                        item.remove(index);
+                        G.keyList.remove(index);
+                        adapter.notifyDataSetChanged();
+                        count = count - 1;
+                        mDB2.child(user.getUid()).child("share").setValue(count);
+                    }else{Log.d("삭제오류","sharefragment");}
+
                 }
 
                 @Override

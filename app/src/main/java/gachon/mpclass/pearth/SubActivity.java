@@ -176,7 +176,7 @@ public class SubActivity extends AppCompatActivity {
                     uid = "";
                 }
                 pro = G.profileUrl;
-                if (G.profileUrl == null) {
+                if (G.profileUrl == null||G.profileUrl.equals("")) {
                     G.profileUrl = "https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8";
                 }
                 //사진주소, 제목, 내용 한번에 업로드

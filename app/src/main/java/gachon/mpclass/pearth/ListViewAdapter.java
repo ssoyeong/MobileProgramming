@@ -140,71 +140,85 @@ public class ListViewAdapter extends BaseAdapter {
                 }
             }
         });
+try {
+    if (Uid != null) {
+        if (Uid.equals(post)) {
+            showButton(delete);
+            delete.setOnClickListener(new View.OnClickListener() {
 
-        if (Uid != null) {
-            if (Uid.equals(post)) {
-                showButton(delete);
-                delete.setOnClickListener(new View.OnClickListener() {
+                StorageReference storageRef = storage.getReferenceFromUrl("gs://pearth-7ec20.appspot.com").child("images/" + list.getFileName());
 
-                    StorageReference storageRef = storage.getReferenceFromUrl("gs://pearth-7ec20.appspot.com").child("images/" + list.getFileName());
+                @Override
+                public void onClick(View v) {
+                    storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            //사진 삭제 성공
+                            dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    dbRef.child(G.keyList.get(position)).removeValue();
+                                }
+                            });
+//                            dbRef.child(G.keyList.get(position)).setValue(null);
+//                            Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            dbRef.child(G.keyList.get(position)).removeValue();
+                        }
+                    });
+                }
+            });
+            showButton(change);
+            change.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    View view = LayoutInflater.from(context).inflate(R.layout.edit_record, null, false);
+                    builder.setView(view);
+                    final Button edit = (Button) view.findViewById(R.id.upload);
+                    final EditText con = (EditText) view.findViewById(R.id.content);
+                    con.setText(list.getContent());
 
-                    @Override
-                    public void onClick(View v) {
-                        storageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                //사진 삭제 성공
+                    final AlertDialog dialog = builder.create();
+                    edit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                            }
-                        });
-                        dbRef.child(G.keyList.get(position)).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(context, "삭제 성공", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-                showButton(change);
-                change.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        View view = LayoutInflater.from(context).inflate(R.layout.edit_record,null,false);
-                        builder.setView(view);
-                        final Button edit = (Button)view.findViewById(R.id.upload);
-                        final EditText con = (EditText)view.findViewById(R.id.content);
-                        con.setText(list.getContent());
+                            dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String editcon = con.getText().toString();
+                                    list.setContent(editcon);
+                                    dbRef.child(G.keyList.get(position)).child("content").setValue(editcon);
+                                    notifyDataSetChanged();
+                                }
 
-                        final AlertDialog dialog = builder.create();
-                        edit.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        String editcon = con.getText().toString();
-                                        list.setContent(editcon);
-                                        dbRef.child(G.keyList.get(position)).child("content").setValue(editcon);
-                                        notifyDataSetChanged();
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                                dialog.dismiss();
-                            }
-                        });dialog.show();
-                    }
-                });
-            } else {
-                hideButton(delete);
-                hideButton(change);
-            }
+                                }
+                            });
+                            dialog.dismiss();
+                        }
+                    });
+                    dialog.show();
+                }
+            });
+        } else {
+            hideButton(delete);
+            hideButton(change);
         }
+    }
+}catch (NullPointerException ignored){
 
+}
 
 
 

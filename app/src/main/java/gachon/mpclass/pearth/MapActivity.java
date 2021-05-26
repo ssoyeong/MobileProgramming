@@ -40,6 +40,7 @@ public class MapActivity extends AppCompatActivity {
     ArrayList<Store> stores = new ArrayList<>();
     String SIGUN = "";
     String DONG = "";
+    String Case = "";
     String address = "";
 
     private FirebaseAuth firebaseAuth;
@@ -58,6 +59,7 @@ public class MapActivity extends AppCompatActivity {
             Bundle bundle = data.getExtras();
             SIGUN = bundle.getString("SIGUN");
             DONG = bundle.getString("SIDO");
+            Case = bundle.getString("Case");
             Log.d("address", SIGUN);
             Log.d("address", DONG);
             address = SIGUN.concat(" " + DONG);

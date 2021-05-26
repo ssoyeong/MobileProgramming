@@ -367,6 +367,7 @@ public class SetLocationActivity extends AppCompatActivity {
 
                 mybundle.putString("SIGUN", SIGUN);
                 mybundle.putString("SIDO", SIDO);
+                mybundle.putString("Case", "List");
 
 
                 Toast.makeText(SetLocationActivity.this, SIGUN + " " + SIDO, Toast.LENGTH_LONG).show();
@@ -393,8 +394,7 @@ public class SetLocationActivity extends AppCompatActivity {
                 double longitude = gpsTracker.getLongitude();
 
                 String address = getCurrentAddress(latitude, longitude);
-                //todo: 주소 좌표값 변환 오류
-                Log.d("address", address);
+                Log.d("주소", address);
                 String split[] = address.split(" ");
                 area = split[2];
                 int isShort = 0;
@@ -428,6 +428,7 @@ public class SetLocationActivity extends AppCompatActivity {
 
                 mybundle.putString("SIGUN", SIGUN);
                 mybundle.putString("SIDO", SIDO);
+                mybundle.putString("Case", "GPS");
 
                 Toast.makeText(SetLocationActivity.this, SIGUN + " " + SIDO, Toast.LENGTH_LONG).show();
 
