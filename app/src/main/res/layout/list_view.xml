@@ -50,5 +50,4 @@
         android:gravity="left"
         android:fontFamily="@font/sangsangbody"/>
 
-
 </LinearLayout>
