@@ -15,16 +15,14 @@
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-<!--        <Button-->
-<!--            android:id="@+id/findAdr_btn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:backgroundTint="@color/mainGreen"-->
-<!--            android:textColor="#000000"-->
-<!--            android:textSize="20dp" />-->
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sangsangtitle"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -76,7 +74,7 @@
             android:paddingTop="15dp"
             android:text="리스트 보기"
             app:backgroundTint="@color/mainGreen"
-            android:fontFamily="@font/sangsangbody"/>
+            android:fontFamily="@font/sangsangtitle"/>
 
 
 
@@ -96,7 +94,7 @@
             android:paddingTop="20dp"
             android:text="지도로 보기"
             app:backgroundTint="@color/mainGreen"
-            android:fontFamily="@font/sangsangbody"/>
+            android:fontFamily="@font/sangsangtitle"/>
 
         <View
             android:layout_width="0.3dp"
@@ -114,7 +112,7 @@
             android:paddingTop="20dp"
             android:text="즐겨찾기"
             app:backgroundTint="@color/mainGreen"
-            android:fontFamily="@font/sangsangbody"/>
+            android:fontFamily="@font/sangsangtitle"/>
     </LinearLayout>
 
 </LinearLayout>

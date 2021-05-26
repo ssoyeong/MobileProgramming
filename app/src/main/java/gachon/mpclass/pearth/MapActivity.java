@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -66,8 +67,12 @@ public class MapActivity extends AppCompatActivity {
         }
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
-        toolbar.setTitle(address);
-        toolbar.setTitleTextColor(Color.BLACK);
+//        toolbar.setTitle(address);
+//        toolbar.setTitleTextColor(Color.BLACK);
+        TextView tbTitle = findViewById(R.id.toolbar_title);
+        tbTitle.setText(address);
+
+
 
 
         map_btn = (Button) findViewById(R.id.map_btn);
@@ -90,9 +95,9 @@ public class MapActivity extends AppCompatActivity {
                 bundle.putString("DONG", DONG);
                  mapFragment.setArguments(bundle);
                  getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
-                map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                map_btn.setBackgroundColor(Color.parseColor("#7EC560"));
+                list_btn.setBackgroundColor(Color.parseColor("#BCEDA8"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#BCEDA8"));
 
             }
         });
@@ -107,9 +112,9 @@ public class MapActivity extends AppCompatActivity {
                 bundle.putString("DONG", DONG);
                 listViewFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, listViewFragment).commit();
-                map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                list_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                map_btn.setBackgroundColor(Color.parseColor("#BCEDA8"));
+                list_btn.setBackgroundColor(Color.parseColor("#7EC560"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#BCEDA8"));
             }
         });
 
@@ -118,9 +123,9 @@ public class MapActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loadingMessage.setText("");
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, favoriteFragment).commit();
-                map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                favorite_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+                map_btn.setBackgroundColor(Color.parseColor("#BCEDA8"));
+                list_btn.setBackgroundColor(Color.parseColor("#BCEDA8"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#7EC560"));
             }
         });
     }

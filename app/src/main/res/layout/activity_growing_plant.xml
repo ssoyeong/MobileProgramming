@@ -15,7 +15,7 @@
         android:layout_above="@+id/plantImage"
         android:layout_alignRight="@+id/plantImage"
         android:paddingBottom="10dp"
-        android:fontFamily="@font/sangsangbody"/>
+        android:fontFamily="@font/sangsangtitle"/>
 
     <ImageView
         android:id="@+id/plantImage"
@@ -33,7 +33,7 @@
         android:layout_below="@+id/plantImage"
         android:layout_centerInParent="true"
         android:paddingTop="30dp"
-        android:fontFamily="@font/sangsangbody"/>
+        android:fontFamily="@font/sangsangtitle"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -50,7 +50,8 @@
             android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sangsangbody"/>
+            android:textSize="15dp"
+            android:fontFamily="@font/sangsangtitle"/>
 
     </LinearLayout>
 </RelativeLayout>

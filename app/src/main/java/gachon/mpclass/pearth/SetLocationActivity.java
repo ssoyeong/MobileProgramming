@@ -74,8 +74,7 @@ public class SetLocationActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("추천 비건 음식점");
         Toolbar toolbar = findViewById(R.id.my_toolbar);
-        toolbar.setTitle("지역 설정");
-        toolbar.setTitleTextColor(Color.BLACK);
+
 
         gps_btn = (Button) findViewById(R.id.gps_btn);
         complete_btn = (Button) findViewById(R.id.complete_btn);

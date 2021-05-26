@@ -13,8 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/mainGreen"
-        android:minHeight="?attr/actionBarSize"
-        android:fontFamily="@font/sangsangbody">
+        android:minHeight="?attr/actionBarSize">
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지역 설정"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/sangsangtitle"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -64,6 +71,7 @@
             android:layout_weight="0"
             android:background="@color/white"
             android:text="완료"
+            android:textSize="17dp"
             android:fontFamily="@font/sangsangbody"/>
 
     </LinearLayout>
@@ -86,6 +94,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:textSize="17dp"
         android:drawableLeft="@drawable/ic_location_searching_black_24dp"
         android:fontFamily="@font/sangsangbody"/>
 

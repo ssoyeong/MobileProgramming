@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+<!--        <item name="android:toolbarStyle">@style/ToolbarStyle</item>-->
         <item name="android:textViewStyle">@style/TextViewStyle</item>
         <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="android:editTextStyle">@style/EditTextStyle</item>
@@ -23,8 +24,9 @@
 <!--        <item name="windowNoTitle">true</item>-->
 
     </style>
-<!--    <style name="toolbarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>-->
-
+    <style name="ToolbarStyle" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/sangsangtitle</item>
+    </style>
 
     <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/my_font_family</item>
