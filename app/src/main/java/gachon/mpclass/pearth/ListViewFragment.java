@@ -58,6 +58,7 @@ public class ListViewFragment extends Fragment {
             listStores.add(new Store("평상시", "37.55355", "127.13361", "카페", "서울특별시 강동구 암사동 458-67", "070-7655-0005"));
             listStores.add(new Store("에티컬테이블", "37.45816", "127.126547", "채식 전문 음식점", "경기도 성남시 복정동 685-11 KR 2층", "050-7132-7625"));
             listStores.add(new Store("뜰안채", "37.464159", "127.140789", "채식 뷔페 음식점", "경기도 성남시 수정구 복정동", "031-759-4670"));
+
         }
 
         listView = (ListView)rootView.findViewById(R.id.listView);
