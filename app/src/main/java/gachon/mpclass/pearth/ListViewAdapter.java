@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,12 +51,13 @@ public class ListViewAdapter extends BaseAdapter {
     int cnt = 0;
     Context context;
     ArrayList<ListViewItem> data;
-    Uri profileUri;
+    String profileUri;
     Uri defaultUri;
     int check = 0;
     String n;
     DatabaseReference mDB = FirebaseDatabase.getInstance().getReference().child("report");
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("board");
+    DatabaseReference proRef = FirebaseDatabase.getInstance().getReference().child("Profile");
     FirebaseStorage storage = FirebaseStorage.getInstance();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -222,14 +226,32 @@ try {
 
 
 
+        proRef.child(post).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                } else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+
+                    profileUri = task.getResult().getValue().toString();
+                }
+            }
+        });
+
         if (list.getImgUrl() == null)//사진이 있을때
         {
             textView1.setText(list.getTitle());
             textView2.setText(list.getContent());
             tag.setText(list.getTag());
+            if(profileUri!=null){
             Glide.with(convertView)
-                    .load(list.getProfileUrl())
-                    .into(circleImageView);
+                    .load(profileUri)
+                    .into(circleImageView);}
+            else{
+                Glide.with(convertView)
+                        .load("https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8")
+                        .into(circleImageView);}
 
 
 
@@ -240,9 +262,16 @@ try {
             Glide.with(convertView)
                     .load(list.getImgUrl())
                     .into(imageView);
+
+            if(profileUri!=null){
                 Glide.with(convertView)
-                        .load(list.getProfileUrl())
-                        .into(circleImageView);
+                        .load(profileUri)
+                        .into(circleImageView);}
+            else{
+                Glide.with(convertView)
+                        .load("https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8")
+                        .into(circleImageView);}
+
 
 
         }

@@ -8,24 +8,27 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:id="@+id/record"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:backgroundTint="@color/mainGreen"
-            android:gravity="right"
+            android:background="@color/mainGreen"
+            app:backgroundTint = "@null"
+            android:gravity="center"
             android:text="기록게시판"/>
         <Button
             android:id="@+id/share"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:gravity="center"
-            android:backgroundTint="@color/mainGreen"
+            app:backgroundTint = "@null"
+            android:background="@color/mainGreen"
             android:text="공유게시판"/>
     </LinearLayout>
     <FrameLayout

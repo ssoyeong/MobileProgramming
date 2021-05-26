@@ -73,6 +73,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/imageUploadButton"
         android:backgroundTint="@color/mainGreen"
+        app:backgroundTint = "@null"
         android:fontFamily="@font/sangsangbody"/>
     <!--    </LinearLayout>-->
 

@@ -62,7 +62,9 @@ public class UserProfileActivity extends AppCompatActivity{
 
     DatabaseReference mRootDatabaseReference= FirebaseDatabase.getInstance().getReference();
     DatabaseReference userDatabaseReference=mRootDatabaseReference.child("Users");
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference("Profile");
+    FirebaseAuth user = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,6 +181,7 @@ public class UserProfileActivity extends AppCompatActivity{
 
 
 
+
             }
         });
     }
@@ -226,7 +229,7 @@ public class UserProfileActivity extends AppCompatActivity{
                 @Override
                 public void onSuccess(Uri uri) {
                     //Glide.with(UserProfileActivity.this).load(uri).into(imageView);
-                    G.profileUrl = uri.toString();
+                    reference.child(user.getUid()).setValue(uri.toString());
                     Glide.with(UserProfileActivity.this).load(uri).circleCrop().into(imageView);
 
                 }
@@ -245,7 +248,7 @@ public class UserProfileActivity extends AppCompatActivity{
         desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                G.profileUrl = "https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8";
+                reference.child(user.getUid()).setValue("https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

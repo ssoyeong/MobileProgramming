@@ -5,7 +5,6 @@ import java.util.List;
 
 public class G {
     public static String imgUrl;
-    public static String profileUrl;
     public static String fileName;
     public static List<String> keyList = new ArrayList<String>();
     public static String keyword;

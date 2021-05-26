@@ -72,5 +72,7 @@
         android:layout_below="@+id/change"
         android:fontFamily="@font/sangsangbody"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"/>
 </RelativeLayout>
