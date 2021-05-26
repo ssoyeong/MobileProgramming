@@ -230,7 +230,7 @@ public class CheckListActivity extends AppCompatActivity {
         return true;
     }
 
-    //액션바 숨기기
+
     private void hideActionBar () {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
