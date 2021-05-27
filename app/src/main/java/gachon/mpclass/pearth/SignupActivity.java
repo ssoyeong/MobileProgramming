@@ -38,6 +38,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     ProgressDialog progressDialog;
     //define firebase object
     FirebaseAuth firebaseAuth;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference("Profile");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +110,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
                                 String email = user.getEmail();
                                 String uid = user.getUid();
-
+                                reference.child(user.getUid()).setValue("https://firebasestorage.googleapis.com/v0/b/pearth-7ec20.appspot.com/o/profile%2Fplant.png?alt=media&token=021c6c31-684d-401e-b5ab-c2d8c415cbc8");
                                 HashMap<Object,String> hashMap = new HashMap<>();
                                 hashMap.put("nickname",uid);
                                 hashMap.put("email",email);
